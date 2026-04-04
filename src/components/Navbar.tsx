@@ -5,12 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight, Sun, Moon, Sparkles } from 'lucide-react';
+import { useTheme } from '@/context/ThemeContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-  const [isDark, setIsDark] = useState(true);
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
   const pathname = usePathname();
 
   const navLinks = [
@@ -29,24 +31,9 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    // Apply theme to document
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.style.setProperty('--bg-primary', '#0a0a0a');
-      document.documentElement.style.setProperty('--bg-secondary', '#0f0f0f');
-      document.documentElement.style.setProperty('--text-primary', '#ffffff');
-      document.documentElement.style.setProperty('--text-secondary', 'rgba(255,255,255,0.6)');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.style.setProperty('--bg-primary', '#ffffff');
-      document.documentElement.style.setProperty('--bg-secondary', '#f8f9fa');
-      document.documentElement.style.setProperty('--text-primary', '#0a0a0a');
-      document.documentElement.style.setProperty('--text-secondary', 'rgba(0,0,0,0.5)');
-    }
-  }, [isDark]);
-
-  const toggleTheme = () => setIsDark(!isDark);
+  const toggleThemeHandler = () => {
+    toggleTheme();
+  };
 
   return (
     <motion.header
@@ -161,7 +148,7 @@ const Navbar = () => {
             <div className="flex items-center gap-3">
               {/* Theme Toggle */}
               <button
-                onClick={toggleTheme}
+                onClick={toggleThemeHandler}
                 className={`hidden lg:flex w-10 h-10 items-center justify-center rounded-full transition-all duration-300 ${
                   isDark 
                     ? 'bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10' 
@@ -318,7 +305,7 @@ const Navbar = () => {
                   transition={{ delay: navLinks.length * 0.06, duration: 0.4 }}
                 >
                   <button
-                    onClick={toggleTheme}
+                    onClick={toggleThemeHandler}
                     className={`group flex items-center gap-4 px-5 py-4 rounded-2xl text-base font-medium w-full transition-all duration-200 ${
                       isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-black/60 hover:text-black hover:bg-black/5'
                     }`}

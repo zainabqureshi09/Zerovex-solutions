@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -123,12 +124,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth`}>
-      <body className="min-h-screen flex flex-col bg-[#0a0a0a] text-white antialiased">
-        <StructuredData />
-        <Navbar />
-        <div className="flex-grow">{children}</div>
-        <Footer />
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth`} suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col antialiased transition-colors duration-500" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+        <ThemeProvider>
+          <StructuredData />
+          <Navbar />
+          <div className="flex-grow">{children}</div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
