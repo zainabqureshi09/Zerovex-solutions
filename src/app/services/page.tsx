@@ -33,7 +33,7 @@ const services = [
       'Analytics setup',
       'A/B testing ready',
     ],
-    gradient: 'from-[#e11d48] to-[#f43f5e]',
+    gradient: 'from-[#ff1f3d] to-[#ff3d57]',
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'WordPress', 'Sanity'],
   },
   {
@@ -49,7 +49,7 @@ const services = [
       'Authentication & security',
       'Scalable infrastructure',
     ],
-    gradient: 'from-[#3b82f6] to-[#60a5fa]',
+    gradient: 'from-[#2563eb] to-[#3b82f6]',
     technologies: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'MongoDB', 'GraphQL'],
   },
   {
@@ -136,12 +136,12 @@ export default function ServicesPage() {
           <motion.div
             animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
             transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#e11d48]/15 rounded-full blur-[140px]"
+            className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#ff1f3d]/15 rounded-full blur-[140px]"
           />
           <motion.div
             animate={{ scale: [1.1, 1, 1.1], opacity: [0.12, 0.2, 0.12] }}
             transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-            className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#3b82f6]/10 rounded-full blur-[140px]"
+            className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#2563eb]/10 rounded-full blur-[140px]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050507_70%)]"></div>
@@ -150,7 +150,7 @@ export default function ServicesPage() {
         <div className="container-custom mx-auto px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
-              <Zap className="text-[#e11d48]" size={16} />
+              <Zap className="text-[#ff1f3d]" size={16} />
               What We Do Best
             </span>
           </FadeIn>
@@ -193,7 +193,7 @@ export default function ServicesPage() {
                   <div className="grid sm:grid-cols-2 gap-5 mb-10">
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3">
-                        <CheckCircle2 size={20} className="text-[#e11d48] shrink-0" />
+                        <CheckCircle2 size={20} className="text-[#ff1f3d] shrink-0" />
                         <span className="text-white/70 text-sm">{feature}</span>
                       </div>
                     ))}
@@ -227,7 +227,7 @@ export default function ServicesPage() {
 
                     {/* Floating Elements */}
                     <div className="absolute top-8 left-8 glass rounded-xl px-5 py-3 flex items-center gap-2.5">
-                      <Shield size={18} className="text-[#e11d48]" />
+                      <Shield size={18} className="text-[#ff1f3d]" />
                       <span className="text-white text-sm font-medium">Secure</span>
                     </div>
                     <div className="absolute bottom-8 right-8 glass rounded-xl px-5 py-3 flex items-center gap-2.5">
@@ -266,7 +266,7 @@ export default function ServicesPage() {
             {processSteps.map((step, index) => (
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="card-premium text-center relative group">
-                  <div className="w-18 h-18 rounded-full bg-gradient-to-br from-[#e11d48] to-[#f43f5e] flex items-center justify-center text-white font-bold mx-auto mb-5 shadow-lg group-hover:shadow-[0_0_30px_rgba(225,29,72,0.4)] transition-shadow duration-300">
+                  <div className="w-18 h-18 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] flex items-center justify-center text-white font-bold mx-auto mb-5 shadow-lg group-hover:shadow-[0_0_30px_rgba(225,29,72,0.4)] transition-shadow duration-300">
                     {step.step}
                   </div>
                   <h3 className="text-lg font-semibold mb-3 font-[var(--space-grotesk)]">{step.title}</h3>
@@ -274,7 +274,7 @@ export default function ServicesPage() {
 
                   {/* Arrow (except last) */}
                   {index < processSteps.length - 1 && (
-                    <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-[#e11d48]/30" size={20} />
+                    <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-[#ff1f3d]/30" size={20} />
                   )}
                 </div>
               </FadeIn>
@@ -288,7 +288,7 @@ export default function ServicesPage() {
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-[32px] p-14 md:p-20 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#e11d48] to-transparent"></div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
               <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
                 Ready to <span className="text-gradient">Start</span>?
               </h2>

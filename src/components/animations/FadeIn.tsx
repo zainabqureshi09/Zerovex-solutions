@@ -19,10 +19,10 @@ export const FadeIn = ({
   className = ''
 }: FadeInProps) => {
   const directionOffset = {
-    up: 20,
-    down: -20,
-    left: 20,
-    right: -20,
+    up: 24,
+    down: -24,
+    left: 24,
+    right: -24,
     none: 0,
   };
 
@@ -38,7 +38,7 @@ export const FadeIn = ({
         y: 0,
         x: 0
       }}
-      viewport={{ once: true, margin: '-50px', amount: 0.3 }}
+      viewport={{ once: true, margin: '-80px', amount: 0.2 }}
       transition={{
         duration,
         delay,

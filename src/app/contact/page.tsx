@@ -169,12 +169,12 @@ export default function ContactPage() {
           <motion.div
             animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
             transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#e11d48]/15 rounded-full blur-[140px]"
+            className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#ff1f3d]/15 rounded-full blur-[140px]"
           />
           <motion.div
             animate={{ scale: [1.1, 1, 1.1], opacity: [0.12, 0.2, 0.12] }}
             transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-            className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#3b82f6]/10 rounded-full blur-[140px]"
+            className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#2563eb]/10 rounded-full blur-[140px]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050507_70%)]"></div>
@@ -183,7 +183,7 @@ export default function ContactPage() {
         <div className="container-custom mx-auto px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
-              <Send className="text-[#e11d48]" size={16} />
+              <Send className="text-[#ff1f3d]" size={16} />
               Get In Touch
             </span>
           </FadeIn>
@@ -225,8 +225,8 @@ export default function ContactPage() {
                           href={info.href}
                           className="flex items-start gap-4 card-premium group"
                         >
-                          <div className="w-14 h-14 rounded-2xl bg-[#e11d48]/10 flex items-center justify-center shrink-0 group-hover:bg-[#e11d48]/15 transition-colors duration-300">
-                            <info.icon size={22} className="text-[#e11d48]" />
+                          <div className="w-14 h-14 rounded-2xl bg-[#ff1f3d]/10 flex items-center justify-center shrink-0 group-hover:bg-[#ff1f3d]/15 transition-colors duration-300">
+                            <info.icon size={22} className="text-[#ff1f3d]" />
                           </div>
                           <div>
                             <div className="text-white/50 text-sm mb-1">{info.label}</div>
@@ -250,7 +250,7 @@ export default function ContactPage() {
                           key={social.label}
                           href={social.href}
                           aria-label={social.label}
-                          className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center text-white/50 hover:text-white hover:border-[#e11d48]/40 transition-all duration-300"
+                          className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center text-white/50 hover:text-white hover:border-[#ff1f3d]/40 transition-all duration-300"
                         >
                           <social.icon size={20} />
                         </a>
@@ -271,7 +271,7 @@ export default function ContactPage() {
                       animate={{ opacity: 1, scale: 1 }}
                       className="text-center py-20"
                     >
-                      <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#e11d48] to-[#f43f5e] flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(225,29,72,0.4)]">
+                      <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(225,29,72,0.4)]">
                         <CheckCircle2 size={48} className="text-white" />
                       </div>
                       <h3 className="text-3xl font-bold mb-4 font-[var(--space-grotesk)]">Message Sent!</h3>
@@ -287,7 +287,7 @@ export default function ContactPage() {
                       <div className="grid sm:grid-cols-2 gap-6">
                         <div>
                           <label htmlFor="name" className="block text-white/70 text-sm font-medium mb-2.5">
-                            Full Name <span className="text-[#e11d48]">*</span>
+                            Full Name <span className="text-[#ff1f3d]">*</span>
                           </label>
                           <input
                             type="text"
@@ -313,7 +313,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <label htmlFor="email" className="block text-white/70 text-sm font-medium mb-2.5">
-                            Email Address <span className="text-[#e11d48]">*</span>
+                            Email Address <span className="text-[#ff1f3d]">*</span>
                           </label>
                           <input
                             type="email"
@@ -394,7 +394,7 @@ export default function ContactPage() {
 
                       <div>
                         <label htmlFor="message" className="block text-white/70 text-sm font-medium mb-2.5">
-                          Project Details <span className="text-[#e11d48]">*</span>
+                          Project Details <span className="text-[#ff1f3d]">*</span>
                         </label>
                         <textarea
                           id="message"
@@ -486,11 +486,11 @@ export default function ContactPage() {
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-[24px] overflow-hidden h-96 relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#e11d48]/10 via-[#3b82f6]/10 to-[#8b5cf6]/10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#ff1f3d]/10 via-[#2563eb]/10 to-[#8b5cf6]/10"></div>
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px]"></div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <MapPin size={56} className="text-[#e11d48] mx-auto mb-5" />
+                  <MapPin size={56} className="text-[#ff1f3d] mx-auto mb-5" />
                   <h3 className="text-3xl font-bold mb-3 font-[var(--space-grotesk)]">Silicon Valley, California</h3>
                   <p className="text-white/60 mb-6">By appointment only</p>
                   <Link
@@ -512,7 +512,7 @@ export default function ContactPage() {
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-[32px] p-14 md:p-20 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#e11d48] to-transparent"></div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
               <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
                 Still Have <span className="text-gradient">Questions</span>?
               </h2>

@@ -13,7 +13,7 @@ const projects = [
     title: 'FinTech Dashboard',
     category: 'Web Applications',
     description: 'Real-time analytics platform for financial data visualization with interactive charts and AI-powered insights.',
-    gradient: 'from-[#e11d48] to-[#f43f5e]',
+    gradient: 'from-[#ff1f3d] to-[#ff3d57]',
     technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
     metrics: { users: '10K+', performance: '99.9%', growth: '+250%' },
   },
@@ -21,7 +21,7 @@ const projects = [
     title: 'LuxeShop E-Commerce',
     category: 'Web Development',
     description: 'Premium shopping experience with AI-powered product recommendations and seamless checkout flow.',
-    gradient: 'from-[#3b82f6] to-[#60a5fa]',
+    gradient: 'from-[#2563eb] to-[#3b82f6]',
     technologies: ['Next.js', 'Stripe', 'Sanity CMS', 'Tailwind'],
     metrics: { users: '50K+', performance: '98%', growth: '+340%' },
   },
@@ -98,12 +98,12 @@ export default function ProjectsPage() {
           <motion.div
             animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
             transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-[#3b82f6]/15 rounded-full blur-[140px]"
+            className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-[#2563eb]/15 rounded-full blur-[140px]"
           />
           <motion.div
             animate={{ scale: [1.1, 1, 1.1], opacity: [0.12, 0.2, 0.12] }}
             transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-            className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-[#e11d48]/10 rounded-full blur-[140px]"
+            className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-[#ff1f3d]/10 rounded-full blur-[140px]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050507_70%)]"></div>
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
         <div className="container-custom mx-auto px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
-              <ExternalLink className="text-[#e11d48]" size={16} />
+              <ExternalLink className="text-[#ff1f3d]" size={16} />
               Our Portfolio
             </span>
           </FadeIn>
@@ -141,8 +141,8 @@ export default function ProjectsPage() {
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${
                   activeCategory === category
-                    ? 'bg-[#e11d48] text-white shadow-[0_4px_20px_rgba(225,29,72,0.3)]'
-                    : 'glass-subtle text-white/60 hover:text-white hover:border-[#e11d48]/30'
+                    ? 'bg-[#ff1f3d] text-white shadow-[0_4px_20px_rgba(225,29,72,0.3)]'
+                    : 'glass-subtle text-white/60 hover:text-white hover:border-[#ff1f3d]/30'
                 }`}
               >
                 {category}
@@ -181,10 +181,10 @@ export default function ProjectsPage() {
                     </div>
 
                     {/* Content */}
-                    <span className="text-[#e11d48] text-xs font-bold uppercase tracking-wider mb-3 block">
+                    <span className="text-[#ff1f3d] text-xs font-bold uppercase tracking-wider mb-3 block">
                       {project.category}
                     </span>
-                    <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#e11d48] transition-colors duration-300 font-[var(--space-grotesk)]">
+                    <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff1f3d] transition-colors duration-300 font-[var(--space-grotesk)]">
                       {project.title}
                     </h3>
                     <p className="text-white/50 text-sm leading-relaxed mb-5">
@@ -206,15 +206,15 @@ export default function ProjectsPage() {
                     {/* Metrics */}
                     <div className="grid grid-cols-3 gap-4 pt-5 border-t border-white/5">
                       <div className="text-center">
-                        <div className="text-[#e11d48] font-bold text-sm mb-1">{project.metrics.users}</div>
+                        <div className="text-[#ff1f3d] font-bold text-sm mb-1">{project.metrics.users}</div>
                         <div className="text-white/40 text-xs">Users</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-[#e11d48] font-bold text-sm mb-1">{project.metrics.performance}</div>
+                        <div className="text-[#ff1f3d] font-bold text-sm mb-1">{project.metrics.performance}</div>
                         <div className="text-white/40 text-xs">Uptime</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-[#e11d48] font-bold text-sm mb-1">{project.metrics.growth}</div>
+                        <div className="text-[#ff1f3d] font-bold text-sm mb-1">{project.metrics.growth}</div>
                         <div className="text-white/40 text-xs">Growth</div>
                       </div>
                     </div>
@@ -231,7 +231,7 @@ export default function ProjectsPage() {
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-[32px] p-14 md:p-20 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#e11d48] to-transparent"></div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
               <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
                 Ready to Be Our Next <span className="text-gradient">Success Story</span>?
               </h2>

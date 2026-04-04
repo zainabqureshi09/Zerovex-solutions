@@ -35,14 +35,14 @@ const services = [
     title: 'Website Development',
     description: 'Premium, high-converting websites that captivate your audience and drive results.',
     href: '/services#web-development',
-    color: 'from-[#e11d48] to-[#f43f5e]',
+    color: 'from-[#ff1f3d] to-[#ff3d57]',
   },
   {
     icon: Code,
     title: 'Web Applications',
     description: 'Scalable, secure web applications built with cutting-edge technologies.',
     href: '/services#web-applications',
-    color: 'from-[#3b82f6] to-[#60a5fa]',
+    color: 'from-[#2563eb] to-[#2563eb]',
   },
   {
     icon: Smartphone,
@@ -114,13 +114,13 @@ const portfolioItems = [
     title: 'FinTech Dashboard',
     category: 'Web Application',
     description: 'Real-time analytics platform for financial data visualization.',
-    gradient: 'from-[#e11d48] to-[#f43f5e]',
+    gradient: 'from-[#ff1f3d] to-[#ff3d57]',
   },
   {
     title: 'LuxeShop E-Commerce',
     category: 'Website Development',
     description: 'Premium shopping experience with AI-powered recommendations.',
-    gradient: 'from-[#3b82f6] to-[#60a5fa]',
+    gradient: 'from-[#2563eb] to-[#3b82f6]',
   },
   {
     title: 'FitTrack Pro',
@@ -191,83 +191,82 @@ export default function HomePage() {
           {/* Gradient Orbs */}
           <motion.div
             animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.15, 0.25, 0.15],
+              scale: [1, 1.08, 1],
+              opacity: [0.12, 0.2, 0.12],
             }}
-            transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/4 left-1/4 w-[700px] h-[700px] bg-[#e11d48]/20 rounded-full blur-[140px]"
+            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute top-[20%] left-[15%] w-[clamp(400px,50vw,700px)] h-[clamp(400px,50vw,700px)] bg-[#ff1f3d]/15 rounded-full blur-[clamp(100px,15vw,160px)]"
           />
           <motion.div
             animate={{
-              scale: [1.1, 1, 1.1],
-              opacity: [0.12, 0.2, 0.12],
+              scale: [1.08, 1, 1.08],
+              opacity: [0.1, 0.16, 0.1],
             }}
-            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#3b82f6]/15 rounded-full blur-[140px]"
+            transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+            className="absolute bottom-[20%] right-[15%] w-[clamp(350px,45vw,600px)] h-[clamp(350px,45vw,600px)] bg-[#2563eb]/10 rounded-full blur-[clamp(100px,15vw,160px)]"
           />
 
           {/* Grid Pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:clamp(60px,8vw,100px)_clamp(60px,8vw,100px)]"></div>
 
           {/* Radial Gradient Overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050507_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a0a0a_75%)]"></div>
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
+        <div className="relative z-10 text-center max-w-[clamp(800px,85vw,1200px)] mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 mb-10"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/8 mb-8"
           >
-            <span className="w-2 h-2 bg-[#e11d48] rounded-full animate-pulse"></span>
-            <span className="text-white/90 text-sm font-medium">Innovation-Driven Digital Agency</span>
+            <span className="w-1.5 h-1.5 bg-[#ff1f3d] rounded-full animate-pulse"></span>
+            <span className="text-white/90 text-xs sm:text-sm font-medium">Innovation-Driven Digital Agency</span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold leading-[1.05] tracking-tight mb-10 font-[var(--space-grotesk)]"
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-[clamp(2.75rem,7vw,6rem)] font-bold leading-[1.05] tracking-tight mb-8 font-[var(--space-grotesk)]"
           >
             Building{' '}
             <span className="text-gradient">Powerful</span>
-            <br />
-            Digital Experiences
+            <br className="hidden sm:block" /> Digital Experiences
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-14 leading-relaxed"
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="text-base sm:text-lg text-white/60 max-w-[clamp(500px,60vw,700px)] mx-auto mb-10 leading-relaxed"
           >
             We partner with forward-thinking businesses to design, develop, and scale
             exceptional digital products that drive measurable growth.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-5"
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
-            <Link href="/contact" className="btn-primary text-base px-10 py-4 flex items-center gap-2.5 group">
+            <Link href="/contact" className="btn-primary text-sm px-8 py-4 group">
               Start a Project
-              <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
-            <Link href="/services" className="btn-secondary text-base px-10 py-4">
+            <Link href="/services" className="btn-secondary text-sm px-8 py-4">
               Explore Services
             </Link>
           </motion.div>
 
           {/* Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-24 pt-14 border-t border-white/5"
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 pt-10 border-t border-white/5"
           >
             {[
               { value: '150+', label: 'Projects Delivered' },
@@ -276,8 +275,8 @@ export default function HomePage() {
               { value: '5+', label: 'Years Experience' },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-gradient mb-3 font-[var(--space-grotesk)]">{stat.value}</div>
-                <div className="text-white/50 text-sm font-medium">{stat.label}</div>
+                <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2 font-[var(--space-grotesk)]">{stat.value}</div>
+                <div className="text-white/50 text-xs sm:text-sm font-medium">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -285,15 +284,15 @@ export default function HomePage() {
 
         {/* Scroll Indicator */}
         <motion.div
-          animate={{ y: [0, 10, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <div className="w-7 h-12 rounded-full border-2 border-white/15 flex items-start justify-center p-2">
+          <div className="w-6 h-10 rounded-full border-2 border-white/10 flex items-start justify-center p-1.5">
             <motion.div
-              animate={{ y: [0, 14, 0] }}
+              animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-              className="w-1.5 h-1.5 bg-[#e11d48] rounded-full"
+              className="w-1 h-1.5 bg-[#ff1f3d] rounded-full"
             ></motion.div>
           </div>
         </motion.div>
@@ -329,13 +328,13 @@ export default function HomePage() {
                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-7 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                       <service.icon size={30} className="text-white" />
                     </div>
-                    <h3 className="text-2xl font-semibold mb-4 group-hover:text-[#e11d48] transition-colors duration-300 font-[var(--space-grotesk)]">
+                    <h3 className="text-2xl font-semibold mb-4 group-hover:text-[#ff1f3d] transition-colors duration-300 font-[var(--space-grotesk)]">
                       {service.title}
                     </h3>
                     <p className="text-white/50 leading-relaxed mb-5">
                       {service.description}
                     </p>
-                    <div className="flex items-center text-[#e11d48] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                    <div className="flex items-center text-[#ff1f3d] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                       Learn more <ChevronRight size={16} className="ml-1.5" />
                     </div>
                   </div>
@@ -349,7 +348,7 @@ export default function HomePage() {
       {/* ===== WHY CHOOSE SECTION ===== */}
       <section className="section-padding relative bg-[#030305]">
         {/* Background Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-[#e11d48]/5 rounded-full blur-[180px]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-[#ff1f3d]/5 rounded-full blur-[180px]"></div>
 
         <div className="container-custom mx-auto relative z-10">
           <FadeIn className="text-center mb-20">
@@ -369,8 +368,8 @@ export default function HomePage() {
             {whyChoose.map((item, index) => (
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="group relative card-premium">
-                  <div className="w-14 h-14 rounded-2xl bg-[#e11d48]/10 flex items-center justify-center mb-6 group-hover:bg-[#e11d48]/15 transition-colors duration-300">
-                    <item.icon size={26} className="text-[#e11d48]" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#ff1f3d]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff1f3d]/15 transition-colors duration-300">
+                    <item.icon size={26} className="text-[#ff1f3d]" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4 font-[var(--space-grotesk)]">{item.title}</h3>
                   <p className="text-white/50 leading-relaxed">{item.description}</p>
@@ -418,10 +417,10 @@ export default function HomePage() {
                   </div>
 
                   {/* Content */}
-                  <span className="text-[#e11d48] text-xs font-bold uppercase tracking-wider mb-3 block">
+                  <span className="text-[#ff1f3d] text-xs font-bold uppercase tracking-wider mb-3 block">
                     {item.category}
                   </span>
-                  <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#e11d48] transition-colors duration-300 font-[var(--space-grotesk)]">
+                  <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff1f3d] transition-colors duration-300 font-[var(--space-grotesk)]">
                     {item.title}
                   </h3>
                   <p className="text-white/50 leading-relaxed">
@@ -461,7 +460,7 @@ export default function HomePage() {
             {processSteps.map((step, index) => (
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="relative card-premium text-center group">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#e11d48] to-[#f43f5e] flex items-center justify-center text-white font-bold mx-auto mb-5 shadow-lg group-hover:shadow-[0_030px_rgba(225,29,72,0.4)] transition-shadow duration-300">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] flex items-center justify-center text-white font-bold mx-auto mb-5 shadow-lg group-hover:shadow-[0_030px_rgba(225,29,72,0.4)] transition-shadow duration-300">
                     {step.step}
                   </div>
                   <h3 className="text-lg font-semibold mb-3 font-[var(--space-grotesk)]">{step.title}</h3>
@@ -469,7 +468,7 @@ export default function HomePage() {
 
                   {/* Arrow (except last) */}
                   {index < processSteps.length - 1 && (
-                    <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-[#e11d48]/40" size={20} />
+                    <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-[#ff1f3d]/40" size={20} />
                   )}
                 </div>
               </FadeIn>
@@ -501,7 +500,7 @@ export default function HomePage() {
                   {/* Stars */}
                   <div className="flex gap-1 mb-6">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} size={18} className="text-[#e11d48] fill-[#e11d48]" />
+                      <Star key={i} size={18} className="text-[#ff1f3d] fill-[#ff1f3d]" />
                     ))}
                   </div>
 
@@ -512,7 +511,7 @@ export default function HomePage() {
 
                   {/* Author */}
                   <div className="flex items-center gap-4 pt-6 border-t border-white/5">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#e11d48] to-[#3b82f6] flex items-center justify-center text-white font-bold text-lg">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#2563eb] flex items-center justify-center text-white font-bold text-lg">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
@@ -531,15 +530,15 @@ export default function HomePage() {
       <section className="section-padding relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#e11d48]/15 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#3b82f6]/10 rounded-full blur-[120px]"></div>
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#ff1f3d]/15 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#2563eb]/10 rounded-full blur-[120px]"></div>
         </div>
 
         <div className="container-custom mx-auto relative z-10">
           <FadeIn>
             <div className="glass-strong rounded-[32px] p-14 md:p-24 text-center relative overflow-hidden">
               {/* Inner Glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#e11d48] to-transparent"></div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
 
               <span className="badge-accent mb-8">
                 <Rocket size={16} />
