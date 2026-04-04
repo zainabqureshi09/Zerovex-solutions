@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://zerovexsolutions.site/sitemap.xml
+
+# Disallow admin and private areas (if any)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Allow crawling of main pages
+Allow: /
+Allow: /services
+Allow: /projects
+Allow: /about
+Allow: /contact
