@@ -93,7 +93,7 @@ export default function ProjectsPage() {
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-24">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[65vh] flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
         <div className="absolute inset-0">
           <motion.div
             animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
@@ -106,10 +106,10 @@ export default function ProjectsPage() {
             className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-[#ff1f3d]/10 rounded-full blur-[140px]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050507_70%)]"></div>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 0%, var(--bg-secondary) 70%)' }}></div>
         </div>
 
-        <div className="container-custom mx-auto px-6 relative z-10 text-center">
+        <div className="container-custom mx-auto px-4 sm:px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
               <ExternalLink className="text-[#ff1f3d]" size={16} />
@@ -117,12 +117,12 @@ export default function ProjectsPage() {
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 font-[var(--space-grotesk)]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
               Featured <span className="text-gradient">Projects</span>
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed px-4" style={{ color: 'var(--text-secondary)' }}>
               A showcase of our most impactful digital transformations and creative
               solutions that drove real business results.
             </p>
@@ -131,20 +131,20 @@ export default function ProjectsPage() {
       </section>
 
       {/* Filter Section */}
-      <section className="py-10 sticky top-[80px] z-40 backdrop-blur-xl border-y" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}>
-        <div className="container-custom mx-auto px-6">
+      <section className="py-6 sm:py-10 sticky top-[80px] z-40 backdrop-blur-xl border-y" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}>
+        <div className="container-custom mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-hide">
             <Filter size={18} style={{ color: 'var(--text-tertiary)' }} className="shrink-0" />
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${
+                className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${
                   activeCategory === category
-                    ? 'bg-[#ff1f3d] text-white shadow-[0_4px_20px_rgba(225,29,72,0.3)]'
-                    : 'glass-subtle hover:text-white hover:border-[#ff1f3d]/30'
+                    ? 'bg-[#ff1f3d] shadow-[0_4px_20px_rgba(225,29,72,0.3)]'
+                    : 'glass-subtle hover:border-[#ff1f3d]/30'
                 }`}
-                style={activeCategory !== category ? { color: 'var(--text-secondary)' } : {}}
+                style={activeCategory === category ? { color: '#ffffff' } : { color: 'var(--text-secondary)' }}
               >
                 {category}
               </button>
@@ -154,7 +154,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="section-padding">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="container-custom mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
@@ -175,7 +175,7 @@ export default function ProjectsPage() {
 
                       {/* Overlay on Hover */}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <button className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-white text-sm font-medium flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <button className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300" style={{ color: 'var(--text-primary)' }}>
                           View Details <ArrowUpRight size={16} />
                         </button>
                       </div>
@@ -185,10 +185,10 @@ export default function ProjectsPage() {
                     <span className="text-[#ff1f3d] text-xs font-bold uppercase tracking-wider mb-3 block">
                       {project.category}
                     </span>
-                    <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff1f3d] transition-colors duration-300 font-[var(--space-grotesk)]">
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-3 group-hover:text-[#ff1f3d] transition-colors duration-300 font-[var(--space-grotesk)]">
                       {project.title}
                     </h3>
-                    <p style={{ color: 'var(--text-secondary)' }} className="text-sm leading-relaxed mb-5">
+                    <p style={{ color: 'var(--text-secondary)' }} className="text-sm sm:text-base leading-relaxed mb-5">
                       {project.description}
                     </p>
 
@@ -229,18 +229,18 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-tertiary)' }}>
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6" style={{ backgroundColor: 'var(--bg-tertiary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn>
-            <div className="glass-strong rounded-[32px] p-14 md:p-20 text-center relative overflow-hidden">
+            <div className="glass-strong rounded-[24px] sm:rounded-[32px] p-8 sm:p-12 md:p-16 lg:p-20 text-center relative overflow-hidden">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
                 Ready to Be Our Next <span className="text-gradient">Success Story</span>?
               </h2>
-              <p className="text-lg max-w-2xl mx-auto mb-12" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-12 px-4" style={{ color: 'var(--text-secondary)' }}>
                 Let's discuss your project and create something extraordinary together.
               </p>
-              <Link href="/contact" className="btn-primary text-base px-12 py-5 inline-flex items-center gap-2.5 group">
+              <Link href="/contact" className="btn-primary text-sm sm:text-base px-8 sm:px-12 py-3 sm:py-5 inline-flex items-center gap-2.5 group">
                 Start Your Project <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>

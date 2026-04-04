@@ -219,9 +219,9 @@ const Navbar = () => {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`lg:hidden relative w-11 h-11 flex items-center justify-center rounded-2xl transition-all duration-200 ${
-                  isDark 
-                    ? 'bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10' 
+                className={`lg:hidden relative min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-2xl transition-all duration-200 ${
+                  isDark
+                    ? 'bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10'
                     : 'bg-black/5 border border-black/10 text-black/70 hover:text-black hover:bg-black/10'
                 }`}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -271,8 +271,8 @@ const Navbar = () => {
             <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
             {/* Content */}
-            <div className="relative max-w-7xl mx-auto px-6 py-8">
-              <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+              <nav className="flex flex-col gap-2 sm:gap-3" aria-label="Mobile navigation">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.href}
@@ -321,12 +321,12 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: (navLinks.length + 1) * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="pt-6 mt-2"
+                  className="pt-4 sm:pt-6 mt-2"
                 >
                   <Link
                     href="/contact"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="group relative flex items-center justify-center gap-3 w-full bg-gradient-to-r from-[#ff1f3d] to-[#ff3d57] text-white px-6 py-4.5 rounded-2xl font-semibold overflow-hidden hover:shadow-[0_12px_40px_rgba(255,31,61,0.4)] transition-all duration-300"
+                    className="group relative flex items-center justify-center gap-3 w-full min-h-[48px] bg-gradient-to-r from-[#ff1f3d] to-[#ff3d57] text-white px-6 py-4 rounded-2xl font-semibold text-base overflow-hidden hover:shadow-[0_12px_40px_rgba(255,31,61,0.4)] transition-all duration-300"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-[#ff3d57] to-[#ff5777] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <Sparkles size={18} className="relative z-10" />

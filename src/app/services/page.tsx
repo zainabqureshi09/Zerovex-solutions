@@ -155,12 +155,12 @@ export default function ServicesPage() {
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 font-[var(--space-grotesk)]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 md:mb-8 font-[var(--space-grotesk)]">
               Our <span className="text-gradient">Services</span>
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Comprehensive digital solutions designed to transform your business
               and accelerate your growth in the digital landscape.
             </p>
@@ -175,7 +175,7 @@ export default function ServicesPage() {
             <FadeIn key={service.id}>
               <div
                 id={service.id}
-                className={`grid lg:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                className={`grid grid-cols-1 md:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
               >
                 {/* Content */}
                 <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
@@ -183,14 +183,14 @@ export default function ServicesPage() {
                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg`}>
                       <service.icon size={30} className="text-white" />
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold font-[var(--space-grotesk)]">{service.title}</h2>
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold font-[var(--space-grotesk)]">{service.title}</h2>
                   </div>
                   <p className="text-lg leading-relaxed mb-10" style={{ color: 'var(--text-secondary)' }}>
                     {service.description}
                   </p>
 
                   {/* Features */}
-                  <div className="grid sm:grid-cols-2 gap-5 mb-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3">
                         <CheckCircle2 size={20} className="text-[#ff1f3d] shrink-0" />
@@ -254,23 +254,23 @@ export default function ServicesPage() {
               <Layers size={16} />
               Our Process
             </span>
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 font-[var(--space-grotesk)]">
               How We <span className="text-gradient">Work</span>
             </h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               A proven methodology refined over hundreds of successful projects.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {processSteps.map((step, index) => (
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="card-premium text-center relative group">
                   <div className="w-18 h-18 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] flex items-center justify-center text-white font-bold mx-auto mb-5 shadow-lg group-hover:shadow-[0_0_30px_rgba(225,29,72,0.4)] transition-shadow duration-300">
                     {step.step}
                   </div>
-                  <h3 className="text-lg font-semibold mb-3 font-[var(--space-grotesk)]">{step.title}</h3>
-                  <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>{step.description}</p>
+                  <h3 className="text-base md:text-lg font-semibold mb-3 font-[var(--space-grotesk)]">{step.title}</h3>
+                  <p className="text-xs md:text-sm" style={{ color: 'var(--text-tertiary)' }}>{step.description}</p>
 
                   {/* Arrow (except last) */}
                   {index < processSteps.length - 1 && (
@@ -287,19 +287,19 @@ export default function ServicesPage() {
       <section className="section-padding">
         <div className="container-custom mx-auto">
           <FadeIn>
-            <div className="glass-strong rounded-[32px] p-14 md:p-20 text-center relative overflow-hidden">
+            <div className="glass-strong rounded-[32px] p-8 md:p-14 lg:p-20 text-center relative overflow-hidden">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 font-[var(--space-grotesk)]">
                 Ready to <span className="text-gradient">Start</span>?
               </h2>
-              <p className="text-lg max-w-2xl mx-auto mb-12" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-base md:text-lg max-w-2xl mx-auto mb-8 md:mb-12" style={{ color: 'var(--text-secondary)' }}>
                 Let's discuss your project and explore how our services can help you achieve your goals.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-                <Link href="/contact" className="btn-primary text-base px-12 py-5 flex items-center gap-2.5 group">
-                  Start Your Project <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <Link href="/contact" className="btn-primary text-sm md:text-base px-8 md:px-12 py-4 md:py-5 flex items-center gap-2.5 group">
+                  Start Your Project <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
-                <Link href="/projects" className="btn-secondary text-base px-12 py-5">
+                <Link href="/projects" className="btn-secondary text-sm md:text-base px-8 md:px-12 py-4 md:py-5">
                   View Our Work
                 </Link>
               </div>

@@ -34,8 +34,8 @@ const Footer = () => {
       {/* Top Gradient Line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
 
-      <div className="container-custom mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 lg:gap-10">
+      <div className="container-custom mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-10">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-7 group">
@@ -51,16 +51,16 @@ const Footer = () => {
             <p className="text-sm leading-relaxed mb-7" style={{ color: 'var(--text-secondary)' }}>
               Building powerful digital experiences for modern businesses. Your trusted technology partner for innovation and growth.
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-11 h-11 rounded-xl glass-subtle flex items-center justify-center transition-all duration-300 hover:border-[#ff1f3d]/40"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl glass-subtle flex items-center justify-center transition-all duration-300 hover:border-[#ff1f3d]/40"
                   style={{ color: 'var(--text-secondary)' }}
                 >
-                  <social.icon size={18} />
+                  <social.icon size={16} />
                 </a>
               ))}
             </div>
@@ -145,7 +145,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 pt-10 flex flex-col md:flex-row items-center justify-between gap-5" style={{ borderTop: '1px solid var(--border-color)' }}>
+        <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5" style={{ borderTop: '1px solid var(--border-color)' }}>
           <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
             © {currentYear} Zerovex Solutions. All rights reserved.
           </p>

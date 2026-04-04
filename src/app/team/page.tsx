@@ -75,7 +75,7 @@ export default function TeamPage() {
   return (
     <div className="relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-24">
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-24 px-4 sm:px-6">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <motion.div
@@ -92,7 +92,7 @@ export default function TeamPage() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--bg-primary)_75%)]"></div>
         </div>
 
-        <div className="container-custom mx-auto px-6 relative z-10 text-center">
+        <div className="container-custom mx-auto px-4 sm:px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
               <Users className="text-[#ff1f3d]" size={16} />
@@ -100,7 +100,7 @@ export default function TeamPage() {
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-bold mb-6 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
               Meet the <span className="text-gradient">Experts</span>
             </h1>
           </FadeIn>
@@ -114,7 +114,7 @@ export default function TeamPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-6" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <section className="py-16 px-4 sm:px-6" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, index) => (
@@ -134,10 +134,10 @@ export default function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="py-20 px-6 sm:py-24 sm:px-6 lg:py-28 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 sm:py-24 lg:py-28">
         <div className="container-custom mx-auto">
           <FadeIn className="text-center mb-16">
-            <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
               Our <span className="text-gradient">Team</span>
             </h2>
             <p className="text-base max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
@@ -192,14 +192,14 @@ export default function TeamPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 sm:py-24 sm:px-6 lg:py-28 lg:px-8" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <section className="py-20 px-4 sm:px-6 sm:py-24 lg:py-28" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn>
-            <div className="rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden" style={{ backgroundColor: 'var(--surface-elevated)', border: '1px solid var(--border-color)' }}>
+            <div className="rounded-3xl p-6 sm:p-10 lg:p-16 text-center relative overflow-hidden" style={{ backgroundColor: 'var(--surface-elevated)', border: '1px solid var(--border-color)' }}>
               {/* Inner Glow */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
 
-              <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold mb-6 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
                 Want to <span className="text-gradient">Join</span> Our Team?
               </h2>
               <p className="text-base max-w-2xl mx-auto mb-10" style={{ color: 'var(--text-secondary)' }}>
