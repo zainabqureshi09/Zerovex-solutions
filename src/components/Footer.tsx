@@ -30,7 +30,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-[#030305] border-t border-white/5">
+    <footer className="relative border-t" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}>
       {/* Top Gradient Line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
 
@@ -48,7 +48,7 @@ const Footer = () => {
                 Zero<span className="text-[#ff1f3d]">vex</span>
               </span>
             </Link>
-            <p className="text-white/50 text-sm leading-relaxed mb-7">
+            <p className="text-sm leading-relaxed mb-7" style={{ color: 'var(--text-secondary)' }}>
               Building powerful digital experiences for modern businesses. Your trusted technology partner for innovation and growth.
             </p>
             <div className="flex items-center gap-3">
@@ -57,7 +57,8 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-11 h-11 rounded-xl glass-subtle flex items-center justify-center text-white/50 hover:text-white hover:border-[#ff1f3d]/40 transition-all duration-300"
+                  className="w-11 h-11 rounded-xl glass-subtle flex items-center justify-center transition-all duration-300 hover:border-[#ff1f3d]/40"
+                  style={{ color: 'var(--text-secondary)' }}
                 >
                   <social.icon size={18} />
                 </a>
@@ -67,13 +68,14 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold text-base mb-7 font-[var(--space-grotesk)]">Services</h3>
+            <h3 className="font-semibold text-base mb-7 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Services</h3>
             <ul className="space-y-4">
               {services.map((service) => (
                 <li key={service.name}>
                   <Link
                     href={service.href}
-                    className="text-white/50 hover:text-white text-sm transition-all duration-300 flex items-center gap-2 group"
+                    className="text-sm transition-all duration-300 flex items-center gap-2 group hover:text-white"
+                    style={{ color: 'var(--text-secondary)' }}
                   >
                     <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#ff1f3d]" />
                     <span className="group-hover:translate-x-1 transition-transform duration-300">{service.name}</span>
@@ -85,13 +87,14 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold text-base mb-7 font-[var(--space-grotesk)]">Quick Links</h3>
+            <h3 className="font-semibold text-base mb-7 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Quick Links</h3>
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-white/50 hover:text-white text-sm transition-all duration-300 flex items-center gap-2 group"
+                    className="text-sm transition-all duration-300 flex items-center gap-2 group hover:text-white"
+                    style={{ color: 'var(--text-secondary)' }}
                   >
                     <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#ff1f3d]" />
                     <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
@@ -103,13 +106,13 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white font-semibold text-base mb-7 font-[var(--space-grotesk)]">Contact Us</h3>
+            <h3 className="font-semibold text-base mb-7 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Contact Us</h3>
             <ul className="space-y-5">
               <li className="flex items-start gap-3 group">
                 <div className="w-10 h-10 rounded-lg bg-[#ff1f3d]/10 flex items-center justify-center shrink-0 group-hover:bg-[#ff1f3d]/15 transition-colors duration-300">
                   <MapPin size={18} className="text-[#ff1f3d]" />
                 </div>
-                <span className="text-white/50 text-sm pt-1">
+                <span className="text-sm pt-1" style={{ color: 'var(--text-secondary)' }}>
                   Silicon Valley, California
                 </span>
               </li>
@@ -119,7 +122,8 @@ const Footer = () => {
                 </div>
                 <a
                   href="mailto:hello@zerovexsolutions.site"
-                  className="text-white/50 hover:text-white text-sm transition-colors"
+                  className="text-sm transition-colors hover:text-white"
+                  style={{ color: 'var(--text-secondary)' }}
                 >
                   hello@zerovexsolutions.site
                 </a>
@@ -130,7 +134,8 @@ const Footer = () => {
                 </div>
                 <a
                   href="tel:+1234567890"
-                  className="text-white/50 hover:text-white text-sm transition-colors"
+                  className="text-sm transition-colors hover:text-white"
+                  style={{ color: 'var(--text-secondary)' }}
                 >
                   +1 (234) 567-890
                 </a>
@@ -140,15 +145,15 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-5">
-          <p className="text-white/40 text-sm">
+        <div className="mt-20 pt-10 flex flex-col md:flex-row items-center justify-between gap-5" style={{ borderTop: '1px solid var(--border-color)' }}>
+          <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
             © {currentYear} Zerovex Solutions. All rights reserved.
           </p>
           <div className="flex items-center gap-8">
-            <Link href="#" className="text-white/40 hover:text-white text-sm transition-colors">
+            <Link href="#" className="text-sm transition-colors hover:text-white" style={{ color: 'var(--text-tertiary)' }}>
               Privacy Policy
             </Link>
-            <Link href="#" className="text-white/40 hover:text-white text-sm transition-colors">
+            <Link href="#" className="text-sm transition-colors hover:text-white" style={{ color: 'var(--text-tertiary)' }}>
               Terms of Service
             </Link>
           </div>

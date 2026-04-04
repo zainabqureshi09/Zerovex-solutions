@@ -88,7 +88,7 @@ export default function TeamPage() {
             transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
             className="absolute bottom-1/4 right-1/4 w-[clamp(350px,45vw,500px)] h-[clamp(350px,45vw,500px)] bg-[#2563eb]/10 rounded-full blur-[clamp(100px,15vw,140px)]"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:clamp(60px,8vw,80px)_clamp(60px,8vw,80px)]"></div>
+          <div className="absolute inset-0" style={{ backgroundImage: 'var(--grid-pattern)', backgroundSize: 'clamp(60px,8vw,80px) clamp(60px,8vw,80px)' }}></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--bg-primary)_75%)]"></div>
         </div>
 
@@ -151,9 +151,9 @@ export default function TeamPage() {
                 <div className="group relative rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-color)' }}>
                   {/* Avatar */}
                   <div className={`relative h-48 bg-gradient-to-br ${member.gradient} overflow-hidden`}>
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:32px_32px] opacity-40"></div>
+                    <div className="absolute inset-0" style={{ backgroundImage: 'var(--grid-pattern-subtle)', backgroundSize: '32px 32px', opacity: 0.4 }}></div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white text-3xl font-bold border-2 border-white/20">
+                      <div className="w-24 h-24 rounded-full backdrop-blur-sm flex items-center justify-center text-3xl font-bold border-2" style={{ backgroundColor: 'var(--avatar-bg)', color: 'var(--text-primary)', borderColor: 'var(--avatar-border)' }}>
                         {member.name.split(' ').map(n => n[0]).join('')}
                       </div>
                     </div>

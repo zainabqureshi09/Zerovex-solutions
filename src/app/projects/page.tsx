@@ -122,7 +122,7 @@ export default function ProjectsPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               A showcase of our most impactful digital transformations and creative
               solutions that drove real business results.
             </p>
@@ -131,10 +131,10 @@ export default function ProjectsPage() {
       </section>
 
       {/* Filter Section */}
-      <section className="py-10 sticky top-[80px] z-40 bg-[#050507]/80 backdrop-blur-xl border-y border-white/5">
+      <section className="py-10 sticky top-[80px] z-40 backdrop-blur-xl border-y" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}>
         <div className="container-custom mx-auto px-6">
           <div className="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-hide">
-            <Filter size={18} className="text-white/30 shrink-0" />
+            <Filter size={18} style={{ color: 'var(--text-tertiary)' }} className="shrink-0" />
             {categories.map((category) => (
               <button
                 key={category}
@@ -142,8 +142,9 @@ export default function ProjectsPage() {
                 className={`px-6 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${
                   activeCategory === category
                     ? 'bg-[#ff1f3d] text-white shadow-[0_4px_20px_rgba(225,29,72,0.3)]'
-                    : 'glass-subtle text-white/60 hover:text-white hover:border-[#ff1f3d]/30'
+                    : 'glass-subtle hover:text-white hover:border-[#ff1f3d]/30'
                 }`}
+                style={activeCategory !== category ? { color: 'var(--text-secondary)' } : {}}
               >
                 {category}
               </button>
@@ -187,7 +188,7 @@ export default function ProjectsPage() {
                     <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff1f3d] transition-colors duration-300 font-[var(--space-grotesk)]">
                       {project.title}
                     </h3>
-                    <p className="text-white/50 text-sm leading-relaxed mb-5">
+                    <p style={{ color: 'var(--text-secondary)' }} className="text-sm leading-relaxed mb-5">
                       {project.description}
                     </p>
 
@@ -196,7 +197,8 @@ export default function ProjectsPage() {
                       {project.technologies.slice(0, 3).map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1.5 rounded-lg bg-white/5 text-white/60 text-xs"
+                          className="px-3 py-1.5 rounded-lg text-xs"
+                          style={{ backgroundColor: 'var(--bg-tertiary)', color: 'var(--text-secondary)' }}
                         >
                           {tech}
                         </span>
@@ -204,18 +206,18 @@ export default function ProjectsPage() {
                     </div>
 
                     {/* Metrics */}
-                    <div className="grid grid-cols-3 gap-4 pt-5 border-t border-white/5">
+                    <div className="grid grid-cols-3 gap-4 pt-5 border-t" style={{ borderColor: 'var(--border-color)' }}>
                       <div className="text-center">
                         <div className="text-[#ff1f3d] font-bold text-sm mb-1">{project.metrics.users}</div>
-                        <div className="text-white/40 text-xs">Users</div>
+                        <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Users</div>
                       </div>
                       <div className="text-center">
                         <div className="text-[#ff1f3d] font-bold text-sm mb-1">{project.metrics.performance}</div>
-                        <div className="text-white/40 text-xs">Uptime</div>
+                        <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Uptime</div>
                       </div>
                       <div className="text-center">
                         <div className="text-[#ff1f3d] font-bold text-sm mb-1">{project.metrics.growth}</div>
-                        <div className="text-white/40 text-xs">Growth</div>
+                        <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Growth</div>
                       </div>
                     </div>
                   </div>
@@ -227,7 +229,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-[#030305]">
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-tertiary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-[32px] p-14 md:p-20 text-center relative overflow-hidden">
@@ -235,7 +237,7 @@ export default function ProjectsPage() {
               <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
                 Ready to Be Our Next <span className="text-gradient">Success Story</span>?
               </h2>
-              <p className="text-white/60 text-lg max-w-2xl mx-auto mb-12">
+              <p className="text-lg max-w-2xl mx-auto mb-12" style={{ color: 'var(--text-secondary)' }}>
                 Let's discuss your project and create something extraordinary together.
               </p>
               <Link href="/contact" className="btn-primary text-base px-12 py-5 inline-flex items-center gap-2.5 group">

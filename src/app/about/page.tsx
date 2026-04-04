@@ -92,7 +92,7 @@ export default function AboutPage() {
             className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#2563eb]/10 rounded-full blur-[140px]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050507_70%)]"></div>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 0%, var(--bg-primary) 70%)' }}></div>
         </div>
 
         <div className="container-custom mx-auto px-6 relative z-10 text-center">
@@ -108,7 +108,7 @@ export default function AboutPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Zerovex Solutions is a premium technology agency dedicated to transforming
               businesses through innovative digital solutions. We combine technical expertise
               with creative vision to deliver exceptional results.
@@ -129,12 +129,12 @@ export default function AboutPage() {
                 <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
                   Empowering Businesses Through <span className="text-gradient">Innovation</span>
                 </h2>
-                <p className="text-white/60 text-lg leading-relaxed mb-8">
+                <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--text-secondary)' }}>
                   We believe that technology should be an enabler, not a barrier. Our mission is to
                   make cutting-edge digital solutions accessible to businesses of all sizes, helping
                   them compete and thrive in the modern economy.
                 </p>
-                <p className="text-white/60 text-lg leading-relaxed mb-10">
+                <p className="text-lg leading-relaxed mb-10" style={{ color: 'var(--text-secondary)' }}>
                   Every project we undertake is guided by a single principle: deliver measurable
                   value that exceeds expectations. From startups to enterprises, we partner with
                   visionary organizations ready to embrace digital transformation.
@@ -148,7 +148,7 @@ export default function AboutPage() {
                   ].map((item, index) => (
                     <div key={index} className="flex items-center gap-3">
                       <CheckCircle2 size={22} className="text-[#ff1f3d] shrink-0" />
-                      <span className="text-white/70">{item}</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -163,7 +163,7 @@ export default function AboutPage() {
                     <div className="glass-strong rounded-3xl p-10 text-center">
                       <Zap size={56} className="text-[#ff1f3d] mx-auto mb-5" />
                       <h3 className="text-3xl font-bold mb-3 font-[var(--space-grotesk)]">Innovation First</h3>
-                      <p className="text-white/60">Pushing boundaries since 2020</p>
+                      <p style={{ color: 'var(--text-secondary)' }}>Pushing boundaries since 2020</p>
                     </div>
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-[#030305]">
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn className="text-center mb-16">
             <span className="badge-accent mb-6 inline-block">
@@ -193,7 +193,7 @@ export default function AboutPage() {
                   <div className="text-4xl md:text-5xl font-bold text-gradient mb-3 font-[var(--space-grotesk)]">
                     {stat.value}
                   </div>
-                  <div className="text-white/50 text-sm font-medium">{stat.label}</div>
+                  <div style={{ color: 'var(--text-tertiary)' }} className="text-sm font-medium">{stat.label}</div>
                 </div>
               </FadeIn>
             ))}
@@ -212,7 +212,7 @@ export default function AboutPage() {
             <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
               What Drives <span className="text-gradient">Us</span>
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p style={{ color: 'var(--text-secondary)' }} className="text-lg max-w-2xl mx-auto">
               Our core values shape every decision we make and every solution we deliver.
             </p>
           </FadeIn>
@@ -225,7 +225,7 @@ export default function AboutPage() {
                     <value.icon size={26} className="text-[#ff1f3d]" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4 font-[var(--space-grotesk)]">{value.title}</h3>
-                  <p className="text-white/50 leading-relaxed">{value.description}</p>
+                  <p style={{ color: 'var(--text-tertiary)' }} className="leading-relaxed">{value.description}</p>
                 </div>
               </FadeIn>
             ))}
@@ -234,7 +234,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="section-padding bg-[#030305]">
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn className="text-center mb-20">
             <span className="badge-accent mb-6 inline-block">
@@ -244,7 +244,7 @@ export default function AboutPage() {
             <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
               Meet the <span className="text-gradient">Experts</span>
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p style={{ color: 'var(--text-secondary)' }} className="text-lg max-w-2xl mx-auto">
               A talented team of designers, engineers, and strategists passionate about innovation.
             </p>
           </FadeIn>
@@ -257,7 +257,7 @@ export default function AboutPage() {
                   <div className={`h-52 bg-gradient-to-br ${member.gradient} relative rounded-2xl mb-6`}>
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:32px_32px] opacity-40"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-28 h-28 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white text-3xl font-bold">
+                      <div className="w-28 h-28 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-3xl font-bold" style={{ color: 'var(--text-primary)' }}>
                         {member.name.split(' ').map(n => n[0]).join('')}
                       </div>
                     </div>
@@ -265,7 +265,7 @@ export default function AboutPage() {
 
                   {/* Info */}
                   <h3 className="text-lg font-semibold mb-1 font-[var(--space-grotesk)]">{member.name}</h3>
-                  <p className="text-white/50 text-sm">{member.role}</p>
+                  <p style={{ color: 'var(--text-tertiary)' }} className="text-sm">{member.role}</p>
                 </div>
               </FadeIn>
             ))}
@@ -297,12 +297,12 @@ export default function AboutPage() {
                       <div className="card-premium">
                         <span className="text-[#ff1f3d] text-5xl font-bold opacity-30 font-[var(--space-grotesk)]">{milestone.year}</span>
                         <h3 className="text-2xl font-semibold mt-3 mb-3 font-[var(--space-grotesk)]">{milestone.title}</h3>
-                        <p className="text-white/50">{milestone.description}</p>
+                        <p style={{ color: 'var(--text-tertiary)' }}>{milestone.description}</p>
                       </div>
                     </div>
 
                     <div className="relative z-10 w-20 h-20 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] flex items-center justify-center shadow-[0_0_40px_rgba(225,29,72,0.4)] shrink-0">
-                      <span className="text-white text-sm font-bold">{milestone.year}</span>
+                      <span className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{milestone.year}</span>
                     </div>
 
                     <div className="flex-1 hidden lg:block"></div>
@@ -315,7 +315,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-[#030305]">
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-[32px] p-14 md:p-20 text-center relative overflow-hidden">
@@ -323,7 +323,7 @@ export default function AboutPage() {
               <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
                 Want to <span className="text-gradient">Join</span> Our Journey?
               </h2>
-              <p className="text-white/60 text-lg max-w-2xl mx-auto mb-12">
+              <p style={{ color: 'var(--text-secondary)' }} className="text-lg max-w-2xl mx-auto mb-12">
                 Partner with us and experience the Zerovex difference. Let's build something extraordinary together.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-5">

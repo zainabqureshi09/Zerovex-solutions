@@ -193,7 +193,7 @@ export default function ContactPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Ready to transform your business with technology? We'd love to hear about
               your project and explore how we can help you achieve your goals.
             </p>
@@ -212,7 +212,7 @@ export default function ContactPage() {
                   <h2 className="text-4xl md:text-5xl font-bold mb-8 font-[var(--space-grotesk)]">
                     Start a <span className="text-gradient">Conversation</span>
                   </h2>
-                  <p className="text-white/60 text-lg mb-12 leading-relaxed">
+                  <p className="text-lg mb-12 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                     Whether you have a detailed brief or just an initial idea, we're here to help.
                     Reach out and let's discuss how we can bring your vision to life.
                   </p>
@@ -229,9 +229,9 @@ export default function ContactPage() {
                             <info.icon size={22} className="text-[#ff1f3d]" />
                           </div>
                           <div>
-                            <div className="text-white/50 text-sm mb-1">{info.label}</div>
-                            <div className="text-white font-medium mb-2">{info.value}</div>
-                            <div className="text-white/40 text-xs flex items-center gap-1.5">
+                            <div className="text-sm mb-1" style={{ color: 'var(--text-secondary)' }}>{info.label}</div>
+                            <div className="font-medium mb-2" style={{ color: 'var(--text-primary)' }}>{info.value}</div>
+                            <div className="text-xs flex items-center gap-1.5" style={{ color: 'var(--text-tertiary)' }}>
                               <Clock size={12} />
                               {info.description}
                             </div>
@@ -243,14 +243,15 @@ export default function ContactPage() {
 
                   {/* Social Links */}
                   <div>
-                    <h3 className="text-white font-semibold mb-5 font-[var(--space-grotesk)]">Follow Us</h3>
+                    <h3 className="font-semibold mb-5 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Follow Us</h3>
                     <div className="flex items-center gap-3">
                       {socialLinks.map((social) => (
                         <a
                           key={social.label}
                           href={social.href}
                           aria-label={social.label}
-                          className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center text-white/50 hover:text-white hover:border-[#ff1f3d]/40 transition-all duration-300"
+                          className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center hover:text-white hover:border-[#ff1f3d]/40 transition-all duration-300"
+                          style={{ color: 'var(--text-secondary)' }}
                         >
                           <social.icon size={20} />
                         </a>
@@ -274,11 +275,11 @@ export default function ContactPage() {
                       <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(225,29,72,0.4)]">
                         <CheckCircle2 size={48} className="text-white" />
                       </div>
-                      <h3 className="text-3xl font-bold mb-4 font-[var(--space-grotesk)]">Message Sent!</h3>
-                      <p className="text-white/60 mb-8">
+                      <h3 className="text-3xl font-bold mb-4 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Message Sent!</h3>
+                      <p className="mb-8" style={{ color: 'var(--text-secondary)' }}>
                         Thank you for reaching out. Our team will get back to you within 24 hours.
                       </p>
-                      <div className="text-white/40 text-sm">
+                      <div className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
                         Resetting form...
                       </div>
                     </motion.div>
@@ -286,7 +287,7 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid sm:grid-cols-2 gap-6">
                         <div>
-                          <label htmlFor="name" className="block text-white/70 text-sm font-medium mb-2.5">
+                          <label htmlFor="name" className="block text-sm font-medium mb-2.5" style={{ color: 'var(--text-secondary)' }}>
                             Full Name <span className="text-[#ff1f3d]">*</span>
                           </label>
                           <input
@@ -312,7 +313,7 @@ export default function ContactPage() {
                           )}
                         </div>
                         <div>
-                          <label htmlFor="email" className="block text-white/70 text-sm font-medium mb-2.5">
+                          <label htmlFor="email" className="block text-sm font-medium mb-2.5" style={{ color: 'var(--text-secondary)' }}>
                             Email Address <span className="text-[#ff1f3d]">*</span>
                           </label>
                           <input
@@ -340,7 +341,7 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label htmlFor="company" className="block text-white/70 text-sm font-medium mb-2.5">
+                        <label htmlFor="company" className="block text-sm font-medium mb-2.5" style={{ color: 'var(--text-secondary)' }}>
                           Company Name
                         </label>
                         <input
@@ -355,7 +356,7 @@ export default function ContactPage() {
 
                       <div className="grid sm:grid-cols-2 gap-6">
                         <div>
-                          <label htmlFor="projectType" className="block text-white/70 text-sm font-medium mb-2.5">
+                          <label htmlFor="projectType" className="block text-sm font-medium mb-2.5" style={{ color: 'var(--text-secondary)' }}>
                             Project Type
                           </label>
                           <select
@@ -374,7 +375,7 @@ export default function ContactPage() {
                           </select>
                         </div>
                         <div>
-                          <label htmlFor="budget" className="block text-white/70 text-sm font-medium mb-2.5">
+                          <label htmlFor="budget" className="block text-sm font-medium mb-2.5" style={{ color: 'var(--text-secondary)' }}>
                             Budget Range
                           </label>
                           <select
@@ -393,7 +394,7 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label htmlFor="message" className="block text-white/70 text-sm font-medium mb-2.5">
+                        <label htmlFor="message" className="block text-sm font-medium mb-2.5" style={{ color: 'var(--text-secondary)' }}>
                           Project Details <span className="text-[#ff1f3d]">*</span>
                         </label>
                         <textarea
@@ -441,7 +442,7 @@ export default function ContactPage() {
                         )}
                       </button>
 
-                      <p className="text-white/40 text-xs text-center">
+                      <p className="text-xs text-center" style={{ color: 'var(--text-tertiary)' }}>
                         By submitting this form, you agree to our privacy policy. We'll never share your data.
                       </p>
                     </form>
@@ -454,7 +455,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="section-padding bg-[#030305]">
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn className="text-center mb-20">
             <span className="badge-accent mb-6 inline-block">
@@ -463,7 +464,7 @@ export default function ContactPage() {
             <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
               Frequently Asked <span className="text-gradient">Questions</span>
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Quick answers to common questions about working with Zerovex Solutions.
             </p>
           </FadeIn>
@@ -472,8 +473,8 @@ export default function ContactPage() {
             {faqs.map((faq, index) => (
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="card-premium">
-                  <h3 className="text-lg font-semibold mb-4 font-[var(--space-grotesk)]">{faq.question}</h3>
-                  <p className="text-white/50 leading-relaxed">{faq.answer}</p>
+                  <h3 className="text-lg font-semibold mb-4 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>{faq.question}</h3>
+                  <p className="leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{faq.answer}</p>
                 </div>
               </FadeIn>
             ))}
@@ -491,8 +492,8 @@ export default function ContactPage() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <MapPin size={56} className="text-[#ff1f3d] mx-auto mb-5" />
-                  <h3 className="text-3xl font-bold mb-3 font-[var(--space-grotesk)]">Silicon Valley, California</h3>
-                  <p className="text-white/60 mb-6">By appointment only</p>
+                  <h3 className="text-3xl font-bold mb-3 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Silicon Valley, California</h3>
+                  <p className="mb-6" style={{ color: 'var(--text-secondary)' }}>By appointment only</p>
                   <Link
                     href="https://maps.google.com"
                     target="_blank"
@@ -508,7 +509,7 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-[#030305]">
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-[32px] p-14 md:p-20 text-center relative overflow-hidden">
@@ -516,7 +517,7 @@ export default function ContactPage() {
               <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
                 Still Have <span className="text-gradient">Questions</span>?
               </h2>
-              <p className="text-white/60 text-lg max-w-2xl mx-auto mb-12">
+              <p className="text-lg max-w-2xl mx-auto mb-12" style={{ color: 'var(--text-secondary)' }}>
                 We're here to help. Schedule a free consultation and let's discuss your project needs.
               </p>
               <Link href="/contact" className="btn-primary text-base px-12 py-5 inline-flex items-center gap-2.5 group">

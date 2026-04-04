@@ -144,7 +144,7 @@ export default function ServicesPage() {
             className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#2563eb]/10 rounded-full blur-[140px]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050507_70%)]"></div>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 0%, var(--bg-secondary) 70%)' }}></div>
         </div>
 
         <div className="container-custom mx-auto px-6 relative z-10 text-center">
@@ -160,7 +160,7 @@ export default function ServicesPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Comprehensive digital solutions designed to transform your business
               and accelerate your growth in the digital landscape.
             </p>
@@ -185,7 +185,7 @@ export default function ServicesPage() {
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold font-[var(--space-grotesk)]">{service.title}</h2>
                   </div>
-                  <p className="text-white/60 text-lg leading-relaxed mb-10">
+                  <p className="text-lg leading-relaxed mb-10" style={{ color: 'var(--text-secondary)' }}>
                     {service.description}
                   </p>
 
@@ -194,19 +194,19 @@ export default function ServicesPage() {
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3">
                         <CheckCircle2 size={20} className="text-[#ff1f3d] shrink-0" />
-                        <span className="text-white/70 text-sm">{feature}</span>
+                        <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{feature}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Technologies */}
                   <div className="mb-10">
-                    <h4 className="text-white/50 text-sm font-semibold mb-4 uppercase tracking-wider">Technologies</h4>
+                    <h4 className="text-sm font-semibold mb-4 uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Technologies</h4>
                     <div className="flex flex-wrap gap-2.5">
                       {service.technologies.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-4 py-2 rounded-xl glass-subtle text-white/70 text-sm"
+                          className="px-4 py-2 rounded-xl glass-subtle text-sm" style={{ color: 'var(--text-secondary)' }}
                         >
                           {tech}
                         </span>
@@ -247,7 +247,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Section */}
-      <section className="section-padding bg-[#030305]">
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn className="text-center mb-20">
             <span className="badge-accent mb-6 inline-flex">
@@ -257,7 +257,7 @@ export default function ServicesPage() {
             <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
               How We <span className="text-gradient">Work</span>
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               A proven methodology refined over hundreds of successful projects.
             </p>
           </FadeIn>
@@ -270,7 +270,7 @@ export default function ServicesPage() {
                     {step.step}
                   </div>
                   <h3 className="text-lg font-semibold mb-3 font-[var(--space-grotesk)]">{step.title}</h3>
-                  <p className="text-white/50 text-sm">{step.description}</p>
+                  <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>{step.description}</p>
 
                   {/* Arrow (except last) */}
                   {index < processSteps.length - 1 && (
@@ -292,7 +292,7 @@ export default function ServicesPage() {
               <h2 className="text-5xl md:text-6xl font-bold mb-8 font-[var(--space-grotesk)]">
                 Ready to <span className="text-gradient">Start</span>?
               </h2>
-              <p className="text-white/60 text-lg max-w-2xl mx-auto mb-12">
+              <p className="text-lg max-w-2xl mx-auto mb-12" style={{ color: 'var(--text-secondary)' }}>
                 Let's discuss your project and explore how our services can help you achieve your goals.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-5">

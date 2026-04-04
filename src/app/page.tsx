@@ -183,7 +183,7 @@ export default function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div ref={containerRef} className="relative overflow-hidden">
+    <div ref={containerRef} className="relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
       {/* ===== HERO SECTION ===== */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated Background */}
@@ -210,7 +210,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:clamp(60px,8vw,100px)_clamp(60px,8vw,100px)]"></div>
 
           {/* Radial Gradient Overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a0a0a_75%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--bg-primary)_75%)]"></div>
         </div>
 
         {/* Hero Content */}
@@ -219,10 +219,11 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/8 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8"
+            style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}
           >
             <span className="w-1.5 h-1.5 bg-[#ff1f3d] rounded-full animate-pulse"></span>
-            <span className="text-white/90 text-xs sm:text-sm font-medium">Innovation-Driven Digital Agency</span>
+            <span className="text-xs sm:text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Innovation-Driven Digital Agency</span>
           </motion.div>
 
           <motion.h1
@@ -240,7 +241,8 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-base sm:text-lg text-white/60 max-w-[clamp(500px,60vw,700px)] mx-auto mb-10 leading-relaxed"
+            className="text-base sm:text-lg max-w-[clamp(500px,60vw,700px)] mx-auto mb-10 leading-relaxed"
+            style={{ color: 'var(--text-secondary)' }}
           >
             We partner with forward-thinking businesses to design, develop, and scale
             exceptional digital products that drive measurable growth.
@@ -266,7 +268,8 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 pt-10 border-t border-white/5"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 pt-10 border-t"
+            style={{ borderColor: 'var(--border-color)' }}
           >
             {[
               { value: '150+', label: 'Projects Delivered' },
@@ -276,7 +279,7 @@ export default function HomePage() {
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2 font-[var(--space-grotesk)]">{stat.value}</div>
-                <div className="text-white/50 text-xs sm:text-sm font-medium">{stat.label}</div>
+                <div className="text-xs sm:text-sm font-medium" style={{ color: 'var(--text-tertiary)' }}>{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -288,7 +291,7 @@ export default function HomePage() {
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <div className="w-6 h-10 rounded-full border-2 border-white/10 flex items-start justify-center p-1.5">
+          <div className="w-6 h-10 rounded-full border-2 flex items-start justify-center p-1.5" style={{ borderColor: 'var(--border-color)' }}>
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
@@ -309,7 +312,7 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-[var(--space-grotesk)]">
               Comprehensive Digital <span className="text-gradient">Solutions</span>
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               From concept to launch, we deliver end-to-end digital services that transform your vision into reality.
             </p>
           </FadeIn>
@@ -331,7 +334,7 @@ export default function HomePage() {
                     <h3 className="text-2xl font-semibold mb-4 group-hover:text-[#ff1f3d] transition-colors duration-300 font-[var(--space-grotesk)]">
                       {service.title}
                     </h3>
-                    <p className="text-white/50 leading-relaxed mb-5">
+                    <p className="leading-relaxed mb-5" style={{ color: 'var(--text-tertiary)' }}>
                       {service.description}
                     </p>
                     <div className="flex items-center text-[#ff1f3d] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
@@ -346,7 +349,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== WHY CHOOSE SECTION ===== */}
-      <section className="section-padding relative bg-[#030305]">
+      <section className="section-padding relative" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         {/* Background Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-[#ff1f3d]/5 rounded-full blur-[180px]"></div>
 
@@ -359,7 +362,7 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-[var(--space-grotesk)]">
               Built for <span className="text-gradient">Excellence</span>
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               We combine technical expertise with creative vision to deliver solutions that exceed expectations.
             </p>
           </FadeIn>
@@ -372,7 +375,7 @@ export default function HomePage() {
                     <item.icon size={26} className="text-[#ff1f3d]" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4 font-[var(--space-grotesk)]">{item.title}</h3>
-                  <p className="text-white/50 leading-relaxed">{item.description}</p>
+                  <p className="leading-relaxed" style={{ color: 'var(--text-tertiary)' }}>{item.description}</p>
                 </div>
               </FadeIn>
             ))}
@@ -391,7 +394,7 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-[var(--space-grotesk)]">
               Featured <span className="text-gradient">Projects</span>
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               A showcase of our most impactful digital transformations and creative solutions.
             </p>
           </FadeIn>
@@ -423,7 +426,7 @@ export default function HomePage() {
                   <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff1f3d] transition-colors duration-300 font-[var(--space-grotesk)]">
                     {item.title}
                   </h3>
-                  <p className="text-white/50 leading-relaxed">
+                  <p className="leading-relaxed" style={{ color: 'var(--text-tertiary)' }}>
                     {item.description}
                   </p>
                 </Link>
@@ -441,7 +444,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== PROCESS SECTION ===== */}
-      <section className="section-padding relative bg-[#030305]">
+      <section className="section-padding relative" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
           <FadeIn className="text-center mb-20">
             <span className="badge-accent mb-6">
@@ -451,7 +454,7 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-[var(--space-grotesk)]">
               How We <span className="text-gradient">Work</span>
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               A proven methodology refined over hundreds of successful projects.
             </p>
           </FadeIn>
@@ -464,7 +467,7 @@ export default function HomePage() {
                     {step.step}
                   </div>
                   <h3 className="text-lg font-semibold mb-3 font-[var(--space-grotesk)]">{step.title}</h3>
-                  <p className="text-white/50 text-sm">{step.description}</p>
+                  <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>{step.description}</p>
 
                   {/* Arrow (except last) */}
                   {index < processSteps.length - 1 && (
@@ -488,7 +491,7 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-[var(--space-grotesk)]">
               Client <span className="text-gradient">Success</span> Stories
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Hear from the businesses we've helped transform through innovative digital solutions.
             </p>
           </FadeIn>
@@ -505,18 +508,18 @@ export default function HomePage() {
                   </div>
 
                   {/* Quote */}
-                  <p className="text-white/70 leading-relaxed mb-6 flex-grow">
+                  <p className="leading-relaxed mb-6 flex-grow" style={{ color: 'var(--text-secondary)' }}>
                     "{testimonial.content}"
                   </p>
 
                   {/* Author */}
-                  <div className="flex items-center gap-4 pt-6 border-t border-white/5">
+                  <div className="flex items-center gap-4 pt-6 border-t" style={{ borderColor: 'var(--border-color)' }}>
                     <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#2563eb] flex items-center justify-center text-white font-bold text-lg">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
                       <div className="font-semibold font-[var(--space-grotesk)]">{testimonial.name}</div>
-                      <div className="text-white/50 text-sm">{testimonial.role}</div>
+                      <div className="text-sm" style={{ color: 'var(--text-tertiary)' }}>{testimonial.role}</div>
                     </div>
                   </div>
                 </div>
@@ -550,8 +553,8 @@ export default function HomePage() {
                 <span className="text-gradient">Extraordinary</span>
               </h2>
               
-              <p className="text-white/60 text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
-                Partner with Zerovex Solutions and experience the difference. 
+              <p className="text-lg max-w-2xl mx-auto mb-12 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                Partner with Zerovex Solutions and experience the difference.
                 Let's discuss your project and explore how we can help you achieve your goals.
               </p>
               
