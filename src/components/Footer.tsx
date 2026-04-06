@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, MapPin, Phone, ArrowUpRight, Link as LinkIcon, Bird, CircleDashed } from 'lucide-react';
 
 const Footer = () => {
@@ -37,10 +38,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-7 group">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_30px_rgba(37,99,235,0.4)]">
-                  <span className="text-white font-bold text-xl">Z</span>
-                </div>
+              <div className="relative w-12 h-12 shrink-0 transition-all duration-300 group-hover:scale-105">
+                <Image
+                  src="/logogency.png"
+                  alt="Zerovex Solutions"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="text-white font-bold text-xl tracking-tight">
                 Zero<span className="text-[#2563EB]">vex</span>

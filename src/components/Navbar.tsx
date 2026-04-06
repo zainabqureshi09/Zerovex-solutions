@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight, Sun, Moon, Sparkles } from 'lucide-react';
@@ -65,21 +66,22 @@ const Navbar = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="group flex items-center gap-3.5 shrink-0 focus-ring rounded-2xl p-1 -m-1"
+              className="group flex items-center gap-3 shrink-0 focus-ring rounded-2xl p-1 -m-1"
               aria-label="Zerovex Solutions Home"
             >
-              {/* Icon */}
-              <div className="relative">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative z-10 w-11 h-11 bg-gradient-to-br from-[#2563EB] via-[#2563EB] to-[#3B82F6] rounded-2xl flex items-center justify-center shadow-[0_4px_20px_rgba(37,99,235,0.3)]"
-                >
-                  <span className="text-white font-bold text-xl font-[var(--font-display)]">Z</span>
-                </motion.div>
-                {/* Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300" />
-              </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative w-10 h-10"
+              >
+                <Image
+                  src="/logogency.png"
+                  alt="Zerovex Solutions"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </motion.div>
 
               {/* Brand Text */}
               <div className="flex flex-col">
