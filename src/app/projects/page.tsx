@@ -13,7 +13,7 @@ const projects = [
     title: 'FinTech Dashboard',
     category: 'Web Applications',
     description: 'Real-time analytics platform for financial data visualization with interactive charts and AI-powered insights.',
-    gradient: 'from-[#ff1f3d] to-[#ff3d57]',
+    gradient: 'from-[#2563EB] to-[#3B82F6]',
     technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
     metrics: { users: '10K+', performance: '99.9%', growth: '+250%' },
   },
@@ -103,7 +103,7 @@ export default function ProjectsPage() {
           <motion.div
             animate={{ scale: [1.1, 1, 1.1], opacity: [0.12, 0.2, 0.12] }}
             transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-            className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-[#ff1f3d]/10 rounded-full blur-[140px]"
+            className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-[#2563EB]/10 rounded-full blur-[140px]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 0%, var(--bg-secondary) 70%)' }}></div>
@@ -112,12 +112,12 @@ export default function ProjectsPage() {
         <div className="container-custom mx-auto px-4 sm:px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
-              <ExternalLink className="text-[#ff1f3d]" size={16} />
+              <ExternalLink className="text-[#2563EB]" size={16} />
               Our Portfolio
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
               Featured <span className="text-gradient">Projects</span>
             </h1>
           </FadeIn>
@@ -141,8 +141,8 @@ export default function ProjectsPage() {
                 onClick={() => setActiveCategory(category)}
                 className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${
                   activeCategory === category
-                    ? 'bg-[#ff1f3d] shadow-[0_4px_20px_rgba(225,29,72,0.3)]'
-                    : 'glass-subtle hover:border-[#ff1f3d]/30'
+                    ? 'bg-[#2563EB] shadow-[0_4px_20px_rgba(37,99,235,0.3)]'
+                    : 'glass-subtle hover:border-[#2563EB]/30'
                 }`}
                 style={activeCategory === category ? { color: '#ffffff' } : { color: 'var(--text-secondary)' }}
               >
@@ -182,10 +182,10 @@ export default function ProjectsPage() {
                     </div>
 
                     {/* Content */}
-                    <span className="text-[#ff1f3d] text-xs font-bold uppercase tracking-wider mb-3 block">
+                    <span className="text-[#2563EB] text-xs font-bold uppercase tracking-wider mb-3 block">
                       {project.category}
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-semibold mb-3 group-hover:text-[#ff1f3d] transition-colors duration-300 font-[var(--space-grotesk)]">
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-3 group-hover:text-[#2563EB] transition-colors duration-300 font-[var(--font-display)]">
                       {project.title}
                     </h3>
                     <p style={{ color: 'var(--text-secondary)' }} className="text-sm sm:text-base leading-relaxed mb-5">
@@ -208,15 +208,15 @@ export default function ProjectsPage() {
                     {/* Metrics */}
                     <div className="grid grid-cols-3 gap-4 pt-5 border-t" style={{ borderColor: 'var(--border-color)' }}>
                       <div className="text-center">
-                        <div className="text-[#ff1f3d] font-bold text-sm mb-1">{project.metrics.users}</div>
+                        <div className="text-[#2563EB] font-bold text-sm mb-1">{project.metrics.users}</div>
                         <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Users</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-[#ff1f3d] font-bold text-sm mb-1">{project.metrics.performance}</div>
+                        <div className="text-[#2563EB] font-bold text-sm mb-1">{project.metrics.performance}</div>
                         <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Uptime</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-[#ff1f3d] font-bold text-sm mb-1">{project.metrics.growth}</div>
+                        <div className="text-[#2563EB] font-bold text-sm mb-1">{project.metrics.growth}</div>
                         <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Growth</div>
                       </div>
                     </div>
@@ -233,8 +233,8 @@ export default function ProjectsPage() {
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-[24px] sm:rounded-[32px] p-8 sm:p-12 md:p-16 lg:p-20 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"></div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
                 Ready to Be Our Next <span className="text-gradient">Success Story</span>?
               </h2>
               <p className="text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-12 px-4" style={{ color: 'var(--text-secondary)' }}>
@@ -250,3 +250,5 @@ export default function ProjectsPage() {
     </div>
   );
 }
+
+

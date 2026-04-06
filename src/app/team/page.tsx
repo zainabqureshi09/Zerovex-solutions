@@ -10,7 +10,7 @@ const teamMembers = [
     name: 'Alex Rivera',
     role: 'Founder & CEO',
     bio: 'Visionary leader with 15+ years in digital transformation. Passionate about building innovative teams and delivering exceptional client experiences.',
-    gradient: 'from-[#ff1f3d] to-[#ff3d57]',
+    gradient: 'from-[#2563EB] to-[#3B82F6]',
     social: { linkedin: '#', twitter: '#', github: '#' }
   },
   {
@@ -81,7 +81,7 @@ export default function TeamPage() {
           <motion.div
             animate={{ scale: [1, 1.08, 1], opacity: [0.12, 0.2, 0.12] }}
             transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/4 left-1/4 w-[clamp(400px,50vw,600px)] h-[clamp(400px,50vw,600px)] bg-[#ff1f3d]/15 rounded-full blur-[clamp(100px,15vw,140px)]"
+            className="absolute top-1/4 left-1/4 w-[clamp(400px,50vw,600px)] h-[clamp(400px,50vw,600px)] bg-[#2563EB]/15 rounded-full blur-[clamp(100px,15vw,140px)]"
           />
           <motion.div
             animate={{ scale: [1.08, 1, 1.08], opacity: [0.1, 0.16, 0.1] }}
@@ -95,12 +95,12 @@ export default function TeamPage() {
         <div className="container-custom mx-auto px-4 sm:px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
-              <Users className="text-[#ff1f3d]" size={16} />
+              <Users className="text-[#2563EB]" size={16} />
               Our People
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
               Meet the <span className="text-gradient">Experts</span>
             </h1>
           </FadeIn>
@@ -120,7 +120,7 @@ export default function TeamPage() {
             {stats.map((stat, index) => (
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="text-center">
-                  <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2 font-[var(--space-grotesk)]">
+                  <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2 font-[var(--font-display)]">
                     {stat.value}
                   </div>
                   <div className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
@@ -137,7 +137,7 @@ export default function TeamPage() {
       <section className="py-20 px-4 sm:px-6 sm:py-24 lg:py-28">
         <div className="container-custom mx-auto">
           <FadeIn className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
               Our <span className="text-gradient">Team</span>
             </h2>
             <p className="text-base max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
@@ -161,7 +161,7 @@ export default function TeamPage() {
 
                   {/* Content */}
                   <div className="p-6">
-                    <h3 className="text-lg font-semibold mb-1 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
+                    <h3 className="text-lg font-semibold mb-1 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
                       {member.name}
                     </h3>
                     <p className="text-sm font-medium mb-3" style={{ color: 'var(--text-tertiary)' }}>
@@ -197,9 +197,9 @@ export default function TeamPage() {
           <FadeIn>
             <div className="rounded-3xl p-6 sm:p-10 lg:p-16 text-center relative overflow-hidden" style={{ backgroundColor: 'var(--surface-elevated)', border: '1px solid var(--border-color)' }}>
               {/* Inner Glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"></div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
                 Want to <span className="text-gradient">Join</span> Our Team?
               </h2>
               <p className="text-base max-w-2xl mx-auto mb-10" style={{ color: 'var(--text-secondary)' }}>
@@ -222,3 +222,5 @@ export default function TeamPage() {
     </div>
   );
 }
+
+

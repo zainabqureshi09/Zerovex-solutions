@@ -33,7 +33,7 @@ const services = [
       'Analytics setup',
       'A/B testing ready',
     ],
-    gradient: 'from-[#ff1f3d] to-[#ff3d57]',
+    gradient: 'from-[#2563EB] to-[#3B82F6]',
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'WordPress', 'Sanity'],
   },
   {
@@ -136,7 +136,7 @@ export default function ServicesPage() {
           <motion.div
             animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
             transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#ff1f3d]/15 rounded-full blur-[140px]"
+            className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#2563EB]/15 rounded-full blur-[140px]"
           />
           <motion.div
             animate={{ scale: [1.1, 1, 1.1], opacity: [0.12, 0.2, 0.12] }}
@@ -150,12 +150,12 @@ export default function ServicesPage() {
         <div className="container-custom mx-auto px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
-              <Zap className="text-[#ff1f3d]" size={16} />
+              <Zap className="text-[#2563EB]" size={16} />
               What We Do Best
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 md:mb-8 font-[var(--space-grotesk)]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 md:mb-8 font-[var(--font-display)]">
               Our <span className="text-gradient">Services</span>
             </h1>
           </FadeIn>
@@ -183,7 +183,7 @@ export default function ServicesPage() {
                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg`}>
                       <service.icon size={30} className="text-white" />
                     </div>
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold font-[var(--space-grotesk)]">{service.title}</h2>
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold font-[var(--font-display)]">{service.title}</h2>
                   </div>
                   <p className="text-lg leading-relaxed mb-10" style={{ color: 'var(--text-secondary)' }}>
                     {service.description}
@@ -193,7 +193,7 @@ export default function ServicesPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3">
-                        <CheckCircle2 size={20} className="text-[#ff1f3d] shrink-0" />
+                        <CheckCircle2 size={20} className="text-[#2563EB] shrink-0" />
                         <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{feature}</span>
                       </div>
                     ))}
@@ -227,7 +227,7 @@ export default function ServicesPage() {
 
                     {/* Floating Elements */}
                     <div className="absolute top-8 left-8 glass rounded-xl px-5 py-3 flex items-center gap-2.5">
-                      <Shield size={18} className="text-[#ff1f3d]" />
+                      <Shield size={18} className="text-[#2563EB]" />
                       <span className="text-white text-sm font-medium">Secure</span>
                     </div>
                     <div className="absolute bottom-8 right-8 glass rounded-xl px-5 py-3 flex items-center gap-2.5">
@@ -254,7 +254,7 @@ export default function ServicesPage() {
               <Layers size={16} />
               Our Process
             </span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 font-[var(--space-grotesk)]">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 font-[var(--font-display)]">
               How We <span className="text-gradient">Work</span>
             </h2>
             <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
@@ -266,15 +266,15 @@ export default function ServicesPage() {
             {processSteps.map((step, index) => (
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="card-premium text-center relative group">
-                  <div className="w-18 h-18 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] flex items-center justify-center text-white font-bold mx-auto mb-5 shadow-lg group-hover:shadow-[0_0_30px_rgba(225,29,72,0.4)] transition-shadow duration-300">
+                  <div className="w-18 h-18 rounded-full bg-gradient-to-br from-[#2563EB] to-[#3B82F6] flex items-center justify-center text-white font-bold mx-auto mb-5 shadow-lg group-hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] transition-shadow duration-300">
                     {step.step}
                   </div>
-                  <h3 className="text-base md:text-lg font-semibold mb-3 font-[var(--space-grotesk)]">{step.title}</h3>
+                  <h3 className="text-base md:text-lg font-semibold mb-3 font-[var(--font-display)]">{step.title}</h3>
                   <p className="text-xs md:text-sm" style={{ color: 'var(--text-tertiary)' }}>{step.description}</p>
 
                   {/* Arrow (except last) */}
                   {index < processSteps.length - 1 && (
-                    <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-[#ff1f3d]/30" size={20} />
+                    <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-[#2563EB]/30" size={20} />
                   )}
                 </div>
               </FadeIn>
@@ -288,8 +288,8 @@ export default function ServicesPage() {
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-[32px] p-8 md:p-14 lg:p-20 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 font-[var(--space-grotesk)]">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"></div>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 font-[var(--font-display)]">
                 Ready to <span className="text-gradient">Start</span>?
               </h2>
               <p className="text-base md:text-lg max-w-2xl mx-auto mb-8 md:mb-12" style={{ color: 'var(--text-secondary)' }}>
@@ -310,3 +310,5 @@ export default function ServicesPage() {
     </div>
   );
 }
+
+

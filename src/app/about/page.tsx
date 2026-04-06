@@ -60,7 +60,7 @@ const stats = [
 ];
 
 const teamMembers = [
-  { name: 'Alex Rivera', role: 'Founder & CEO', gradient: 'from-[#ff1f3d] to-[#ff3d57]' },
+  { name: 'Alex Rivera', role: 'Founder & CEO', gradient: 'from-[#2563EB] to-[#3B82F6]' },
   { name: 'Sarah Chen', role: 'CTO', gradient: 'from-[#2563eb] to-[#3b82f6]' },
   { name: 'Marcus Johnson', role: 'Lead Designer', gradient: 'from-[#8b5cf6] to-[#a78bfa]' },
   { name: 'Elena Rodriguez', role: 'Head of Engineering', gradient: 'from-[#10b981] to-[#34d399]' },
@@ -84,7 +84,7 @@ export default function AboutPage() {
           <motion.div
             animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
             transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#ff1f3d]/15 rounded-full blur-[140px]"
+            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#2563EB]/15 rounded-full blur-[140px]"
           />
           <motion.div
             animate={{ scale: [1.1, 1, 1.1], opacity: [0.12, 0.2, 0.12] }}
@@ -98,12 +98,12 @@ export default function AboutPage() {
         <div className="container-custom mx-auto px-4 sm:px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
-              <Users className="text-[#ff1f3d]" size={16} />
+              <Users className="text-[#2563EB]" size={16} />
               About Zerovex
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--space-grotesk)]">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]">
               We Build the <span className="text-gradient">Future</span>
             </h1>
           </FadeIn>
@@ -126,7 +126,7 @@ export default function AboutPage() {
                 <span className="badge-accent mb-6 inline-block">
                   Our Mission
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--space-grotesk)]">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]">
                   Empowering Businesses Through <span className="text-gradient">Innovation</span>
                 </h2>
                 <p className="text-base sm:text-lg leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
@@ -147,7 +147,7 @@ export default function AboutPage() {
                     'Long-term partnership mindset',
                   ].map((item, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <CheckCircle2 size={22} className="text-[#ff1f3d] shrink-0" />
+                      <CheckCircle2 size={22} className="text-[#2563EB] shrink-0" />
                       <span style={{ color: 'var(--text-secondary)' }}>{item}</span>
                     </div>
                   ))}
@@ -157,12 +157,12 @@ export default function AboutPage() {
 
             <FadeIn delay={0.2}>
               <div className="relative">
-                <div className="h-64 sm:h-80 lg:h-[450px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#ff1f3d]/15 via-[#2563eb]/15 to-[#8b5cf6]/15 overflow-hidden relative">
+                <div className="h-64 sm:h-80 lg:h-[450px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#2563EB]/15 via-[#2563eb]/15 to-[#8b5cf6]/15 overflow-hidden relative">
                   <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:48px_48px]"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-10 text-center">
-                      <Zap size={48} className="text-[#ff1f3d] mx-auto mb-4" />
-                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 font-[var(--space-grotesk)]">Innovation First</h3>
+                      <Zap size={48} className="text-[#2563EB] mx-auto mb-4" />
+                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 font-[var(--font-display)]">Innovation First</h3>
                       <p style={{ color: 'var(--text-secondary)' }}>Pushing boundaries since 2020</p>
                     </div>
                   </div>
@@ -181,7 +181,7 @@ export default function AboutPage() {
               <TrendingUp size={16} />
               Our Impact
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
               Impact in <span className="text-gradient">Numbers</span>
             </h2>
           </FadeIn>
@@ -190,7 +190,7 @@ export default function AboutPage() {
             {stats.map((stat, index) => (
               <FadeIn key={index} delay={index * 0.05}>
                 <div className="card-premium text-center p-6 sm:p-8">
-                  <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2 sm:mb-3 font-[var(--space-grotesk)]">
+                  <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2 sm:mb-3 font-[var(--font-display)]">
                     {stat.value}
                   </div>
                   <div style={{ color: 'var(--text-tertiary)' }} className="text-sm font-medium">{stat.label}</div>
@@ -209,7 +209,7 @@ export default function AboutPage() {
               <Heart size={16} />
               Our Values
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
               What Drives <span className="text-gradient">Us</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)' }} className="text-base sm:text-lg max-w-2xl mx-auto">
@@ -221,10 +221,10 @@ export default function AboutPage() {
             {values.map((value, index) => (
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="card-premium h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-[#ff1f3d]/10 flex items-center justify-center mb-6">
-                    <value.icon size={26} className="text-[#ff1f3d]" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#2563EB]/10 flex items-center justify-center mb-6">
+                    <value.icon size={26} className="text-[#2563EB]" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 font-[var(--space-grotesk)]">{value.title}</h3>
+                  <h3 className="text-xl font-semibold mb-4 font-[var(--font-display)]">{value.title}</h3>
                   <p style={{ color: 'var(--text-tertiary)' }} className="leading-relaxed">{value.description}</p>
                 </div>
               </FadeIn>
@@ -241,7 +241,7 @@ export default function AboutPage() {
               <Users size={16} />
               Our Team
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
               Meet the <span className="text-gradient">Experts</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)' }} className="text-base sm:text-lg max-w-2xl mx-auto">
@@ -264,7 +264,7 @@ export default function AboutPage() {
                   </div>
 
                   {/* Info */}
-                  <h3 className="text-lg font-semibold mb-1 font-[var(--space-grotesk)]">{member.name}</h3>
+                  <h3 className="text-lg font-semibold mb-1 font-[var(--font-display)]">{member.name}</h3>
                   <p style={{ color: 'var(--text-tertiary)' }} className="text-sm">{member.role}</p>
                 </div>
               </FadeIn>
@@ -281,13 +281,13 @@ export default function AboutPage() {
               <Award size={16} />
               Our Journey
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
               Company <span className="text-gradient">Milestones</span>
             </h2>
           </FadeIn>
 
           <div className="relative max-w-4xl mx-auto">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#ff1f3d]/30 to-transparent hidden lg:block"></div>
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2563EB]/30 to-transparent hidden lg:block"></div>
 
             <div className="space-y-8 sm:space-y-12">
               {milestones.map((milestone, index) => (
@@ -295,13 +295,13 @@ export default function AboutPage() {
                   <div className={`flex flex-col lg:flex-row items-center gap-6 sm:gap-10 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                     <div className="flex-1 text-center lg:text-left w-full">
                       <div className="card-premium">
-                        <span className="text-[#ff1f3d] text-3xl sm:text-4xl lg:text-5xl font-bold opacity-30 font-[var(--space-grotesk)]">{milestone.year}</span>
-                        <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mt-2 sm:mt-3 mb-2 sm:mb-3 font-[var(--space-grotesk)]">{milestone.title}</h3>
+                        <span className="text-[#2563EB] text-3xl sm:text-4xl lg:text-5xl font-bold opacity-30 font-[var(--font-display)]">{milestone.year}</span>
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mt-2 sm:mt-3 mb-2 sm:mb-3 font-[var(--font-display)]">{milestone.title}</h3>
                         <p style={{ color: 'var(--text-tertiary)' }}>{milestone.description}</p>
                       </div>
                     </div>
 
-                    <div className="relative z-10 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] flex items-center justify-center shadow-[0_0_40px_rgba(225,29,72,0.4)] shrink-0">
+                    <div className="relative z-10 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#2563EB] to-[#3B82F6] flex items-center justify-center shadow-[0_0_40px_rgba(37,99,235,0.4)] shrink-0">
                       <span className="text-xs sm:text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{milestone.year}</span>
                     </div>
 
@@ -319,8 +319,8 @@ export default function AboutPage() {
         <div className="container-custom mx-auto">
           <FadeIn>
             <div className="glass-strong rounded-2xl sm:rounded-3xl p-8 sm:p-12 lg:p-16 md:p-14 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
                 Want to <span className="text-gradient">Join</span> Our Journey?
               </h2>
               <p style={{ color: 'var(--text-secondary)' }} className="text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-12">
@@ -341,3 +341,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+

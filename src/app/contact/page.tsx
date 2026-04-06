@@ -169,7 +169,7 @@ export default function ContactPage() {
           <motion.div
             animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
             transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#ff1f3d]/15 rounded-full blur-[140px]"
+            className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#2563EB]/15 rounded-full blur-[140px]"
           />
           <motion.div
             animate={{ scale: [1.1, 1, 1.1], opacity: [0.12, 0.2, 0.12] }}
@@ -183,12 +183,12 @@ export default function ContactPage() {
         <div className="container-custom mx-auto px-4 sm:px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
-              <Send className="text-[#ff1f3d]" size={16} />
+              <Send className="text-[#2563EB]" size={16} />
               Get In Touch
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 font-[var(--space-grotesk)]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 font-[var(--font-display)]">
               Let's <span className="text-gradient">Connect</span>
             </h1>
           </FadeIn>
@@ -209,7 +209,7 @@ export default function ContactPage() {
             <div className="lg:col-span-2">
               <FadeIn>
                 <div className="mb-8 lg:mb-0">
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
                     Start a <span className="text-gradient">Conversation</span>
                   </h2>
                   <p className="text-lg mb-12 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
@@ -225,8 +225,8 @@ export default function ContactPage() {
                           href={info.href}
                           className="flex items-start gap-4 card-premium group"
                         >
-                          <div className="w-14 h-14 rounded-2xl bg-[#ff1f3d]/10 flex items-center justify-center shrink-0 group-hover:bg-[#ff1f3d]/15 transition-colors duration-300">
-                            <info.icon size={22} className="text-[#ff1f3d]" />
+                          <div className="w-14 h-14 rounded-2xl bg-[#2563EB]/10 flex items-center justify-center shrink-0 group-hover:bg-[#2563EB]/15 transition-colors duration-300">
+                            <info.icon size={22} className="text-[#2563EB]" />
                           </div>
                           <div>
                             <div className="text-sm mb-1" style={{ color: 'var(--text-secondary)' }}>{info.label}</div>
@@ -243,14 +243,14 @@ export default function ContactPage() {
 
                   {/* Social Links */}
                   <div>
-                    <h3 className="font-semibold mb-5 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Follow Us</h3>
+                    <h3 className="font-semibold mb-5 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>Follow Us</h3>
                     <div className="flex items-center gap-3">
                       {socialLinks.map((social) => (
                         <a
                           key={social.label}
                           href={social.href}
                           aria-label={social.label}
-                          className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center hover:border-[#ff1f3d]/40 transition-all duration-300"
+                          className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center hover:border-[#2563EB]/40 transition-all duration-300"
                           style={{ color: 'var(--text-secondary)' }}
                           onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
                           onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
@@ -274,10 +274,10 @@ export default function ContactPage() {
                       animate={{ opacity: 1, scale: 1 }}
                       className="text-center py-12 sm:py-16 md:py-20"
                     >
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] flex items-center justify-center mx-auto mb-6 sm:mb-8 shadow-[0_0_40px_rgba(225,29,72,0.4)]">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#2563EB] to-[#3B82F6] flex items-center justify-center mx-auto mb-6 sm:mb-8 shadow-[0_0_40px_rgba(37,99,235,0.4)]">
                         <CheckCircle2 size={32} className="sm:w-10 sm:h-10 md:w-12 md:h-12" style={{ color: 'var(--text-primary)' }} />
                       </div>
-                      <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Message Sent!</h3>
+                      <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>Message Sent!</h3>
                       <p className="mb-8" style={{ color: 'var(--text-secondary)' }}>
                         Thank you for reaching out. Our team will get back to you within 24 hours.
                       </p>
@@ -290,7 +290,7 @@ export default function ContactPage() {
                       <div className="grid sm:grid-cols-2 gap-6">
                         <div>
                           <label htmlFor="name" className="block text-sm font-medium mb-2.5" style={{ color: 'var(--text-secondary)' }}>
-                            Full Name <span className="text-[#ff1f3d]">*</span>
+                            Full Name <span className="text-[#2563EB]">*</span>
                           </label>
                           <input
                             type="text"
@@ -316,7 +316,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <label htmlFor="email" className="block text-sm font-medium mb-2.5" style={{ color: 'var(--text-secondary)' }}>
-                            Email Address <span className="text-[#ff1f3d]">*</span>
+                            Email Address <span className="text-[#2563EB]">*</span>
                           </label>
                           <input
                             type="email"
@@ -397,7 +397,7 @@ export default function ContactPage() {
 
                       <div>
                         <label htmlFor="message" className="block text-sm font-medium mb-2.5" style={{ color: 'var(--text-secondary)' }}>
-                          Project Details <span className="text-[#ff1f3d]">*</span>
+                          Project Details <span className="text-[#2563EB]">*</span>
                         </label>
                         <textarea
                           id="message"
@@ -463,7 +463,7 @@ export default function ContactPage() {
             <span className="badge-accent mb-6 inline-block">
               FAQ
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
               Frequently Asked <span className="text-gradient">Questions</span>
             </h2>
             <p className="text-base sm:text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
@@ -475,7 +475,7 @@ export default function ContactPage() {
             {faqs.map((faq, index) => (
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="card-premium">
-                  <h3 className="text-lg font-semibold mb-4 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>{faq.question}</h3>
+                  <h3 className="text-lg font-semibold mb-4 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>{faq.question}</h3>
                   <p className="leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{faq.answer}</p>
                 </div>
               </FadeIn>
@@ -489,12 +489,12 @@ export default function ContactPage() {
         <div className="container-custom mx-auto px-4 sm:px-6">
           <FadeIn>
             <div className="glass-strong rounded-[24px] overflow-hidden h-64 sm:h-80 md:h-96 relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#ff1f3d]/10 via-[#2563eb]/10 to-[#8b5cf6]/10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/10 via-[#2563eb]/10 to-[#8b5cf6]/10"></div>
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px]"></div>
               <div className="absolute inset-0 flex items-center justify-center px-4">
                 <div className="text-center">
-                  <MapPin size={40} className="text-[#ff1f3d] mx-auto mb-4 sm:mb-5 sm:w-14 sm:h-14" />
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Silicon Valley, California</h3>
+                  <MapPin size={40} className="text-[#2563EB] mx-auto mb-4 sm:mb-5 sm:w-14 sm:h-14" />
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>Silicon Valley, California</h3>
                   <p className="mb-4 sm:mb-6 text-sm sm:text-base" style={{ color: 'var(--text-secondary)' }}>By appointment only</p>
                   <Link
                     href="https://maps.google.com"
@@ -515,8 +515,8 @@ export default function ContactPage() {
         <div className="container-custom mx-auto px-4 sm:px-6">
           <FadeIn>
             <div className="glass-strong rounded-[24px] sm:rounded-[32px] p-8 sm:p-10 md:p-14 lg:p-20 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 font-[var(--space-grotesk)]">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"></div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
                 Still Have <span className="text-gradient">Questions</span>?
               </h2>
               <p className="text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-12" style={{ color: 'var(--text-secondary)' }}>
@@ -532,3 +532,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
+

@@ -1,16 +1,16 @@
 import Link from 'next/link';
-import { Link as LinkIcon, Type, Image, Terminal, Mail, MapPin, Phone, ArrowUpRight } from 'lucide-react';
+import { Mail, MapPin, Phone, ArrowUpRight, Link as LinkIcon, Bird, CircleDashed } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const services = [
-    { name: 'Website Development', href: '/services#web-development' },
+    { name: 'AI Automation', href: '/services#ai-automation' },
     { name: 'Web Applications', href: '/services#web-applications' },
-    { name: 'Mobile Apps', href: '/services#mobile-apps' },
-    { name: 'Brand Design', href: '/services#graphic-design' },
-    { name: 'AI Solutions', href: '/services#ai-automation' },
-    { name: 'Automation', href: '/services#process-automation' },
+    { name: 'SaaS Development', href: '/services#saas-development' },
+    { name: 'API Integration', href: '/services#api-integration' },
+    { name: 'Process Automation', href: '/services#process-automation' },
+    { name: 'Web Development', href: '/services#web-development' },
   ];
 
   const quickLinks = [
@@ -18,21 +18,19 @@ const Footer = () => {
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
     { name: 'Team', href: '/team' },
-    { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
 
   const socialLinks = [
     { icon: LinkIcon, href: '#', label: 'LinkedIn' },
-    { icon: Type, href: '#', label: 'Twitter' },
-    { icon: Image, href: '#', label: 'Instagram' },
-    { icon: Terminal, href: '#', label: 'GitHub' },
+    { icon: Bird, href: '#', label: 'Twitter' },
+    { icon: CircleDashed, href: '#', label: 'GitHub' },
   ];
 
   return (
     <footer className="relative border-t" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}>
-      {/* Top Gradient Line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff1f3d] to-transparent"></div>
+      {/* Top Accent Line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"></div>
 
       <div className="container-custom mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-10">
@@ -40,16 +38,16 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-7 group">
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#ff1f3d] to-[#ff3d57] rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_30px_rgba(225,29,72,0.4)]">
-                  <span className="text-white font-bold text-xl font-[var(--space-grotesk)]">Z</span>
+                <div className="w-12 h-12 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_30px_rgba(37,99,235,0.4)]">
+                  <span className="text-white font-bold text-xl">Z</span>
                 </div>
               </div>
-              <span className="text-white font-bold text-xl tracking-tight font-[var(--space-grotesk)]">
-                Zero<span className="text-[#ff1f3d]">vex</span>
+              <span className="text-white font-bold text-xl tracking-tight">
+                Zero<span className="text-[#2563EB]">vex</span>
               </span>
             </Link>
             <p className="text-sm leading-relaxed mb-7" style={{ color: 'var(--text-secondary)' }}>
-              Building powerful digital experiences for modern businesses. Your trusted technology partner for innovation and growth.
+              Zerovex Solutions delivers AI automation and custom software that transforms how businesses operate and scale.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               {socialLinks.map((social) => (
@@ -57,7 +55,7 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl glass-subtle flex items-center justify-center transition-all duration-300 hover:border-[#ff1f3d]/40"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl glass-subtle flex items-center justify-center transition-all duration-300 hover:border-[#2563EB]/40 hover:bg-[#2563EB]/10"
                   style={{ color: 'var(--text-secondary)' }}
                 >
                   <social.icon size={16} />
@@ -68,7 +66,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-base mb-7 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Services</h3>
+            <h3 className="font-semibold text-base mb-7" style={{ color: 'var(--text-primary)' }}>Services</h3>
             <ul className="space-y-4">
               {services.map((service) => (
                 <li key={service.name}>
@@ -77,7 +75,7 @@ const Footer = () => {
                     className="text-sm transition-all duration-300 flex items-center gap-2 group hover:text-white"
                     style={{ color: 'var(--text-secondary)' }}
                   >
-                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#ff1f3d]" />
+                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#2563EB]" />
                     <span className="group-hover:translate-x-1 transition-transform duration-300">{service.name}</span>
                   </Link>
                 </li>
@@ -87,7 +85,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-base mb-7 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Quick Links</h3>
+            <h3 className="font-semibold text-base mb-7" style={{ color: 'var(--text-primary)' }}>Quick Links</h3>
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -96,7 +94,7 @@ const Footer = () => {
                     className="text-sm transition-all duration-300 flex items-center gap-2 group hover:text-white"
                     style={{ color: 'var(--text-secondary)' }}
                   >
-                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#ff1f3d]" />
+                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#2563EB]" />
                     <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
                   </Link>
                 </li>
@@ -106,19 +104,19 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-semibold text-base mb-7 font-[var(--space-grotesk)]" style={{ color: 'var(--text-primary)' }}>Contact Us</h3>
+            <h3 className="font-semibold text-base mb-7" style={{ color: 'var(--text-primary)' }}>Contact Us</h3>
             <ul className="space-y-5">
               <li className="flex items-start gap-3 group">
-                <div className="w-10 h-10 rounded-lg bg-[#ff1f3d]/10 flex items-center justify-center shrink-0 group-hover:bg-[#ff1f3d]/15 transition-colors duration-300">
-                  <MapPin size={18} className="text-[#ff1f3d]" />
+                <div className="w-10 h-10 rounded-lg bg-[#2563EB]/10 flex items-center justify-center shrink-0 group-hover:bg-[#2563EB]/15 transition-colors duration-300">
+                  <MapPin size={18} className="text-[#2563EB]" />
                 </div>
                 <span className="text-sm pt-1" style={{ color: 'var(--text-secondary)' }}>
                   Silicon Valley, California
                 </span>
               </li>
               <li className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-lg bg-[#ff1f3d]/10 flex items-center justify-center shrink-0 group-hover:bg-[#ff1f3d]/15 transition-colors duration-300">
-                  <Mail size={18} className="text-[#ff1f3d]" />
+                <div className="w-10 h-10 rounded-lg bg-[#2563EB]/10 flex items-center justify-center shrink-0 group-hover:bg-[#2563EB]/15 transition-colors duration-300">
+                  <Mail size={18} className="text-[#2563EB]" />
                 </div>
                 <a
                   href="mailto:hello@zerovexsolutions.site"
@@ -129,8 +127,8 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-lg bg-[#ff1f3d]/10 flex items-center justify-center shrink-0 group-hover:bg-[#ff1f3d]/15 transition-colors duration-300">
-                  <Phone size={18} className="text-[#ff1f3d]" />
+                <div className="w-10 h-10 rounded-lg bg-[#2563EB]/10 flex items-center justify-center shrink-0 group-hover:bg-[#2563EB]/15 transition-colors duration-300">
+                  <Phone size={18} className="text-[#2563EB]" />
                 </div>
                 <a
                   href="tel:+1234567890"
