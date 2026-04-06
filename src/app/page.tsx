@@ -332,14 +332,17 @@ export default function HomePage() {
           </div>
         </motion.div>
 
-        {/* Hero Content */}
-        <motion.div style={{ y: heroParallax }} className="relative z-10 text-center max-w-[clamp(900px,90vw,1400px)] mx-auto px-6 py-32">
+        {/* Hero Content - Clean Semantic Structure */}
+        <motion.div
+          style={{ y: heroParallax }}
+          className="relative z-10 max-w-4xl mx-auto px-6 py-32 text-center"
+        >
           {/* Announcement Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border mb-10"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8"
             style={{ backgroundColor: 'var(--surface-elevated)', borderColor: 'var(--border-hover)', backdropFilter: 'blur(12px)' }}
           >
             <span className="relative flex h-2 w-2">
@@ -351,15 +354,17 @@ export default function HomePage() {
             </span>
           </motion.div>
 
-          {/* Main Headline */}
+          {/* Main Headline - Clean h1, no split spans */}
           <motion.h1
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(3rem,8.5vw,7.5rem)] font-extrabold leading-[0.95] tracking-[-0.035em] mb-10"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-8"
           >
-            <span className="block" style={{ color: 'var(--text-primary)' }}>Automate. Build.</span>
-            <span className="block text-gradient">Scale Faster.</span>
+            <span style={{ color: 'var(--text-primary)' }}>Ready to </span>
+            <span className="text-gradient">Automate Your</span>
+            <br />
+            <span style={{ color: 'var(--text-primary)' }}>Business?</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -367,10 +372,10 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg sm:text-xl md:text-2xl max-w-[clamp(550px,65vw,800px)] mx-auto mb-14 leading-relaxed font-light"
+            className="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Zerovex Solutions delivers <span className="font-medium" style={{ color: 'var(--text-primary)' }}>AI automation</span> and <span className="font-medium" style={{ color: 'var(--text-primary)' }}>custom software</span> that transforms how businesses operate and grow.
+            Zerovex Solutions builds custom software and AI automation that transforms how businesses operate and grow.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -378,44 +383,41 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-20"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
-            <Link href="/contact" className="btn-primary text-base px-10 py-5 group shadow-lg">
+            <Link href="/contact" className="btn-primary text-sm px-8 py-4 group">
               Get Started
-              <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
-            <Link href="/contact" className="btn-secondary text-base px-10 py-5 group">
-              <Calendar size={18} />
-              Book Consultation
+            <Link href="/contact" className="btn-secondary text-sm px-8 py-4 group">
+              <Calendar size={16} />
+              Book a Consultation
             </Link>
           </motion.div>
 
-          {/* Stats Bar */}
+          {/* Trust Indicators - Stats Bar */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            {/* Top border gradient */}
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-[clamp(300px,60vw,800px)] h-px bg-gradient-to-r from-transparent via-[#2563EB]/40 to-transparent" />
+            {/* Top divider line */}
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-80 sm:w-96 lg:w-[500px] h-px bg-gradient-to-r from-transparent via-[#2563EB]/40 to-transparent" />
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 lg:gap-16">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-12 lg:gap-x-16">
               {[
-                { value: '150+', label: 'Projects Delivered', icon: Rocket },
-                { value: '50+', label: 'Happy Clients', icon: Users },
-                { value: '99%', label: 'Client Satisfaction', icon: Award },
-                { value: '5+', label: 'Years Experience', icon: Globe },
+                { value: '150+', label: 'Projects Delivered' },
+                { value: '50+', label: 'Happy Clients' },
+                { value: '99%', label: 'Satisfaction' },
+                { value: '5+', label: 'Years Experience' },
               ].map((stat, index) => (
-                <div key={index} className="text-center group">
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gradient mb-3 tracking-tight">
+                <div key={index} className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-gradient mb-1 tracking-tight">
                     {stat.value}
                   </div>
-                  <div className="flex items-center justify-center gap-2">
-                    <stat.icon size={14} className="text-[#2563EB]/60" />
-                    <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
-                      {stat.label}
-                    </span>
+                  <div className="text-xs sm:text-sm font-medium uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
+                    {stat.label}
                   </div>
                 </div>
               ))}
@@ -442,29 +444,29 @@ export default function HomePage() {
       {/* ===== TRUSTED CLIENTS SECTION ===== */}
       <section className="section-padding relative" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto relative z-10">
-          <FadeIn className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] mb-4" style={{ color: 'var(--text-tertiary)' }}>
+          <FadeIn className="text-center mb-12">
+            <p className="text-sm font-medium uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>
               Trusted by innovative companies worldwide
             </p>
           </FadeIn>
 
           {/* Client Logos Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
             {clients.map((client, index) => (
               <FadeIn key={index} delay={index * 0.05}>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="flex items-center justify-center h-20 rounded-2xl border transition-all duration-300 cursor-pointer group"
-                  style={{ 
-                    backgroundColor: 'var(--surface-card)', 
+                  className="flex items-center justify-center h-16 rounded-xl border transition-all duration-300 cursor-pointer group"
+                  style={{
+                    backgroundColor: 'var(--surface-card)',
                     borderColor: 'var(--border-color)',
                   }}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2563EB]/20 to-[#22C55E]/20 flex items-center justify-center group-hover:from-[#2563EB]/30 group-hover:to-[#22C55E]/30 transition-all duration-300">
-                      <span className="text-sm font-bold text-gradient">{client.initials}</span>
+                  <div className="flex items-center gap-2.5 px-4">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2563EB]/20 to-[#22C55E]/20 flex items-center justify-center group-hover:from-[#2563EB]/30 group-hover:to-[#22C55E]/30 transition-all duration-300">
+                      <span className="text-xs font-bold text-gradient">{client.initials}</span>
                     </div>
-                    <span className="text-sm font-semibold hidden sm:block" style={{ color: 'var(--text-tertiary)' }}>
+                    <span className="text-sm font-medium hidden sm:block" style={{ color: 'var(--text-tertiary)' }}>
                       {client.name}
                     </span>
                   </div>
@@ -483,17 +485,17 @@ export default function HomePage() {
 
         <div className="container-custom mx-auto relative z-10">
           {/* Section Header */}
-          <FadeIn className="text-center mb-20 lg:mb-28">
-            <motion.span className="badge-accent mb-8">
-              <Zap size={16} />
-              What We Do Best
+          <FadeIn className="text-center mb-16">
+            <motion.span className="badge-accent inline-flex mb-6">
+              <Zap size={14} />
+              What We Do
             </motion.span>
-            <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-extrabold mb-8 tracking-tight leading-[1.05]">
-              <span style={{ color: 'var(--text-primary)' }}>Comprehensive Digital</span>{' '}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
+              <span style={{ color: 'var(--text-primary)' }}>Comprehensive </span>
               <span className="text-gradient">Solutions</span>
             </h2>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              From AI automation to custom software, we deliver end-to-end solutions that transform your business operations.
+            <p className="text-base md:text-lg max-w-xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              AI automation, custom software, and scalable platforms that transform your business.
             </p>
           </FadeIn>
 
@@ -513,22 +515,22 @@ export default function HomePage() {
 
                   <div className="relative z-10">
                     {/* Icon */}
-                    <div className={`w-[72px] h-[72px] rounded-[20px] ${service.bgColor} flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-300`}>
-                      <service.icon size={32} className="text-[#2563EB]" />
+                    <div className={`w-14 h-14 rounded-xl ${service.bgColor} flex items-center justify-center mb-5 group-hover:scale-110 transition-all duration-300`}>
+                      <service.icon size={24} className="text-[#2563EB]" />
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-2xl font-bold mb-4 group-hover:text-[#2563EB] transition-colors duration-300 tracking-tight">
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-[#2563EB] transition-colors duration-300 tracking-tight">
                       {service.title}
                     </h3>
-                    <p className="leading-relaxed mb-6 text-base" style={{ color: 'var(--text-tertiary)' }}>
+                    <p className="leading-relaxed mb-5 text-sm" style={{ color: 'var(--text-tertiary)' }}>
                       {service.description}
                     </p>
 
                     {/* Learn More Link */}
-                    <div className="flex items-center text-[#2563EB] text-sm font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                    <div className="flex items-center text-[#2563EB] text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                       Learn more
-                      <ChevronRight size={16} className="ml-1.5" />
+                      <ChevronRight size={14} className="ml-1" />
                     </div>
                   </div>
                 </Link>
@@ -545,17 +547,17 @@ export default function HomePage() {
 
         <div className="container-custom mx-auto relative z-10">
           {/* Section Header */}
-          <FadeIn className="text-center mb-20 lg:mb-28">
-            <span className="badge-green mb-8">
-              <TrendingUp size={16} />
+          <FadeIn className="text-center mb-16">
+            <span className="badge-green inline-flex mb-6">
+              <TrendingUp size={14} />
               Our Work
             </span>
-            <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-extrabold mb-8 tracking-tight leading-[1.05]">
-              <span style={{ color: 'var(--text-primary)' }}>Featured</span>{' '}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
+              <span style={{ color: 'var(--text-primary)' }}>Featured </span>
               <span className="text-gradient">Projects</span>
             </h2>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Real solutions delivering measurable impact for our clients across industries.
+            <p className="text-base md:text-lg max-w-xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              Real solutions delivering measurable impact across industries.
             </p>
           </FadeIn>
 
@@ -568,7 +570,7 @@ export default function HomePage() {
                   className="group relative card-premium overflow-hidden block"
                 >
                   {/* Project Preview with Gradient */}
-                  <div className={`h-64 bg-gradient-to-br ${item.gradient} relative overflow-hidden rounded-2xl mb-7`}>
+                  <div className={`h-52 bg-gradient-to-br ${item.gradient} relative overflow-hidden rounded-2xl mb-6`}>
                     {/* Grid overlay on preview */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:32px_32px] opacity-50" />
 
@@ -577,26 +579,26 @@ export default function HomePage() {
 
                     {/* Hover Action */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                      <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full text-white text-sm font-bold flex items-center gap-2.5 translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2.5 rounded-full text-white text-sm font-medium flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                         View Project
-                        <ArrowUpRight size={16} />
+                        <ArrowUpRight size={14} />
                       </div>
                     </div>
                   </div>
 
                   {/* Project Info */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[#2563EB] text-[11px] font-extrabold uppercase tracking-[0.15em]">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[#2563EB] text-[11px] font-bold uppercase tracking-[0.15em]">
                       {item.category}
                     </span>
-                    <span className="text-[#22C55E] text-xs font-bold px-3 py-1 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/20">
+                    <span className="text-[#22C55E] text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/20">
                       {item.metrics}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-[#2563EB] transition-colors duration-300 tracking-tight">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-[#2563EB] transition-colors duration-300 tracking-tight">
                     {item.title}
                   </h3>
-                  <p className="leading-relaxed" style={{ color: 'var(--text-tertiary)' }}>
+                  <p className="leading-relaxed text-sm" style={{ color: 'var(--text-tertiary)' }}>
                     {item.description}
                   </p>
                 </Link>
@@ -621,17 +623,17 @@ export default function HomePage() {
 
         <div className="container-custom mx-auto relative z-10">
           {/* Section Header */}
-          <FadeIn className="text-center mb-20 lg:mb-28">
-            <span className="badge-accent mb-8">
-              <Layers size={16} />
+          <FadeIn className="text-center mb-16">
+            <span className="badge-accent inline-flex mb-6">
+              <Layers size={14} />
               Our Process
             </span>
-            <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-extrabold mb-8 tracking-tight leading-[1.05]">
-              <span style={{ color: 'var(--text-primary)' }}>How We</span>{' '}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
+              <span style={{ color: 'var(--text-primary)' }}>How We </span>
               <span className="text-gradient">Work</span>
             </h2>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              A proven methodology refined over hundreds of successful projects.
+            <p className="text-base md:text-lg max-w-xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              A proven methodology refined over hundreds of projects.
             </p>
           </FadeIn>
 
@@ -641,27 +643,27 @@ export default function HomePage() {
               <FadeIn key={index} delay={index * 0.1}>
                 <div className="relative card-premium text-center group h-full">
                   {/* Step Number Circle */}
-                  <div className="relative mb-6">
-                    <div className="w-[80px] h-[80px] rounded-full bg-gradient-to-br from-[#2563EB] to-[#3B82F6] flex items-center justify-center mx-auto shadow-lg group-hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] transition-shadow duration-500 group-hover:scale-110 transition-transform duration-300">
-                      <step.icon size={32} className="text-white" />
+                  <div className="relative mb-5">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2563EB] to-[#3B82F6] flex items-center justify-center mx-auto shadow-lg group-hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] transition-shadow duration-500 group-hover:scale-110 transition-transform duration-300">
+                      <step.icon size={24} className="text-white" />
                     </div>
                     {/* Step number badge */}
-                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#22C55E] flex items-center justify-center text-xs font-bold text-white shadow-md">
+                    <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[#22C55E] flex items-center justify-center text-xs font-bold text-white shadow-md">
                       {step.step}
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3 tracking-tight" style={{ color: 'var(--text-primary)' }}>
+                  <h3 className="text-lg font-semibold mb-2 tracking-tight" style={{ color: 'var(--text-primary)' }}>
                     {step.title}
                   </h3>
                   <p className="text-sm leading-relaxed" style={{ color: 'var(--text-tertiary)' }}>
                     {step.description}
                   </p>
 
-                  {/* Connector Arrow (hidden on mobile, shown on lg) */}
+                  {/* Connector Arrow */}
                   {index < processSteps.length - 1 && (
                     <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 z-20">
-                      <ArrowRightCircle size={24} className="text-[#2563EB]/30" />
+                      <ArrowRightCircle size={20} className="text-[#2563EB]/30" />
                     </div>
                   )}
                 </div>
@@ -678,17 +680,17 @@ export default function HomePage() {
 
         <div className="container-custom mx-auto relative z-10">
           {/* Section Header */}
-          <FadeIn className="text-center mb-20 lg:mb-28">
-            <span className="badge-accent mb-8">
-              <Award size={16} />
+          <FadeIn className="text-center mb-16">
+            <span className="badge-accent inline-flex mb-6">
+              <Award size={14} />
               Why Zerovex
             </span>
-            <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-extrabold mb-8 tracking-tight leading-[1.05]">
-              <span style={{ color: 'var(--text-primary)' }}>Built for</span>{' '}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
+              <span style={{ color: 'var(--text-primary)' }}>Built for </span>
               <span className="text-gradient">Excellence</span>
             </h2>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              We combine technical expertise with creative vision to deliver solutions that exceed expectations.
+            <p className="text-base md:text-lg max-w-xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              Technical expertise and creative vision that exceed expectations.
             </p>
           </FadeIn>
 
@@ -698,23 +700,23 @@ export default function HomePage() {
               <FadeIn key={index} delay={index * 0.08}>
                 <div className="group card-premium h-full">
                   {/* Icon Container */}
-                  <div className="w-[64px] h-[64px] rounded-[18px] bg-gradient-to-br from-[#2563EB]/10 to-[#2563EB]/5 flex items-center justify-center mb-7 group-hover:from-[#2563EB]/15 group-hover:to-[#2563EB]/10 transition-all duration-300 border border-[#2563EB]/10">
-                    <item.icon size={28} className="text-[#2563EB]" />
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#2563EB]/10 to-[#2563EB]/5 flex items-center justify-center mb-5 group-hover:from-[#2563EB]/15 group-hover:to-[#2563EB]/10 transition-all duration-300 border border-[#2563EB]/10">
+                    <item.icon size={24} className="text-[#2563EB]" />
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3 tracking-tight" style={{ color: 'var(--text-primary)' }}>
+                  <h3 className="text-lg font-semibold mb-2 tracking-tight" style={{ color: 'var(--text-primary)' }}>
                     {item.title}
                   </h3>
-                  <p className="leading-relaxed mb-6" style={{ color: 'var(--text-tertiary)' }}>
+                  <p className="leading-relaxed mb-5 text-sm" style={{ color: 'var(--text-tertiary)' }}>
                     {item.description}
                   </p>
 
                   {/* Stat */}
-                  <div className="pt-6 border-t" style={{ borderColor: 'var(--border-color)' }}>
-                    <div className="text-3xl font-extrabold text-gradient mb-1">
+                  <div className="pt-5 border-t" style={{ borderColor: 'var(--border-color)' }}>
+                    <div className="text-2xl font-bold text-gradient mb-0.5">
                       {item.stat}
                     </div>
-                    <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
+                    <div className="text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
                       {item.statLabel}
                     </div>
                   </div>
@@ -733,18 +735,18 @@ export default function HomePage() {
 
         <div className="container-custom mx-auto relative z-10">
           {/* Section Header */}
-          <FadeIn className="text-center mb-20 lg:mb-28">
-            <span className="badge-accent mb-8">
-              <Star size={16} />
+          <FadeIn className="text-center mb-16">
+            <span className="badge-accent inline-flex mb-6">
+              <Star size={14} />
               Testimonials
             </span>
-            <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-extrabold mb-8 tracking-tight leading-[1.05]">
-              <span style={{ color: 'var(--text-primary)' }}>Client</span>{' '}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
+              <span style={{ color: 'var(--text-primary)' }}>Client </span>
               <span className="text-gradient">Success</span>{' '}
               <span style={{ color: 'var(--text-primary)' }}>Stories</span>
             </h2>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Hear from the businesses we've helped transform through innovative digital solutions.
+            <p className="text-base md:text-lg max-w-xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              Hear from businesses we've helped transform through innovative solutions.
             </p>
           </FadeIn>
 
@@ -793,17 +795,17 @@ export default function HomePage() {
       <section className="section-padding relative" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto relative z-10">
           {/* Section Header */}
-          <FadeIn className="text-center mb-20 lg:mb-28">
-            <span className="badge-accent mb-8">
-              <Users size={16} />
+          <FadeIn className="text-center mb-16">
+            <span className="badge-accent inline-flex mb-6">
+              <Users size={14} />
               Our Team
             </span>
-            <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-extrabold mb-8 tracking-tight leading-[1.05]">
-              <span style={{ color: 'var(--text-primary)' }}>Meet the</span>{' '}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
+              <span style={{ color: 'var(--text-primary)' }}>Meet the </span>
               <span className="text-gradient">Experts</span>
             </h2>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Talented professionals driving innovation and delivering exceptional results.
+            <p className="text-base md:text-lg max-w-xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              Talented professionals driving innovation and delivering results.
             </p>
           </FadeIn>
 
@@ -813,21 +815,21 @@ export default function HomePage() {
               <FadeIn key={index} delay={index * 0.08}>
                 <Link href="/team" className="group card-premium text-center block">
                   {/* Avatar */}
-                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#2563EB] to-[#22C55E] flex items-center justify-center text-white font-extrabold text-3xl mx-auto mb-6 shadow-lg group-hover:shadow-[0_0_40px_rgba(37,99,235,0.3)] transition-shadow duration-500 group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#2563EB] to-[#22C55E] flex items-center justify-center text-white font-bold text-2xl mx-auto mb-5 shadow-lg group-hover:shadow-[0_0_40px_rgba(37,99,235,0.3)] transition-shadow duration-500 group-hover:scale-105 transition-transform duration-300">
                     {member.avatar}
                   </div>
 
                   {/* Name & Role */}
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-[#2563EB] transition-colors duration-300 tracking-tight" style={{ color: 'var(--text-primary)' }}>
+                  <h3 className="text-lg font-semibold mb-1 group-hover:text-[#2563EB] transition-colors duration-300 tracking-tight" style={{ color: 'var(--text-primary)' }}>
                     {member.name}
                   </h3>
-                  <p className="text-sm font-medium mb-6" style={{ color: 'var(--text-tertiary)' }}>
+                  <p className="text-sm font-medium mb-5" style={{ color: 'var(--text-tertiary)' }}>
                     {member.role}
                   </p>
 
                   {/* LinkedIn Icon */}
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 group-hover:bg-[#2563EB]/10 group-hover:border-[#2563EB]/30" style={{ backgroundColor: 'var(--surface-card)', borderColor: 'var(--border-color)' }}>
-                    <ExternalLink size={18} className="text-[#2563EB] opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="inline-flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-300 group-hover:bg-[#2563EB]/10 group-hover:border-[#2563EB]/30" style={{ backgroundColor: 'var(--surface-card)', borderColor: 'var(--border-color)' }}>
+                    <ExternalLink size={16} className="text-[#2563EB] opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 </Link>
               </FadeIn>
@@ -863,45 +865,45 @@ export default function HomePage() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[200px] bg-[#2563EB]/5 blur-[80px] pointer-events-none" />
 
               {/* Badge */}
-              <span className="badge-accent mb-10 relative z-10">
-                <Rocket size={16} />
+              <span className="badge-accent inline-flex mb-8 relative z-10">
+                <Rocket size={14} />
                 Ready to Start?
               </span>
 
               {/* Headline */}
-              <h2 className="text-[clamp(2.5rem,5.5vw,5rem)] font-extrabold mb-8 tracking-tight leading-[1.05] relative z-10">
-                <span style={{ color: 'var(--text-primary)' }}>Ready to Automate</span>{' '}
-                <span className="text-gradient">Your Business?</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight relative z-10">
+                <span style={{ color: 'var(--text-primary)' }}>Ready to </span>
+                <span className="text-gradient">Automate</span>{' '}
+                <span style={{ color: 'var(--text-primary)' }}>Your Business?</span>
               </h2>
 
               {/* Description */}
-              <p className="text-lg sm:text-xl max-w-2xl mx-auto mb-14 leading-relaxed relative z-10" style={{ color: 'var(--text-secondary)' }}>
-                Partner with Zerovex Solutions and experience the difference.
+              <p className="text-base md:text-lg max-w-xl mx-auto mb-12 leading-relaxed relative z-10" style={{ color: 'var(--text-secondary)' }}>
                 Let's discuss your project and explore how we can help you achieve your goals.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-5 relative z-10">
-                <Link href="/contact" className="btn-primary text-base px-14 py-6 flex items-center gap-3 group shadow-xl">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+                <Link href="/contact" className="btn-primary text-sm px-10 py-4 flex items-center gap-2 group shadow-xl">
                   Get Started
-                  <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </Link>
-                <Link href="/contact" className="btn-secondary text-base px-14 py-6 flex items-center gap-3 group">
-                  <MessageSquare size={18} />
+                <Link href="/contact" className="btn-secondary text-sm px-10 py-4 flex items-center gap-2 group">
+                  <MessageSquare size={16} />
                   Contact Sales
                 </Link>
               </div>
 
               {/* Trust indicators */}
-              <div className="flex flex-wrap items-center justify-center gap-8 mt-14 pt-10 border-t relative z-10" style={{ borderColor: 'var(--border-color)' }}>
+              <div className="flex flex-wrap items-center justify-center gap-6 mt-10 pt-8 border-t relative z-10" style={{ borderColor: 'var(--border-color)' }}>
                 {[
                   { icon: CheckCircle2, text: 'Free Consultation' },
                   { icon: Shield, text: 'NDA Protected' },
                   { icon: Zap, text: 'Fast Turnaround' },
                 ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-2.5">
-                    <item.icon size={18} className="text-[#22C55E]" />
-                    <span className="text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>
+                  <div key={index} className="flex items-center gap-2">
+                    <item.icon size={16} className="text-[#22C55E]" />
+                    <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
                       {item.text}
                     </span>
                   </div>
