@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { ThemeProvider } from "@/context/ThemeContext";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -96,10 +97,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add your verification codes here when available
-    // google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // bing: 'your-bing-verification-code',
+    google: 'google.com, pub-9242974125438337, DIRECT, f08c47fec0942fa0',
   },
   icons: {
     icon: "/favicon.ico",
@@ -132,6 +130,14 @@ export default function RootLayout({
           <div className="flex-grow">{children}</div>
           <Footer />
         </ThemeProvider>
+
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9242974125438337"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

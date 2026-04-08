@@ -30,6 +30,8 @@ import {
   MessageSquare,
   Calendar,
   ExternalLink,
+  Diamond,
+  Crown,
 } from 'lucide-react';
 import { FadeIn } from '@/components/animations/FadeIn';
 
@@ -89,28 +91,28 @@ const projects = [
     title: 'AI Automation Dashboard',
     category: 'AI & Automation',
     description: 'Real-time analytics and workflow management for enterprise operations.',
-    gradient: 'from-[#2563EB] to-[#3B82F6]',
+    gradient: 'from-[#d4a853] to-[#1e40af]',
     metrics: '40% Efficiency Gain',
   },
   {
     title: 'CloudSync SaaS Platform',
     category: 'SaaS',
     description: 'Multi-tenant cloud platform with subscription management and analytics.',
-    gradient: 'from-[#22C55E] to-[#4ADE80]',
+    gradient: 'from-[#1e40af] to-[#7c3aed]',
     metrics: '10K+ Users',
   },
   {
     title: 'Trading Web Application',
     category: 'Web App',
     description: 'High-performance trading platform with real-time market data.',
-    gradient: 'from-[#8B5CF6] to-[#A78BFA]',
+    gradient: 'from-[#7c3aed] to-[#d4a853]',
     metrics: '<50ms Latency',
   },
   {
     title: 'Business Portal',
     category: 'Website',
     description: 'Modern business website with CMS and lead generation features.',
-    gradient: 'from-[#F59E0B] to-[#FBBF24]',
+    gradient: 'from-[#d4a853] to-[#1e40af]',
     metrics: '340% More Leads',
   },
 ];
@@ -214,141 +216,149 @@ const teamMembers = [
 export default function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] });
-  const heroY = useTransform(scrollYProgress, [0, 0.3], [0, -60]);
+  const heroY = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
 
   return (
     <div ref={containerRef} className="relative overflow-hidden bg-[var(--bg-primary)]">
-      {/* Background grid */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[linear-gradient(rgba(148,163,184,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      {/* Luxury background pattern */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(212,168,83,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(212,168,83,0.015)_1px,transparent_1px)] bg-[size:80px_80px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,168,83,0.03)_0%,transparent_70%)]" />
+      </div>
 
-      {/* ===================== HERO ===================== */}
+      {/* ===================== LUXURY HERO ===================== */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background effects */}
+        {/* Sophisticated background effects */}
         <div className="absolute inset-0 pointer-events-none">
           <motion.div
-            animate={{ scale: [1, 1.15, 1], opacity: [0.12, 0.2, 0.12] }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-[#2563EB]/20 rounded-full blur-[128px]"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.15, 0.08] }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -top-40 -left-40 w-[800px] h-[800px] bg-[#d4a853]/15 rounded-full blur-[160px]"
           />
           <motion.div
-            animate={{ scale: [1.15, 1, 1.15], opacity: [0.08, 0.15, 0.08] }}
-            transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
-            className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-[#22C55E]/15 rounded-full blur-[128px]"
+            animate={{ scale: [1.2, 1, 1.2], opacity: [0.06, 0.12, 0.06] }}
+            transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut', delay: 8 }}
+            className="absolute -bottom-40 -right-40 w-[700px] h-[700px] bg-[#1e40af]/12 rounded-full blur-[160px]"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,transparent,var(--bg-primary))]" />
+          <motion.div
+            animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
+            transition={{ duration: 30, repeat: Infinity, ease: 'easeInOut', delay: 12 }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7c3aed]/10 rounded-full blur-[140px]"
+          />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,transparent,var(--bg-primary))]" />
         </div>
 
         {/* Content */}
         <motion.div
           style={{ y: heroY }}
-          className="relative z-10 max-w-4xl mx-auto px-6 text-center py-40"
+          className="relative z-10 max-w-5xl mx-auto px-6 text-center py-40"
         >
-          {/* Badge */}
+          {/* Luxury Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/5 mb-8"
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[var(--gold-accent)]/30 bg-[var(--gold-accent)]/5 mb-10 backdrop-blur-sm"
           >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22C55E] opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#22C55E]" />
-            </span>
-            <span className="text-xs font-medium text-[#2563EB] uppercase tracking-wider">AI Automation Experts</span>
+            <Diamond size={12} className="text-[var(--gold-accent)]" />
+            <span className="text-xs font-semibold text-[var(--gold-accent)] uppercase tracking-[0.15em]">Premium Digital Agency</span>
           </motion.div>
 
           {/* Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05] mb-6"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            className="mb-8"
           >
-            <span className="text-[var(--text-primary)]">Automate and Scale </span>
-            <span className="bg-gradient-to-r from-[#2563EB] to-[#22C55E] bg-clip-text text-transparent">Your Business with AI</span>
+            <span className="block text-[var(--text-primary)]">Automating Your Business.</span>
+            <span className="block text-gradient-premium">Empowering Your Growth.</span>
           </motion.h1>
 
           {/* Subheadline */}
           <motion.p
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-10 leading-relaxed"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-12 leading-relaxed"
           >
-            We build powerful automation systems, SaaS platforms, and modern web applications for growing businesses.
+            We craft AI automation, SaaS platforms, and premium digital experiences that transform how businesses operate and scale globally.
           </motion.p>
 
           {/* Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-20"
           >
-            <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#2563EB] text-white font-medium text-sm hover:bg-[#1D4ED8] transition-colors shadow-[0_4px_16px_rgba(37,99,235,0.3)] hover:shadow-[0_8px_24px_rgba(37,99,235,0.4)]">
+            <Link href="/contact" className="btn-primary group">
               Get Started
-              <ArrowUpRight size={16} />
+              <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
-            <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border-color)] text-[var(--text-primary)] font-medium text-sm hover:bg-[var(--surface-hover)] transition-colors">
-              <Calendar size={16} />
+            <Link href="/contact" className="btn-secondary group">
+              <Calendar size={18} />
               Book Consultation
             </Link>
           </motion.div>
 
-          {/* Trust indicators */}
+          {/* Trust indicators - Luxury version */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+            className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6"
           >
             {[
-              { value: '150+', label: 'Projects' },
-              { value: '50+', label: 'Clients' },
-              { value: '99%', label: 'Satisfaction' },
-              { value: '5+', label: 'Years' },
+              { value: '150+', label: 'Projects Delivered' },
+              { value: '50+', label: 'Global Clients' },
+              { value: '99%', label: 'Client Satisfaction' },
+              { value: '5+', label: 'Years Excellence' },
             ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-2xl font-bold text-[var(--text-primary)]">{stat.value}</div>
-                <div className="text-xs text-[var(--text-tertiary)] uppercase tracking-wider">{stat.label}</div>
+              <div key={i} className="text-center group">
+                <div className="text-3xl font-bold text-gradient-gold mb-1">{stat.value}</div>
+                <div className="text-xs text-[var(--text-tertiary)] uppercase tracking-wider group-hover:text-[var(--gold-accent)] transition-colors">{stat.label}</div>
               </div>
             ))}
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Luxury scroll indicator */}
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 3, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
         >
-          <div className="w-6 h-10 rounded-full border border-[var(--border-color)] flex items-start justify-center p-1.5">
+          <div className="w-7 h-12 rounded-full border border-[var(--gold-accent)]/30 flex items-start justify-center p-2 backdrop-blur-sm">
             <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2.5, repeat: Infinity }}
-              className="w-1 h-1 bg-[#2563EB] rounded-full"
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="w-1.5 h-1.5 bg-[var(--gold-accent)] rounded-full"
             />
           </div>
         </motion.div>
       </section>
 
       {/* ===================== CLIENTS ===================== */}
-      <section className="py-16 border-t border-[var(--border-color)] bg-[var(--bg-secondary)]/50">
+      <section className="py-20 border-t border-b border-[var(--border-color)] bg-[var(--bg-secondary)]/30">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-sm text-[var(--text-muted)] uppercase tracking-widest mb-10">
-            Trusted by innovative companies
+          <p className="text-center text-xs text-[var(--text-muted)] uppercase tracking-[0.2em] mb-12">
+            Trusted by Innovative Companies Worldwide
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
             {clients.map((client, i) => (
-              <FadeIn key={i} delay={i * 0.05}>
-                <div className="flex items-center justify-center h-14 rounded-lg border border-[var(--border-color)] bg-[var(--surface-card)] hover:border-[#2563EB]/30 transition-colors cursor-default">
-                  <div className="flex items-center gap-2 px-3">
-                    <div className="w-7 h-7 rounded-md bg-gradient-to-br from-[#2563EB]/20 to-[#22C55E]/20 flex items-center justify-center">
-                      <span className="text-[10px] font-bold bg-gradient-to-r from-[#2563EB] to-[#22C55E] bg-clip-text text-transparent">{client.initials}</span>
+              <FadeIn key={i} delay={i * 0.06}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center justify-center h-16 rounded-xl border border-[var(--border-color)] bg-[var(--surface-card)] hover:border-[var(--gold-accent)]/30 transition-all duration-300 cursor-default backdrop-blur-sm"
+                >
+                  <div className="flex items-center gap-2.5 px-4">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--gold-accent)]/20 to-[var(--primary)]/20 flex items-center justify-center">
+                      <span className="text-[11px] font-bold text-gradient">{client.initials}</span>
                     </div>
                     <span className="text-xs font-medium text-[var(--text-tertiary)] hidden sm:block">{client.name}</span>
                   </div>
-                </div>
+                </motion.div>
               </FadeIn>
             ))}
           </div>
@@ -356,36 +366,37 @@ export default function HomePage() {
       </section>
 
       {/* ===================== SERVICES ===================== */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-16">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 mb-4">
-              <Zap size={12} />
-              Services
+          <FadeIn className="text-center mb-20">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25 mb-6">
+              <Zap size={14} />
+              Our Services
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
-              What We Do
+            <h2 className="mb-5">
+              <span className="text-[var(--text-primary)]">What We </span>
+              <span className="text-gradient-gold">Do</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
               End-to-end solutions that transform how you operate and grow.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             {services.map((service, i) => (
               <FadeIn key={i} delay={i * 0.08}>
-                <Link href={service.href} className="group block p-6 rounded-xl border border-[var(--border-color)] bg-[var(--surface-card)] hover:border-[#2563EB]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(37,99,235,0.08)]">
-                  <div className="w-10 h-10 rounded-lg bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/15 transition-colors">
-                    <service.icon size={20} className="text-[#2563EB]" />
+                <Link href={service.href} className="group card-premium block">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--gold-accent)]/15 to-[var(--primary)]/15 flex items-center justify-center mb-5 group-hover:from-[var(--gold-accent)]/25 group-hover:to-[var(--primary)]/25 transition-all duration-400">
+                    <service.icon size={24} className="text-[var(--gold-accent)]" />
                   </div>
-                  <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#2563EB] transition-colors">
+                  <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-3 group-hover:text-[var(--gold-accent)] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-5">
                     {service.description}
                   </p>
-                  <div className="flex items-center text-[#2563EB] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                    Learn more <ChevronRight size={14} className="ml-0.5" />
+                  <div className="flex items-center text-[var(--gold-accent)] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    Learn more <ChevronRight size={16} className="ml-1" />
                   </div>
                 </Link>
               </FadeIn>
@@ -395,86 +406,90 @@ export default function HomePage() {
       </section>
 
       {/* ===================== PROJECTS ===================== */}
-      <section className="py-24 bg-[var(--bg-secondary)]/50">
+      <section className="py-28 bg-[var(--bg-secondary)]/30">
         <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-16">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#22C55E]/10 text-[#22C55E] border border-[#22C55E]/20 mb-4">
-              <TrendingUp size={12} />
-              Work
+          <FadeIn className="text-center mb-20">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--primary)]/10 text-[var(--primary-light)] border border-[var(--primary)]/25 mb-6">
+              <TrendingUp size={14} />
+              Portfolio
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
-              Featured Projects
+            <h2 className="mb-5">
+              <span className="text-[var(--text-primary)]">Featured </span>
+              <span className="text-gradient">Projects</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
               Real results for real businesses.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
             {projects.map((project, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <Link href="/projects" className="group block rounded-xl border border-[var(--border-color)] bg-[var(--surface-card)] overflow-hidden hover:border-[#2563EB]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(37,99,235,0.08)]">
-                  <div className={`h-48 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:24px_24px]" />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium">
-                        View Project <ArrowUpRight size={14} />
-                      </span>
+              <FadeIn key={i} delay={i * 0.12}>
+                <Link href="/projects" className="group card-premium block overflow-hidden">
+                  <div className={`h-56 bg-gradient-to-br ${project.gradient} relative overflow-hidden mb-6`}>
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:28px_28px]" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
+                      <motion.span
+                        initial={{ opacity: 0, y: 10 }}
+                        whileHover={{ opacity: 1, y: 0 }}
+                        className="opacity-0 group-hover:opacity-100 transition-all duration-400 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white text-sm font-semibold"
+                      >
+                        View Project <ArrowUpRight size={16} />
+                      </motion.span>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#2563EB]">{project.category}</span>
-                      <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#22C55E]/10 text-[#22C55E] border border-[#22C55E]/20">{project.metrics}</span>
-                    </div>
-                    <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#2563EB] transition-colors">{project.title}</h3>
-                    <p className="text-sm text-[var(--text-secondary)]">{project.description}</p>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[var(--gold-accent)]">{project.category}</span>
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25">{project.metrics}</span>
                   </div>
+                  <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--gold-accent)] transition-colors">{project.title}</h3>
+                  <p className="text-sm text-[var(--text-secondary)]">{project.description}</p>
                 </Link>
               </FadeIn>
             ))}
           </div>
 
-          <FadeIn className="text-center mt-12">
-            <Link href="/projects" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border-color)] text-[var(--text-primary)] font-medium text-sm hover:bg-[var(--surface-hover)] transition-colors">
+          <FadeIn className="text-center mt-14">
+            <Link href="/projects" className="btn-secondary group">
               View All Projects
-              <ArrowRight size={16} />
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </FadeIn>
         </div>
       </section>
 
       {/* ===================== PROCESS ===================== */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-16">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 mb-4">
-              <Layers size={12} />
-              Process
+          <FadeIn className="text-center mb-20">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--primary)]/10 text-[var(--primary-light)] border border-[var(--primary)]/25 mb-6">
+              <Layers size={14} />
+              Our Process
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
-              How We Work
+            <h2 className="mb-5">
+              <span className="text-[var(--text-primary)]">How We </span>
+              <span className="text-gradient-gold">Work</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
               A proven methodology refined over hundreds of projects.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
             {processSteps.map((step, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <div className="relative p-6 rounded-xl border border-[var(--border-color)] bg-[var(--surface-card)] text-center">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#2563EB] to-[#3B82F6] flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <step.icon size={20} className="text-white" />
+                <div className="relative card-premium text-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[var(--gold-accent)] to-[var(--primary)] flex items-center justify-center mx-auto mb-5 shadow-lg">
+                    <step.icon size={24} className="text-white" />
                   </div>
-                  <div className="absolute top-4 right-4 w-6 h-6 rounded-full bg-[#22C55E]/20 flex items-center justify-center">
-                    <span className="text-[10px] font-bold text-[#22C55E]">{step.step}</span>
+                  <div className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[var(--gold-accent)]/20 flex items-center justify-center border border-[var(--gold-accent)]/30">
+                    <span className="text-xs font-bold text-[var(--gold-accent)]">{step.step}</span>
                   </div>
-                  <h3 className="text-base font-semibold text-[var(--text-primary)] mb-2">{step.title}</h3>
+                  <h3 className="text-base font-semibold text-[var(--text-primary)] mb-3">{step.title}</h3>
                   <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{step.description}</p>
                   {i < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2">
-                      <ChevronRight size={18} className="text-[var(--text-muted)]" />
+                    <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2">
+                      <ChevronRight size={20} className="text-[var(--gold-accent)]/40" />
                     </div>
                   )}
                 </div>
@@ -485,33 +500,34 @@ export default function HomePage() {
       </section>
 
       {/* ===================== WHY CHOOSE ===================== */}
-      <section className="py-24 bg-[var(--bg-secondary)]/50">
+      <section className="py-28 bg-[var(--bg-secondary)]/30">
         <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-16">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 mb-4">
-              <Award size={12} />
+          <FadeIn className="text-center mb-20">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25 mb-6">
+              <Crown size={14} />
               Why Zerovex
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
-              Built for Excellence
+            <h2 className="mb-5">
+              <span className="text-[var(--text-primary)]">Built for </span>
+              <span className="text-gradient-gold">Excellence</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
               Technical expertise and creative vision that exceed expectations.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
             {whyChoose.map((item, i) => (
               <FadeIn key={i} delay={i * 0.08}>
-                <div className="group p-6 rounded-xl border border-[var(--border-color)] bg-[var(--surface-card)] hover:border-[#2563EB]/40 transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-10 h-10 rounded-lg bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/15 transition-colors">
-                    <item.icon size={20} className="text-[#2563EB]" />
+                <div className="group card-premium">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--gold-accent)]/15 to-[var(--primary)]/15 flex items-center justify-center mb-5 group-hover:from-[var(--gold-accent)]/25 group-hover:to-[var(--primary)]/25 transition-all duration-400">
+                    <item.icon size={24} className="text-[var(--gold-accent)]" />
                   </div>
-                  <h3 className="text-base font-semibold text-[var(--text-primary)] mb-2">{item.title}</h3>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">{item.description}</p>
-                  <div className="pt-4 border-t border-[var(--border-color)]">
-                    <div className="text-xl font-bold bg-gradient-to-r from-[#2563EB] to-[#22C55E] bg-clip-text text-transparent">{item.stat}</div>
-                    <div className="text-[11px] font-medium text-[var(--text-tertiary)] uppercase tracking-wider">{item.statLabel}</div>
+                  <h3 className="text-base font-semibold text-[var(--text-primary)] mb-3">{item.title}</h3>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-5">{item.description}</p>
+                  <div className="pt-5 border-t border-[var(--border-color)]">
+                    <div className="text-2xl font-bold text-gradient-gold mb-1">{item.stat}</div>
+                    <div className="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-wider">{item.statLabel}</div>
                   </div>
                 </div>
               </FadeIn>
@@ -521,33 +537,34 @@ export default function HomePage() {
       </section>
 
       {/* ===================== TESTIMONIALS ===================== */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-16">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 mb-4">
-              <Star size={12} />
+          <FadeIn className="text-center mb-20">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25 mb-6">
+              <Star size={14} />
               Testimonials
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
-              Client Stories
+            <h2 className="mb-5">
+              <span className="text-[var(--text-primary)]">Client </span>
+              <span className="text-gradient-gold">Stories</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
               Hear from businesses we've helped transform.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             {testimonials.map((t, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <div className="p-6 rounded-xl border border-[var(--border-color)] bg-[var(--surface-card)] flex flex-col h-full">
-                  <div className="flex gap-1 mb-4">
+                <div className="card-premium flex flex-col h-full">
+                  <div className="flex gap-1.5 mb-5">
                     {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} size={14} className="text-[#2563EB] fill-[#2563EB]" />
+                      <Star key={j} size={16} className="text-[var(--gold-accent)] fill-[var(--gold-accent)]" />
                     ))}
                   </div>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6 flex-grow">"{t.content}"</p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-[var(--border-color)]">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2563EB] to-[#22C55E] flex items-center justify-center text-white text-xs font-bold shrink-0">
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6 flex-grow italic">"{t.content}"</p>
+                  <div className="flex items-center gap-4 pt-5 border-t border-[var(--border-color)]">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--gold-accent)] to-[var(--primary)] flex items-center justify-center text-white text-sm font-bold shrink-0 shadow-lg">
                       {t.avatar}
                     </div>
                     <div>
@@ -563,91 +580,93 @@ export default function HomePage() {
       </section>
 
       {/* ===================== TEAM ===================== */}
-      <section className="py-24 bg-[var(--bg-secondary)]/50">
+      <section className="py-28 bg-[var(--bg-secondary)]/30">
         <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-16">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 mb-4">
-              <Users size={12} />
-              Team
+          <FadeIn className="text-center mb-20">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--primary)]/10 text-[var(--primary-light)] border border-[var(--primary)]/25 mb-6">
+              <Users size={14} />
+              Our Team
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
-              Meet the Experts
+            <h2 className="mb-5">
+              <span className="text-[var(--text-primary)]">Meet the </span>
+              <span className="text-gradient">Experts</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
               Talented professionals driving innovation and delivering results.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-7">
             {teamMembers.map((member, i) => (
               <FadeIn key={i} delay={i * 0.08}>
-                <Link href="/team" className="group block p-6 rounded-xl border border-[var(--border-color)] bg-[var(--surface-card)] text-center hover:border-[#2563EB]/40 transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#2563EB] to-[#22C55E] flex items-center justify-center text-white font-bold text-lg mx-auto mb-4 shadow-lg group-hover:shadow-[0_0_32px_rgba(37,99,235,0.2)] transition-shadow">
+                <Link href="/team" className="group card-premium block text-center">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[var(--gold-accent)] to-[var(--primary)] flex items-center justify-center text-white font-bold text-xl mx-auto mb-5 shadow-xl group-hover:shadow-[0_0_40px_rgba(212,168,83,0.3)] transition-all duration-500">
                     {member.avatar}
                   </div>
-                  <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1 group-hover:text-[#2563EB] transition-colors">{member.name}</h3>
-                  <p className="text-xs text-[var(--text-tertiary)] mb-4">{member.role}</p>
-                  <div className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--border-color)] group-hover:border-[#2563EB]/30 group-hover:bg-[#2563EB]/10 transition-colors">
-                    <ExternalLink size={14} className="text-[#2563EB] opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--gold-accent)] transition-colors">{member.name}</h3>
+                  <p className="text-xs text-[var(--text-tertiary)] mb-5">{member.role}</p>
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--border-color)] group-hover:border-[var(--gold-accent)]/40 group-hover:bg-[var(--gold-accent)]/10 transition-all duration-300">
+                    <ExternalLink size={16} className="text-[var(--gold-accent)] opacity-50 group-hover:opacity-100 transition-opacity" />
                   </div>
                 </Link>
               </FadeIn>
             ))}
           </div>
 
-          <FadeIn className="text-center mt-12">
-            <Link href="/team" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border-color)] text-[var(--text-primary)] font-medium text-sm hover:bg-[var(--surface-hover)] transition-colors">
+          <FadeIn className="text-center mt-14">
+            <Link href="/team" className="btn-secondary group">
               Meet Full Team
-              <ArrowRight size={16} />
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </FadeIn>
         </div>
       </section>
 
       {/* ===================== CTA ===================== */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn>
-            <div className="relative rounded-2xl border border-[var(--border-color)] bg-[var(--surface-card)] overflow-hidden">
+            <div className="relative card-premium overflow-hidden">
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent" />
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[var(--gold-accent)] to-transparent" />
               {/* Subtle glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-32 bg-[#2563EB]/5 blur-[64px] pointer-events-none" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-40 bg-[var(--gold-accent)]/5 blur-[80px] pointer-events-none" />
 
-              <div className="relative z-10 px-8 py-16 md:px-16 md:py-20 text-center">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 mb-6">
-                  <Rocket size={12} />
+              <div className="relative z-10 px-10 py-20 md:px-20 md:py-24 text-center">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25 mb-8">
+                  <Rocket size={14} />
                   Get Started
                 </span>
 
-                <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
-                  Ready to Automate <span className="bg-gradient-to-r from-[#2563EB] to-[#22C55E] bg-clip-text text-transparent">Your Business?</span>
+                <h2 className="mb-6">
+                  <span className="text-[var(--text-primary)]">Ready to Automate </span>
+                  <span className="text-gradient-gold">Your Business?</span>
                 </h2>
 
-                <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto mb-10">
+                <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto mb-12">
                   Let's discuss your project and explore how we can help you achieve your goals.
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-[#2563EB] text-white font-medium text-sm hover:bg-[#1D4ED8] transition-colors shadow-[0_4px_16px_rgba(37,99,235,0.3)]">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+                  <Link href="/contact" className="btn-primary group">
                     Get Started Today
-                    <ArrowUpRight size={16} />
+                    <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
-                  <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-[var(--border-color)] text-[var(--text-primary)] font-medium text-sm hover:bg-[var(--surface-hover)] transition-colors">
-                    <MessageSquare size={16} />
+                  <Link href="/contact" className="btn-secondary group">
+                    <MessageSquare size={18} />
                     Contact Sales
                   </Link>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-6 mt-10 pt-8 border-t border-[var(--border-color)]">
+                <div className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-10 border-t border-[var(--border-color)]">
                   {[
                     { icon: CheckCircle2, text: 'Free Consultation' },
                     { icon: Shield, text: 'NDA Protected' },
                     { icon: Zap, text: 'Fast Turnaround' },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <item.icon size={14} className="text-[#22C55E]" />
-                      <span className="text-sm text-[var(--text-secondary)]">{item.text}</span>
+                    <div key={i} className="flex items-center gap-2.5">
+                      <item.icon size={16} className="text-[var(--gold-accent)]" />
+                      <span className="text-sm text-[var(--text-secondary)] font-medium">{item.text}</span>
                     </div>
                   ))}
                 </div>

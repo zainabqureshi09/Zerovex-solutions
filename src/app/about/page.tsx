@@ -2,230 +2,208 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { FadeIn } from '@/components/animations/FadeIn';
 import {
-  ArrowRight,
-  ArrowUpRight,
   Target,
   Eye,
   Heart,
-  Users,
   Award,
   Globe,
   Zap,
-  CheckCircle2,
+  Users,
   TrendingUp,
+  ArrowUpRight,
+  CheckCircle2,
+  Star,
 } from 'lucide-react';
-import { FadeIn } from '@/components/animations/FadeIn';
+
+const stats = [
+  { value: '150+', label: 'Projects Delivered', icon: TrendingUp },
+  { value: '50+', label: 'Global Clients', icon: Globe },
+  { value: '5+', label: 'Years of Excellence', icon: Award },
+  { value: '99%', label: 'Client Satisfaction', icon: Star },
+];
 
 const values = [
   {
     icon: Target,
-    title: 'Excellence First',
-    description: 'We pursue the highest standards in everything we do, from code quality to client communication.',
+    title: 'Mission-Driven',
+    description: 'We empower businesses through innovative technology solutions that drive measurable growth and operational efficiency.',
   },
   {
     icon: Eye,
-    title: 'Innovation Driven',
-    description: 'We stay at the forefront of technology to deliver cutting-edge solutions that give you a competitive edge.',
+    title: 'Visionary Thinking',
+    description: 'We anticipate future trends and build solutions that are not just current, but future-proof and scalable.',
   },
   {
     icon: Heart,
-    title: 'Client Obsession',
-    description: 'Your success is our success. We go above and beyond to exceed expectations at every touchpoint.',
+    title: 'Client-Centric',
+    description: 'Every solution is tailored to our clients unique needs, with transparent communication and dedicated support.',
   },
   {
-    icon: Users,
-    title: 'Collaborative Spirit',
-    description: 'The best results come from true partnership. We work closely with you as an extension of your team.',
+    icon: Zap,
+    title: 'Innovation First',
+    description: 'We leverage cutting-edge technologies and methodologies to deliver solutions that exceed expectations.',
   },
-  {
-    icon: Award,
-    title: 'Quality Assurance',
-    description: 'Every project undergoes rigorous testing and review to ensure flawless delivery.',
-  },
-  {
-    icon: Globe,
-    title: 'Global Perspective',
-    description: 'We design for diverse audiences, ensuring your digital products resonate across cultures and markets.',
-  },
-];
-
-const stats = [
-  { value: '150+', label: 'Projects Completed' },
-  { value: '50+', label: 'Happy Clients' },
-  { value: '25+', label: 'Team Members' },
-  { value: '99%', label: 'Client Satisfaction' },
-  { value: '5+', label: 'Years of Experience' },
-  { value: '15+', label: 'Technologies' },
-];
-
-const teamMembers = [
-  { name: 'Alex Rivera', role: 'Founder & CEO', gradient: 'from-[#2563EB] to-[#3B82F6]' },
-  { name: 'Sarah Chen', role: 'CTO', gradient: 'from-[#2563eb] to-[#3b82f6]' },
-  { name: 'Marcus Johnson', role: 'Lead Designer', gradient: 'from-[#8b5cf6] to-[#a78bfa]' },
-  { name: 'Elena Rodriguez', role: 'Head of Engineering', gradient: 'from-[#10b981] to-[#34d399]' },
 ];
 
 const milestones = [
-  { year: '2020', title: 'Foundation', description: 'Zerovex Solutions founded with a vision to transform digital experiences.' },
-  { year: '2021', title: 'First Major Client', description: 'Secured our first enterprise client and expanded the team to 10 members.' },
-  { year: '2022', title: 'Service Expansion', description: 'Launched AI automation and mobile app development services.' },
-  { year: '2023', title: 'Global Reach', description: 'Expanded to serve clients across North America, Europe, and Asia.' },
-  { year: '2024', title: '150+ Projects', description: 'Reached a milestone of 150+ successfully delivered projects.' },
-  { year: '2025', title: 'Innovation Leader', description: 'Recognized as a leading innovator in AI-driven digital solutions.' },
+  { year: '2021', title: 'Company Founded', description: 'Zerovex Solutions was established with a vision to democratize AI and automation for businesses of all sizes.' },
+  { year: '2022', title: 'First 50 Clients', description: 'Rapidly grew our client base delivering web applications and automation solutions across multiple industries.' },
+  { year: '2023', title: 'AI Division Launch', description: 'Expanded into AI/ML services, building custom machine learning models and intelligent automation systems.' },
+  { year: '2024', title: 'Global Expansion', description: 'Opened operations to serve international clients with offices in Silicon Valley and remote teams worldwide.' },
+  { year: '2025', title: '150+ Projects Milestone', description: 'Reached a significant milestone with over 150 successful projects and 99% client satisfaction rate.' },
+  { year: '2026', title: 'Industry Recognition', description: 'Recognized as a leading digital agency for innovation in AI automation and modern web development.' },
+];
+
+const technologies = [
+  'Next.js', 'React', 'TypeScript', 'Node.js', 'Python',
+  'PostgreSQL', 'MongoDB', 'AWS', 'Firebase', 'Docker',
+  'OpenAI', 'TensorFlow', 'Tailwind CSS', 'GraphQL', 'Redis',
 ];
 
 export default function AboutPage() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
       {/* Hero Section */}
       <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-24 px-4 sm:px-6">
+        {/* Animated Background */}
         <div className="absolute inset-0">
           <motion.div
-            animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
-            transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#2563EB]/15 rounded-full blur-[140px]"
+            animate={{ scale: [1, 1.08, 1], opacity: [0.12, 0.2, 0.12] }}
+            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute top-1/4 right-1/4 w-[clamp(400px,50vw,600px)] h-[clamp(400px,50vw,600px)] bg-[#2563EB]/15 rounded-full blur-[clamp(100px,15vw,140px)]"
           />
           <motion.div
-            animate={{ scale: [1.1, 1, 1.1], opacity: [0.12, 0.2, 0.12] }}
-            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-            className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#2563eb]/10 rounded-full blur-[140px]"
+            animate={{ scale: [1.08, 1, 1.08], opacity: [0.1, 0.16, 0.1] }}
+            transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+            className="absolute bottom-1/4 left-1/4 w-[clamp(350px,45vw,500px)] h-[clamp(350px,45vw,500px)] bg-[#EAB308]/10 rounded-full blur-[clamp(100px,15vw,140px)]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 0%, var(--bg-primary) 70%)' }}></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--bg-primary)_75%)]"></div>
         </div>
 
         <div className="container-custom mx-auto px-4 sm:px-6 relative z-10 text-center">
           <FadeIn>
             <span className="badge-accent mb-8 inline-flex">
-              <Users className="text-[#2563EB]" size={16} />
+              <Globe className="text-[#2563EB]" size={16} />
               About Zerovex
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]">
-              We Build the <span className="text-gradient">Future</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
+              Building the <span className="text-gradient">Future</span> of Digital
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Zerovex Solutions is a premium technology agency dedicated to transforming
-              businesses through innovative digital solutions. We combine technical expertise
-              with creative vision to deliver exceptional results.
+            <p className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10" style={{ color: 'var(--text-secondary)' }}>
+              We are a premium digital agency specializing in AI automation, custom software development,
+              and transformative digital experiences for forward-thinking businesses worldwide.
             </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="section-padding px-4 sm:px-6">
+      {/* Stats Section */}
+      <section className="py-16 px-4 sm:px-6" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            <FadeIn>
-              <div>
-                <span className="badge-accent mb-6 inline-block">
-                  Our Mission
-                </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]">
-                  Empowering Businesses Through <span className="text-gradient">Innovation</span>
-                </h2>
-                <p className="text-base sm:text-lg leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
-                  We believe that technology should be an enabler, not a barrier. Our mission is to
-                  make cutting-edge digital solutions accessible to businesses of all sizes, helping
-                  them compete and thrive in the modern economy.
-                </p>
-                <p className="text-base sm:text-lg leading-relaxed mb-8" style={{ color: 'var(--text-secondary)' }}>
-                  Every project we undertake is guided by a single principle: deliver measurable
-                  value that exceeds expectations. From startups to enterprises, we partner with
-                  visionary organizations ready to embrace digital transformation.
-                </p>
-                <div className="space-y-5">
-                  {[
-                    'Human-centered design approach',
-                    'Agile development methodology',
-                    'Transparent communication',
-                    'Long-term partnership mindset',
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <CheckCircle2 size={22} className="text-[#2563EB] shrink-0" />
-                      <span style={{ color: 'var(--text-secondary)' }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="relative">
-                <div className="h-64 sm:h-80 lg:h-[450px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#2563EB]/15 via-[#2563eb]/15 to-[#8b5cf6]/15 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:48px_48px]"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-10 text-center">
-                      <Zap size={48} className="text-[#2563EB] mx-auto mb-4" />
-                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 font-[var(--font-display)]">Innovation First</h3>
-                      <p style={{ color: 'var(--text-secondary)' }}>Pushing boundaries since 2020</p>
-                    </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {stats.map((stat, index) => (
+              <FadeIn key={index} delay={index * 0.1}>
+                <div className="text-center">
+                  <div className="w-14 h-14 rounded-2xl bg-[#2563EB]/10 flex items-center justify-center mx-auto mb-4">
+                    <stat.icon size={24} className="text-[#2563EB]" />
+                  </div>
+                  <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2 font-[var(--font-display)]">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
+                    {stat.label}
                   </div>
                 </div>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="section-padding px-4 sm:px-6" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      {/* Our Story */}
+      <section className="py-20 px-4 sm:px-6 sm:py-24 lg:py-28">
         <div className="container-custom mx-auto">
-          <FadeIn className="text-center mb-12 sm:mb-16">
-            <span className="badge-accent mb-6 inline-block">
-              <TrendingUp size={16} />
-              Our Impact
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
-              Impact in <span className="text-gradient">Numbers</span>
-            </h2>
-          </FadeIn>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-            {stats.map((stat, index) => (
-              <FadeIn key={index} delay={index * 0.05}>
-                <div className="card-premium text-center p-6 sm:p-8">
-                  <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2 sm:mb-3 font-[var(--font-display)]">
-                    {stat.value}
-                  </div>
-                  <div style={{ color: 'var(--text-tertiary)' }} className="text-sm font-medium">{stat.label}</div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Content */}
+            <FadeIn>
+              <div>
+                <span className="badge-gold mb-6 inline-flex">
+                  <Star size={14} />
+                  Our Story
+                </span>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
+                  From Vision to <span className="text-gradient-gold">Reality</span>
+                </h2>
+                <div className="space-y-4 text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  <p>
+                    Zerovex Solutions was born from a simple yet powerful idea: every business deserves access to world-class technology solutions. Founded in 2021, we set out to bridge the gap between cutting-edge technology and practical business needs.
+                  </p>
+                  <p>
+                    Our founders, seasoned veterans from Silicon Valley's top tech companies, recognized that AI and automation were no longer luxuries for enterprises only—they were necessities for any business looking to compete in the modern digital landscape.
+                  </p>
+                  <p>
+                    Today, we serve clients globally from our Silicon Valley headquarters, delivering transformative solutions that have generated over $50M in combined value for our clients through efficiency gains and revenue growth.
+                  </p>
                 </div>
-              </FadeIn>
-            ))}
+              </div>
+            </FadeIn>
+
+            {/* Visual */}
+            <FadeIn delay={0.2}>
+              <div className="relative h-80 lg:h-96 rounded-3xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB] to-[#EAB308]" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:32px_32px]" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-24 h-24 rounded-3xl backdrop-blur-sm bg-white/10 flex items-center justify-center mx-auto mb-4">
+                      <Globe size={48} className="text-white" />
+                    </div>
+                    <p className="text-white font-semibold text-lg">Global Reach</p>
+                    <p className="text-white/70 text-sm">50+ Countries Served</p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="section-padding px-4 sm:px-6">
+      <section className="py-20 px-4 sm:px-6 sm:py-24 lg:py-28" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container-custom mx-auto">
-          <FadeIn className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <span className="badge-accent mb-6 inline-block">
-              <Heart size={16} />
+          <FadeIn className="text-center mb-16">
+            <span className="badge-accent mb-6 inline-flex">
+              <Heart size={14} />
               Our Values
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
-              What Drives <span className="text-gradient">Us</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
+              What <span className="text-gradient">Drives</span> Us
             </h2>
-            <p style={{ color: 'var(--text-secondary)' }} className="text-base sm:text-lg max-w-2xl mx-auto">
-              Our core values shape every decision we make and every solution we deliver.
+            <p className="text-base max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+              Core principles that guide every decision we make and every solution we build.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <FadeIn key={index} delay={index * 0.1}>
-                <div className="card-premium h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-[#2563EB]/10 flex items-center justify-center mb-6">
-                    <value.icon size={26} className="text-[#2563EB]" />
+              <FadeIn key={index} delay={index * 0.08}>
+                <div className="group p-6 rounded-2xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-xl h-full flex flex-col" style={{ borderColor: 'var(--border-color)', backgroundColor: 'var(--surface-card)' }}>
+                  <div className="w-12 h-12 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/15 transition-colors">
+                    <value.icon size={24} className="text-[#2563EB]" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 font-[var(--font-display)]">{value.title}</h3>
-                  <p style={{ color: 'var(--text-tertiary)' }} className="leading-relaxed">{value.description}</p>
+                  <h3 className="text-lg font-semibold mb-3 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
+                    {value.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed flex-grow" style={{ color: 'var(--text-secondary)' }}>
+                    {value.description}
+                  </p>
                 </div>
               </FadeIn>
             ))}
@@ -233,104 +211,99 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="section-padding px-4 sm:px-6" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      {/* Timeline */}
+      <section className="py-20 px-4 sm:px-6 sm:py-24 lg:py-28">
         <div className="container-custom mx-auto">
-          <FadeIn className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <span className="badge-accent mb-6 inline-block">
-              <Users size={16} />
-              Our Team
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
-              Meet the <span className="text-gradient">Experts</span>
-            </h2>
-            <p style={{ color: 'var(--text-secondary)' }} className="text-base sm:text-lg max-w-2xl mx-auto">
-              A talented team of designers, engineers, and strategists passionate about innovation.
-            </p>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {teamMembers.map((member, index) => (
-              <FadeIn key={index} delay={index * 0.1}>
-                <div className="group card-premium overflow-hidden text-center">
-                  {/* Avatar */}
-                  <div className={`h-40 sm:h-52 bg-gradient-to-br ${member.gradient} relative rounded-2xl mb-4 sm:mb-6`}>
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:32px_32px] opacity-40"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-2xl sm:text-3xl font-bold" style={{ color: 'var(--text-primary)' }}>
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Info */}
-                  <h3 className="text-lg font-semibold mb-1 font-[var(--font-display)]">{member.name}</h3>
-                  <p style={{ color: 'var(--text-tertiary)' }} className="text-sm">{member.role}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="section-padding px-4 sm:px-6">
-        <div className="container-custom mx-auto">
-          <FadeIn className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <span className="badge-accent mb-6 inline-block">
-              <Award size={16} />
+          <FadeIn className="text-center mb-16">
+            <span className="badge-gold mb-6 inline-flex">
+              <TrendingUp size={14} />
               Our Journey
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
-              Company <span className="text-gradient">Milestones</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
+              Milestones & <span className="text-gradient-gold">Growth</span>
             </h2>
           </FadeIn>
 
           <div className="relative max-w-4xl mx-auto">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2563EB]/30 to-transparent hidden lg:block"></div>
+            {/* Timeline Line */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#2563EB] via-[#EAB308] to-[#2563EB] hidden md:block" />
 
-            <div className="space-y-8 sm:space-y-12">
-              {milestones.map((milestone, index) => (
-                <FadeIn key={index} delay={index * 0.1}>
-                  <div className={`flex flex-col lg:flex-row items-center gap-6 sm:gap-10 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                    <div className="flex-1 text-center lg:text-left w-full">
-                      <div className="card-premium">
-                        <span className="text-[#2563EB] text-3xl sm:text-4xl lg:text-5xl font-bold opacity-30 font-[var(--font-display)]">{milestone.year}</span>
-                        <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mt-2 sm:mt-3 mb-2 sm:mb-3 font-[var(--font-display)]">{milestone.title}</h3>
-                        <p style={{ color: 'var(--text-tertiary)' }}>{milestone.description}</p>
-                      </div>
+            {milestones.map((milestone, index) => (
+              <FadeIn key={index} delay={index * 0.1}>
+                <div className={`relative flex flex-col md:flex-row items-start gap-6 mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                  {/* Dot */}
+                  <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#2563EB] border-4 shadow-[0_0_12px_rgba(37,99,235,0.5)]" style={{ borderColor: 'var(--bg-primary)' }} />
+
+                  {/* Content */}
+                  <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'} pl-12 md:pl-0`}>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 mb-3">
+                      {milestone.year}
                     </div>
-
-                    <div className="relative z-10 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#2563EB] to-[#3B82F6] flex items-center justify-center shadow-[0_0_40px_rgba(37,99,235,0.4)] shrink-0">
-                      <span className="text-xs sm:text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{milestone.year}</span>
-                    </div>
-
-                    <div className="flex-1 hidden lg:block"></div>
+                    <h3 className="text-xl font-semibold mb-2 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
+                      {milestone.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                      {milestone.description}
+                    </p>
                   </div>
-                </FadeIn>
-              ))}
-            </div>
+
+                  {/* Spacer for alignment */}
+                  <div className="hidden md:block flex-1" />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies */}
+      <section className="py-20 px-4 sm:px-6 sm:py-24 lg:py-28" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+        <div className="container-custom mx-auto">
+          <FadeIn className="text-center mb-16">
+            <span className="badge-accent mb-6 inline-flex">
+              <Zap size={14} />
+              Tech Stack
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
+              Technologies We <span className="text-gradient">Master</span>
+            </h2>
+            <p className="text-base max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+              We work with industry-leading technologies to deliver best-in-class solutions.
+            </p>
+          </FadeIn>
+
+          <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+            {technologies.map((tech, index) => (
+              <FadeIn key={index} delay={index * 0.04}>
+                <div className="px-5 py-3 rounded-xl border transition-all duration-300 hover:border-[#2563EB]/40 hover:-translate-y-1" style={{ borderColor: 'var(--border-color)', backgroundColor: 'var(--surface-card)' }}>
+                  <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>{tech}</span>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding px-4 sm:px-6" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <section className="py-20 px-4 sm:px-6 sm:py-24 lg:py-28">
         <div className="container-custom mx-auto">
           <FadeIn>
-            <div className="glass-strong rounded-2xl sm:rounded-3xl p-8 sm:p-12 lg:p-16 md:p-14 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
-                Want to <span className="text-gradient">Join</span> Our Journey?
+            <div className="rounded-3xl p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden" style={{ backgroundColor: 'var(--surface-elevated)', border: '1px solid var(--border-color)' }}>
+              {/* Gold Top Accent */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#EAB308] to-transparent"></div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-[var(--font-display)]" style={{ color: 'var(--text-primary)' }}>
+                Ready to <span className="text-gradient-gold">Transform</span> Your Business?
               </h2>
-              <p style={{ color: 'var(--text-secondary)' }} className="text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-12">
-                Partner with us and experience the Zerovex difference. Let's build something extraordinary together.
+              <p className="text-base max-w-2xl mx-auto mb-10" style={{ color: 'var(--text-secondary)' }}>
+                Let's discuss how our expertise can help you achieve your digital transformation goals.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-                <Link href="/contact" className="btn-primary text-base px-12 py-5 flex items-center gap-2.5 group">
-                  Start Your Project <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link href="/contact" className="btn-primary text-sm px-8 py-4 group">
+                  Start Your Project
+                  <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
-                <Link href="/services" className="btn-secondary text-base px-12 py-5">
+                <Link href="/services" className="btn-secondary text-sm px-8 py-4">
                   Explore Services
                 </Link>
               </div>
@@ -341,5 +314,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-

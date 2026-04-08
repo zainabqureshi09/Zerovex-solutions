@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MapPin, Phone, ArrowUpRight, Link as LinkIcon, Bird, CircleDashed } from 'lucide-react';
+import { Mail, MapPin, Phone, ArrowUpRight, Link as LinkIcon, Bird, CircleDashed, Diamond } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,6 +18,8 @@ const Footer = () => {
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
+    { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Team', href: '/team' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -30,15 +32,15 @@ const Footer = () => {
 
   return (
     <footer className="relative border-t" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}>
-      {/* Top Accent Line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"></div>
+      {/* Luxury Top Accent Line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gold-accent)] to-transparent"></div>
 
-      <div className="container-custom mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-7 group">
-              <div className="relative w-12 h-12 shrink-0 transition-all duration-300 group-hover:scale-105">
+            <Link href="/" className="flex items-center gap-4 mb-8 group">
+              <div className="relative w-14 h-14 shrink-0 transition-all duration-400 group-hover:scale-110">
                 <Image
                   src="/logogency.png"
                   alt="Zerovex Solutions"
@@ -46,11 +48,16 @@ const Footer = () => {
                   className="object-contain"
                 />
               </div>
-              <span className="text-white font-bold text-xl tracking-tight">
-                Zero<span className="text-[#2563EB]">vex</span>
-              </span>
+              <div className="flex flex-col">
+                <span className="font-bold text-xl tracking-tight" style={{ color: 'var(--text-primary)' }}>
+                  Zero<span className="text-[var(--gold-accent)]">vex</span>
+                </span>
+                <span className="text-[10px] font-bold tracking-[0.25em] uppercase" style={{ color: 'var(--gold-accent)' }}>
+                  Solutions
+                </span>
+              </div>
             </Link>
-            <p className="text-sm leading-relaxed mb-7" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-sm leading-relaxed mb-8" style={{ color: 'var(--text-secondary)' }}>
               Zerovex Solutions delivers AI automation and custom software that transforms how businesses operate and scale.
             </p>
             <div className="flex flex-wrap items-center gap-3">
@@ -59,10 +66,10 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl glass-subtle flex items-center justify-center transition-all duration-300 hover:border-[#2563EB]/40 hover:bg-[#2563EB]/10"
+                  className="w-11 h-11 rounded-xl glass-subtle flex items-center justify-center transition-all duration-400 hover:border-[var(--gold-accent)]/40 hover:bg-[var(--gold-accent)]/10 hover:-translate-y-1"
                   style={{ color: 'var(--text-secondary)' }}
                 >
-                  <social.icon size={16} />
+                  <social.icon size={18} />
                 </a>
               ))}
             </div>
@@ -70,17 +77,20 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-base mb-7" style={{ color: 'var(--text-primary)' }}>Services</h3>
+            <h3 className="font-bold text-base mb-8 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+              <Diamond size={14} className="text-[var(--gold-accent)]" />
+              Services
+            </h3>
             <ul className="space-y-4">
               {services.map((service) => (
                 <li key={service.name}>
                   <Link
                     href={service.href}
-                    className="text-sm transition-all duration-300 flex items-center gap-2 group hover:text-white"
+                    className="text-sm transition-all duration-400 flex items-center gap-2.5 group hover:text-[var(--gold-accent)]"
                     style={{ color: 'var(--text-secondary)' }}
                   >
-                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#2563EB]" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">{service.name}</span>
+                    <ArrowUpRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-400 text-[var(--gold-accent)]" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-400">{service.name}</span>
                   </Link>
                 </li>
               ))}
@@ -89,17 +99,20 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-base mb-7" style={{ color: 'var(--text-primary)' }}>Quick Links</h3>
+            <h3 className="font-bold text-base mb-8 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+              <Diamond size={14} className="text-[var(--gold-accent)]" />
+              Quick Links
+            </h3>
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm transition-all duration-300 flex items-center gap-2 group hover:text-white"
+                    className="text-sm transition-all duration-400 flex items-center gap-2.5 group hover:text-[var(--gold-accent)]"
                     style={{ color: 'var(--text-secondary)' }}
                   >
-                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#2563EB]" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+                    <ArrowUpRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-400 text-[var(--gold-accent)]" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-400">{link.name}</span>
                   </Link>
                 </li>
               ))}
@@ -108,35 +121,38 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-semibold text-base mb-7" style={{ color: 'var(--text-primary)' }}>Contact Us</h3>
-            <ul className="space-y-5">
-              <li className="flex items-start gap-3 group">
-                <div className="w-10 h-10 rounded-lg bg-[#2563EB]/10 flex items-center justify-center shrink-0 group-hover:bg-[#2563EB]/15 transition-colors duration-300">
-                  <MapPin size={18} className="text-[#2563EB]" />
+            <h3 className="font-bold text-base mb-8 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+              <Diamond size={14} className="text-[var(--gold-accent)]" />
+              Contact Us
+            </h3>
+            <ul className="space-y-6">
+              <li className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--gold-accent)]/15 to-[var(--primary)]/15 flex items-center justify-center shrink-0 group-hover:from-[var(--gold-accent)]/25 group-hover:to-[var(--primary)]/25 transition-all duration-400">
+                  <MapPin size={20} className="text-[var(--gold-accent)]" />
                 </div>
-                <span className="text-sm pt-1" style={{ color: 'var(--text-secondary)' }}>
+                <span className="text-sm pt-2" style={{ color: 'var(--text-secondary)' }}>
                   Silicon Valley, California
                 </span>
               </li>
-              <li className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-lg bg-[#2563EB]/10 flex items-center justify-center shrink-0 group-hover:bg-[#2563EB]/15 transition-colors duration-300">
-                  <Mail size={18} className="text-[#2563EB]" />
+              <li className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--gold-accent)]/15 to-[var(--primary)]/15 flex items-center justify-center shrink-0 group-hover:from-[var(--gold-accent)]/25 group-hover:to-[var(--primary)]/25 transition-all duration-400">
+                  <Mail size={20} className="text-[var(--gold-accent)]" />
                 </div>
                 <a
                   href="mailto:hello@zerovexsolutions.site"
-                  className="text-sm transition-colors hover:text-white"
+                  className="text-sm transition-colors hover:text-[var(--gold-accent)]"
                   style={{ color: 'var(--text-secondary)' }}
                 >
                   hello@zerovexsolutions.site
                 </a>
               </li>
-              <li className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-lg bg-[#2563EB]/10 flex items-center justify-center shrink-0 group-hover:bg-[#2563EB]/15 transition-colors duration-300">
-                  <Phone size={18} className="text-[#2563EB]" />
+              <li className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--gold-accent)]/15 to-[var(--primary)]/15 flex items-center justify-center shrink-0 group-hover:from-[var(--gold-accent)]/25 group-hover:to-[var(--primary)]/25 transition-all duration-400">
+                  <Phone size={20} className="text-[var(--gold-accent)]" />
                 </div>
                 <a
                   href="tel:+1234567890"
-                  className="text-sm transition-colors hover:text-white"
+                  className="text-sm transition-colors hover:text-[var(--gold-accent)]"
                   style={{ color: 'var(--text-secondary)' }}
                 >
                   +1 (234) 567-890
@@ -147,15 +163,15 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5" style={{ borderTop: '1px solid var(--border-color)' }}>
+        <div className="mt-16 lg:mt-20 pt-10 lg:pt-12 flex flex-col sm:flex-row items-center justify-between gap-6 border-t" style={{ borderColor: 'var(--border-color)' }}>
           <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
             © {currentYear} Zerovex Solutions. All rights reserved.
           </p>
-          <div className="flex items-center gap-8">
-            <Link href="#" className="text-sm transition-colors hover:text-white" style={{ color: 'var(--text-tertiary)' }}>
+          <div className="flex items-center gap-10">
+            <Link href="#" className="text-sm transition-colors hover:text-[var(--gold-accent)]" style={{ color: 'var(--text-tertiary)' }}>
               Privacy Policy
             </Link>
-            <Link href="#" className="text-sm transition-colors hover:text-white" style={{ color: 'var(--text-tertiary)' }}>
+            <Link href="#" className="text-sm transition-colors hover:text-[var(--gold-accent)]" style={{ color: 'var(--text-tertiary)' }}>
               Terms of Service
             </Link>
           </div>

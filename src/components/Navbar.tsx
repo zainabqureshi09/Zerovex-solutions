@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight, Sun, Moon, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sun, Moon, Sparkles, Diamond } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 const Navbar = () => {
@@ -20,13 +20,15 @@ const Navbar = () => {
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
+    { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Team', href: '/team' },
     { name: 'Contact', href: '/contact' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -40,39 +42,39 @@ const Navbar = () => {
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       className="fixed top-0 left-0 right-0 z-50"
     >
-      {/* Top Accent Line */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#2563EB]/50 to-transparent" />
+      {/* Luxury Top Accent Line */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[var(--gold-accent)]/60 to-transparent" />
 
       {/* Main Navbar */}
       <div className="relative">
         {/* Background Layer */}
         <div
-          className={`absolute inset-0 transition-all duration-500 ${
+          className={`absolute inset-0 transition-all duration-700 ${
             isScrolled
               ? isDark
-                ? 'bg-[#0F172A]/90 backdrop-blur-2xl'
-                : 'bg-white/90 backdrop-blur-2xl'
+                ? 'bg-[#030712]/95 backdrop-blur-3xl border-b border-[var(--border-color)]'
+                : 'bg-white/95 backdrop-blur-3xl border-b border-[var(--border-color)]'
               : 'bg-transparent'
           }`}
         />
 
         {/* Content */}
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+        <div className="relative max-w-7xl mx-auto px-8 lg:px-10">
+          <div className="flex items-center justify-between h-24">
 
             {/* Logo */}
             <Link
               href="/"
-              className="group flex items-center gap-3 shrink-0 focus-ring rounded-2xl p-1 -m-1"
+              className="group flex items-center gap-4 shrink-0 focus-ring rounded-2xl p-2 -m-2"
               aria-label="Zerovex Solutions Home"
             >
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.08, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative w-10 h-10"
+                className="relative w-12 h-12"
               >
                 <Image
                   src="/logogency.png"
@@ -85,10 +87,10 @@ const Navbar = () => {
 
               {/* Brand Text */}
               <div className="flex flex-col">
-                <span className={`${isDark ? 'text-white' : 'text-[#0F172A]'} font-bold text-[17px] leading-tight font-[var(--font-display)] tracking-tight`}>
+                <span className={`${isDark ? 'text-white' : 'text-[#030712]'} font-bold text-[18px] leading-tight font-[var(--font-display)] tracking-tight`}>
                   Zerovex
                 </span>
-                <span className={`${isDark ? 'text-white/30' : 'text-black/30'} text-[10px] font-semibold leading-tight tracking-[0.2em] uppercase`}>
+                <span className={`${isDark ? 'text-[var(--gold-accent)]/60' : 'text-[var(--gold-accent)]'} text-[10px] font-bold leading-tight tracking-[0.25em] uppercase`}>
                   Solutions
                 </span>
               </div>
@@ -96,17 +98,17 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center" aria-label="Main navigation">
-              <div className="relative flex items-center gap-8">
+              <div className="relative flex items-center gap-10">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onMouseEnter={() => setHoveredLink(link.href)}
                     onMouseLeave={() => setHoveredLink(null)}
-                    className={`relative z-10 px-2 py-2 text-[15px] font-medium transition-all duration-300 ${
+                    className={`relative z-10 px-3 py-2.5 text-[15px] font-medium transition-all duration-400 ${
                       pathname === link.href
-                        ? isDark ? 'text-white' : 'text-[#0F172A]'
-                        : isDark ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'
+                        ? isDark ? 'text-[var(--gold-accent)]' : 'text-[var(--gold-accent)]'
+                        : isDark ? 'text-white/70 hover:text-white' : 'text-black/70 hover:text-black'
                     }`}
                   >
                     {link.name}
@@ -115,10 +117,10 @@ const Navbar = () => {
                     {pathname === link.href && (
                       <motion.div
                         layoutId="activeNav"
-                        className={`absolute inset-0 -inset-x-1 rounded-full border transition-colors duration-300 ${
+                        className={`absolute inset-0 -inset-x-2 rounded-full border transition-colors duration-400 ${
                           isDark
-                            ? 'bg-white/[0.08] border-white/[0.06]'
-                            : 'bg-black/[0.04] border-black/[0.06]'
+                            ? 'bg-[var(--gold-accent)]/[0.08] border-[var(--gold-accent)]/[0.15]'
+                            : 'bg-[var(--gold-accent)]/[0.06] border-[var(--gold-accent)]/[0.12]'
                         }`}
                         transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                       />
@@ -128,17 +130,17 @@ const Navbar = () => {
                     {pathname === link.href && (
                       <motion.div
                         layoutId="activeDot"
-                        className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#2563EB] rounded-full shadow-[0_0_8px_rgba(37,99,235,0.6)]"
+                        className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2 h-2 bg-[var(--gold-accent)] rounded-full shadow-[0_0_12px_rgba(212,168,83,0.8)]"
                         transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                       />
                     )}
 
                     {/* Hover Underline */}
-                    <span className={`absolute bottom-0 left-1/2 h-px bg-gradient-to-r from-[#2563EB] to-[#3B82F6] transition-all duration-300 ${
+                    <span className={`absolute bottom-0 left-1/2 h-px bg-gradient-to-r from-[var(--gold-accent)] to-[var(--primary-light)] transition-all duration-400 ${
                       pathname === link.href
                         ? 'w-0'
                         : hoveredLink === link.href
-                          ? 'w-6 -translate-x-1/2'
+                          ? 'w-8 -translate-x-1/2'
                           : 'w-0 -translate-x-1/2'
                     }`} />
                   </Link>
@@ -147,13 +149,13 @@ const Navbar = () => {
             </nav>
 
             {/* Right Side Controls */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {/* Theme Toggle */}
               <button
                 onClick={toggleThemeHandler}
-                className={`hidden lg:flex w-10 h-10 items-center justify-center rounded-full transition-all duration-300 ${
+                className={`hidden lg:flex w-11 h-11 items-center justify-center rounded-full transition-all duration-400 ${
                   isDark
-                    ? 'bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10'
+                    ? 'bg-[var(--gold-accent)]/5 border border-[var(--gold-accent)]/15 text-[var(--gold-accent)]/80 hover:text-[var(--gold-accent)] hover:bg-[var(--gold-accent)]/10'
                     : 'bg-black/5 border border-black/10 text-black/70 hover:text-black hover:bg-black/10'
                 }`}
                 aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
@@ -165,7 +167,7 @@ const Navbar = () => {
                       initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
                       animate={{ rotate: 0, opacity: 1, scale: 1 }}
                       exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <Moon size={18} />
                     </motion.div>
@@ -175,7 +177,7 @@ const Navbar = () => {
                       initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
                       animate={{ rotate: 0, opacity: 1, scale: 1 }}
                       exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <Sun size={18} />
                     </motion.div>
@@ -183,35 +185,35 @@ const Navbar = () => {
                 </AnimatePresence>
               </button>
 
-              {/* Get Quote Button */}
+              {/* Get Quote Button - Luxury Version */}
               <Link
                 href="/contact"
-                className="group relative hidden lg:inline-flex items-center overflow-hidden rounded-full transition-all duration-500 hover:-translate-y-1 active:translate-y-0"
+                className="group relative hidden lg:inline-flex items-center overflow-hidden rounded-full transition-all duration-600 hover:-translate-y-1.5 active:translate-y-0"
               >
                 {/* Outer Glow */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#2563EB] to-[#3B82F6] rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+                <div className="absolute -inset-2 bg-gradient-to-r from-[var(--gold-accent)] to-[var(--primary)] rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-600" />
 
                 {/* Button Container */}
-                <div className="relative flex items-center gap-3 pl-5 pr-2 py-2 rounded-full">
+                <div className="relative flex items-center gap-4 pl-6 pr-2.5 py-2.5 rounded-full">
                   {/* Background with gradient border effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#2563EB] to-[#3B82F6] rounded-full" />
-                  <div className={`absolute inset-[1.5px] rounded-full transition-colors duration-300 ${
-                    isDark ? 'bg-[#0F172A] group-hover:bg-[#1E293B]' : 'bg-white group-hover:bg-gray-50'
+                  <div className="absolute inset-0 bg-gradient-to-r from-[var(--gold-accent)] to-[var(--primary)] rounded-full" />
+                  <div className={`absolute inset-[2px] rounded-full transition-colors duration-400 ${
+                    isDark ? 'bg-[#030712] group-hover:bg-[#0a0f1a]' : 'bg-white group-hover:bg-gray-50'
                   }`} />
 
                   {/* Centered Text */}
-                  <span className="relative z-10 text-white font-semibold text-[14px] flex-1 text-center">
+                  <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[var(--gold-accent)] to-[var(--primary)] font-bold text-[14px] flex-1 text-center uppercase tracking-wider">
                     Get Quote
                   </span>
 
                   {/* Icon Circle */}
-                  <div className="relative z-10 w-9 h-9 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(37,99,235,0.4)] group-hover:shadow-[0_6px_24px_rgba(37,99,235,0.5)] transition-shadow duration-300">
+                  <div className="relative z-10 w-10 h-10 bg-gradient-to-br from-[var(--gold-accent)] to-[var(--primary)] rounded-full flex items-center justify-center shadow-[0_6px_20px_rgba(212,168,83,0.5)] group-hover:shadow-[0_8px_28px_rgba(212,168,83,0.6)] transition-all duration-400">
                     <motion.div
                       animate={{ scale: 1 }}
-                      whileHover={{ scale: 1.15, rotate: 45 }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.2, rotate: 45 }}
+                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <ArrowUpRight size={16} className="text-white" />
+                      <ArrowUpRight size={18} className="text-white" />
                     </motion.div>
                   </div>
                 </div>
@@ -220,9 +222,9 @@ const Navbar = () => {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`lg:hidden relative min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-2xl transition-all duration-200 ${
+                className={`lg:hidden relative min-w-[48px] min-h-[48px] w-12 h-12 flex items-center justify-center rounded-2xl transition-all duration-300 ${
                   isDark
-                    ? 'bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10'
+                    ? 'bg-[var(--gold-accent)]/5 border border-[var(--gold-accent)]/15 text-[var(--gold-accent)]/80 hover:text-[var(--gold-accent)] hover:bg-[var(--gold-accent)]/10'
                     : 'bg-black/5 border border-black/10 text-black/70 hover:text-black hover:bg-black/10'
                 }`}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -235,9 +237,9 @@ const Navbar = () => {
                       initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
                       animate={{ rotate: 0, opacity: 1, scale: 1 }}
                       exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <X size={20} />
+                      <X size={22} />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -245,9 +247,9 @@ const Navbar = () => {
                       initial={{ rotate: 90, opacity: 0, scale: 0.8 }}
                       animate={{ rotate: 0, opacity: 1, scale: 1 }}
                       exit={{ rotate: -90, opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <Menu size={20} />
+                      <Menu size={22} />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -261,76 +263,76 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="lg:hidden"
           >
             {/* Background */}
-            <div className={`absolute inset-0 top-20 backdrop-blur-2xl ${isDark ? 'bg-[#0F172A]/95' : 'bg-white/95'}`} />
-            <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className={`absolute inset-0 top-24 backdrop-blur-3xl ${isDark ? 'bg-[#030712]/98' : 'bg-white/98'}`} />
+            <div className="h-px bg-gradient-to-r from-transparent via-[var(--gold-accent)]/30 to-transparent" />
 
             {/* Content */}
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-              <nav className="flex flex-col gap-2 sm:gap-3" aria-label="Mobile navigation">
+            <div className="relative max-w-7xl mx-auto px-6 sm:px-8 py-8 sm:py-10">
+              <nav className="flex flex-col gap-3" aria-label="Mobile navigation">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.href}
-                    initial={{ opacity: 0, x: -30 }}
+                    initial={{ opacity: 0, x: -40 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: index * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <Link
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`group flex items-center gap-4 px-5 py-4 rounded-2xl text-base font-medium transition-all duration-200 ${
+                      className={`group flex items-center gap-5 px-6 py-5 rounded-2xl text-base font-medium transition-all duration-300 ${
                         pathname === link.href
-                          ? isDark ? 'bg-white/10 text-white border border-white/10' : 'bg-black/5 text-black border border-black/10'
-                          : isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-black/60 hover:text-black hover:bg-black/5'
+                          ? isDark ? 'bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/20' : 'bg-[var(--gold-accent)]/5 text-[var(--gold-accent)] border border-[var(--gold-accent)]/15'
+                          : isDark ? 'text-white/70 hover:text-white hover:bg-white/5' : 'text-black/70 hover:text-black hover:bg-black/5'
                       }`}
                     >
                       {/* Active Indicator */}
                       {pathname === link.href && (
-                        <div className="w-1 h-6 bg-[#2563EB] rounded-full" />
+                        <div className="w-1.5 h-7 bg-[var(--gold-accent)] rounded-full" />
                       )}
                       {link.name}
-                      <ArrowUpRight size={16} className="ml-auto opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-[#2563EB]" />
+                      <ArrowUpRight size={18} className="ml-auto opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[var(--gold-accent)]" />
                     </Link>
                   </motion.div>
                 ))}
 
                 {/* Theme Toggle Mobile */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -40 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.06, duration: 0.4 }}
+                  transition={{ delay: navLinks.length * 0.07, duration: 0.5 }}
                 >
                   <button
                     onClick={toggleThemeHandler}
-                    className={`group flex items-center gap-4 px-5 py-4 rounded-2xl text-base font-medium w-full transition-all duration-200 ${
-                      isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-black/60 hover:text-black hover:bg-black/5'
+                    className={`group flex items-center gap-5 px-6 py-5 rounded-2xl text-base font-medium w-full transition-all duration-300 ${
+                      isDark ? 'text-white/70 hover:text-white hover:bg-white/5' : 'text-black/70 hover:text-black hover:bg-black/5'
                     }`}
                   >
-                    {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                    {isDark ? <Sun size={20} /> : <Moon size={20} />}
                     {isDark ? 'Light Mode' : 'Dark Mode'}
                   </button>
                 </motion.div>
 
                 {/* CTA */}
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: (navLinks.length + 1) * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="pt-4 sm:pt-6 mt-2"
+                  transition={{ delay: (navLinks.length + 1) * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="pt-6 sm:pt-8 mt-3"
                 >
                   <Link
                     href="/contact"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="group relative flex items-center justify-center gap-3 w-full min-h-[48px] bg-gradient-to-r from-[#2563EB] to-[#3B82F6] text-white px-6 py-4 rounded-2xl font-semibold text-base overflow-hidden hover:shadow-[0_12px_40px_rgba(37,99,235,0.4)] transition-all duration-300"
+                    className="group relative flex items-center justify-center gap-4 w-full min-h-[56px] bg-gradient-to-r from-[var(--gold-accent)] to-[var(--primary)] text-white px-8 py-4 rounded-2xl font-bold text-base overflow-hidden hover:shadow-[0_16px_48px_rgba(212,168,83,0.5)] transition-all duration-400"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#3B82F6] to-[#60A5FA] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <Sparkles size={18} className="relative z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)] to-[var(--gold-accent)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <Diamond size={20} className="relative z-10" />
                     <span className="relative z-10">Get Quote</span>
                   </Link>
                 </motion.div>
