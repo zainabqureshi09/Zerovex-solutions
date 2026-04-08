@@ -1,254 +1,215 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, ExternalLink, Filter } from 'lucide-react';
-import { FadeIn } from '@/components/animations/FadeIn';
+import { motion } from "framer-motion";
+import { ArrowRight, Tag } from "lucide-react";
+import Link from "next/link";
 
-const categories = ['All', 'Web Development', 'Web Applications', 'Mobile Apps', 'Design', 'AI & Automation'];
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5 },
+};
+
+const staggerContainer = {
+  whileInView: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+  viewport: { once: true },
+};
 
 const projects = [
   {
-    title: 'FinTech Dashboard',
-    category: 'Web Applications',
-    description: 'Real-time analytics platform for financial data visualization with interactive charts and AI-powered insights.',
-    gradient: 'from-[#2563EB] to-[#3B82F6]',
-    technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
-    metrics: { users: '10K+', performance: '99.9%', growth: '+250%' },
+    title: "FinTech Analytics Platform",
+    category: "SaaS Development",
+    description:
+      "Real-time financial analytics dashboard processing millions of transactions daily with predictive insights and automated reporting.",
+    tags: ["React", "Node.js", "PostgreSQL", "AWS"],
+    metrics: [
+      { label: "Daily Transactions", value: "2M+" },
+      { label: "Uptime", value: "99.99%" },
+      { label: "Load Time", value: "<1s" },
+    ],
   },
   {
-    title: 'LuxeShop E-Commerce',
-    category: 'Web Development',
-    description: 'Premium shopping experience with AI-powered product recommendations and seamless checkout flow.',
-    gradient: 'from-[#2563eb] to-[#3b82f6]',
-    technologies: ['Next.js', 'Stripe', 'Sanity CMS', 'Tailwind'],
-    metrics: { users: '50K+', performance: '98%', growth: '+340%' },
+    title: "Healthcare AI Assistant",
+    category: "AI Automation",
+    description:
+      "Intelligent patient management system reducing administrative workload by 60% while improving patient satisfaction scores.",
+    tags: ["Python", "TensorFlow", "FastAPI", "React"],
+    metrics: [
+      { label: "Admin Time Saved", value: "60%" },
+      { label: "Patient Satisfaction", value: "+35%" },
+      { label: "Accuracy", value: "97%" },
+    ],
   },
   {
-    title: 'FitTrack Pro',
-    category: 'Mobile Apps',
-    description: 'Cross-platform wellness tracker with IoT device integration and personalized health insights.',
-    gradient: 'from-[#8b5cf6] to-[#a78bfa]',
-    technologies: ['React Native', 'Firebase', 'HealthKit', 'ML Kit'],
-    metrics: { users: '100K+', performance: '4.8★', growth: '+180%' },
+    title: "E-Commerce Ecosystem",
+    category: "Web Development",
+    description:
+      "Multi-vendor platform handling 100K+ daily active users with real-time inventory, payments, and logistics integration.",
+    tags: ["Next.js", "Stripe", "Redis", "MongoDB"],
+    metrics: [
+      { label: "Daily Active Users", value: "100K+" },
+      { label: "Vendors", value: "5,000+" },
+      { label: "Conversion Rate", value: "+42%" },
+    ],
   },
   {
-    title: 'NovaTech Branding',
-    category: 'Design',
-    description: 'Complete visual identity system for a technology startup including logo, guidelines, and marketing assets.',
-    gradient: 'from-[#10b981] to-[#34d399]',
-    technologies: ['Figma', 'Illustrator', 'Photoshop', 'After Effects'],
-    metrics: { users: 'Full Brand', performance: '100%', growth: '+200%' },
+    title: "Manufacturing ERP System",
+    category: "Business Systems",
+    description:
+      "Comprehensive enterprise resource planning system streamlining production, inventory, and supply chain operations.",
+    tags: ["Angular", ".NET", "SQL Server", "Azure"],
+    metrics: [
+      { label: "Cost Reduction", value: "28%" },
+      { label: "Efficiency Gain", value: "45%" },
+      { label: "ROI Timeline", value: "6mo" },
+    ],
   },
   {
-    title: 'SmartAssist AI',
-    category: 'AI & Automation',
-    description: 'Intelligent customer service chatbot handling 10K+ daily interactions with 95% satisfaction rate.',
-    gradient: 'from-[#f59e0b] to-[#fbbf24]',
-    technologies: ['OpenAI', 'LangChain', 'Python', 'FastAPI'],
-    metrics: { users: '10K/day', performance: '95%', growth: '+400%' },
+    title: "Marketing Automation Suite",
+    category: "AI Automation",
+    description:
+      "AI-powered marketing platform with predictive customer segmentation, automated campaigns, and ROI optimization.",
+    tags: ["Python", "OpenAI", "React", "Snowflake"],
+    metrics: [
+      { label: "Campaign ROI", value: "+180%" },
+      { label: "Time Saved", value: "25hrs/wk" },
+      { label: "Leads Generated", value: "+220%" },
+    ],
   },
   {
-    title: 'StockFlow Inventory',
-    category: 'Web Applications',
-    description: 'Automated supply chain management system with real-time tracking and predictive analytics.',
-    gradient: 'from-[#ec4899] to-[#f472b6]',
-    technologies: ['Next.js', 'GraphQL', 'MongoDB', 'Redis'],
-    metrics: { users: '5K+', performance: '99.5%', growth: '+150%' },
-  },
-  {
-    title: 'HealthFirst Portal',
-    category: 'Web Development',
-    description: 'Healthcare patient portal with appointment scheduling, telemedicine, and medical records management.',
-    gradient: 'from-[#06b6d4] to-[#22d3ee]',
-    technologies: ['React', 'Express', 'MySQL', 'WebRTC'],
-    metrics: { users: '25K+', performance: '99.9%', growth: '+280%' },
-  },
-  {
-    title: 'RideConnect App',
-    category: 'Mobile Apps',
-    description: 'On-demand transportation app with real-time tracking, dynamic pricing, and driver matching algorithm.',
-    gradient: 'from-[#f97316] to-[#fb923c]',
-    technologies: ['Flutter', 'Google Maps', 'Stripe', 'Firebase'],
-    metrics: { users: '75K+', performance: '4.7★', growth: '+320%' },
-  },
-  {
-    title: 'AutoFlow BPA',
-    category: 'AI & Automation',
-    description: 'Business process automation platform eliminating 200+ hours of manual work monthly for enterprise clients.',
-    gradient: 'from-[#6366f1] to-[#818cf8]',
-    technologies: ['n8n', 'Python', 'Airtable', 'Custom APIs'],
-    metrics: { users: '500+', performance: '99%', growth: '+500%' },
+    title: "EdTech Learning Platform",
+    category: "SaaS Development",
+    description:
+      "Scalable online learning platform with adaptive curriculum, live classes, and AI-powered student progress tracking.",
+    tags: ["Next.js", "WebRTC", "PostgreSQL", "Docker"],
+    metrics: [
+      { label: "Active Students", value: "50K+" },
+      { label: "Course Completion", value: "+65%" },
+      { label: "NPS Score", value: "72" },
+    ],
   },
 ];
 
 export default function ProjectsPage() {
-  const [activeCategory, setActiveCategory] = useState('All');
-
-  const filteredProjects = projects.filter(
-    (project) => activeCategory === 'All' || project.category === activeCategory
-  );
-
   return (
-    <div className="relative overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[65vh] flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
-        <div className="absolute inset-0">
+    <div className="bg-white">
+      {/* Hero */}
+      <section className="bg-black text-white">
+        <div className="container-custom section-padding">
           <motion.div
-            animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
-            transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-[#2563eb]/15 rounded-full blur-[140px]"
-          />
-          <motion.div
-            animate={{ scale: [1.1, 1, 1.1], opacity: [0.12, 0.2, 0.12] }}
-            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-            className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-[#2563EB]/10 rounded-full blur-[140px]"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 0%, var(--bg-secondary) 70%)' }}></div>
-        </div>
-
-        <div className="container-custom mx-auto px-4 sm:px-6 relative z-10 text-center">
-          <FadeIn>
-            <span className="badge-accent mb-8 inline-flex">
-              <ExternalLink className="text-[#2563EB]" size={16} />
-              Our Portfolio
-            </span>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
-              Featured <span className="text-gradient">Projects</span>
-            </h1>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed px-4" style={{ color: 'var(--text-secondary)' }}>
-              A showcase of our most impactful digital transformations and creative
-              solutions that drove real business results.
+            initial={fadeInUp.initial}
+            animate={fadeInUp.whileInView}
+            className="mx-auto max-w-3xl"
+          >
+            <h1 className="heading-lg mb-6">Projects That Speak Results</h1>
+            <p className="text-body text-gray-300">
+              Explore how we&apos;ve helped businesses across industries achieve transformative
+              outcomes through innovative technology solutions.
             </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Filter Section */}
-      <section className="py-6 sm:py-10 sticky top-[80px] z-40 backdrop-blur-xl border-y" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}>
-        <div className="container-custom mx-auto px-4 sm:px-6">
-          <div className="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-hide">
-            <Filter size={18} style={{ color: 'var(--text-tertiary)' }} className="shrink-0" />
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${
-                  activeCategory === category
-                    ? 'bg-[#2563EB] shadow-[0_4px_20px_rgba(37,99,235,0.3)]'
-                    : 'glass-subtle hover:border-[#2563EB]/30'
-                }`}
-                style={activeCategory === category ? { color: '#ffffff' } : { color: 'var(--text-secondary)' }}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-        <div className="container-custom mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {filteredProjects.map((project, index) => (
-                <FadeIn key={project.title} delay={index * 0.05}>
-                  <div className="group card-premium overflow-hidden block">
-                    {/* Image Placeholder */}
-                    <div className={`h-60 bg-gradient-to-br ${project.gradient} relative overflow-hidden rounded-xl mb-6`}>
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
-                      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:40px_40px] opacity-40"></div>
-
-                      {/* Overlay on Hover */}
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <button className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300" style={{ color: 'var(--text-primary)' }}>
-                          View Details <ArrowUpRight size={16} />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <span className="text-[#2563EB] text-xs font-bold uppercase tracking-wider mb-3 block">
-                      {project.category}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-semibold mb-3 group-hover:text-[#2563EB] transition-colors duration-300 font-[var(--font-display)]">
-                      {project.title}
-                    </h3>
-                    <p style={{ color: 'var(--text-secondary)' }} className="text-sm sm:text-base leading-relaxed mb-5">
-                      {project.description}
-                    </p>
-
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {project.technologies.slice(0, 3).map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1.5 rounded-lg text-xs"
-                          style={{ backgroundColor: 'var(--bg-tertiary)', color: 'var(--text-secondary)' }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Metrics */}
-                    <div className="grid grid-cols-3 gap-4 pt-5 border-t" style={{ borderColor: 'var(--border-color)' }}>
-                      <div className="text-center">
-                        <div className="text-[#2563EB] font-bold text-sm mb-1">{project.metrics.users}</div>
-                        <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Users</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-[#2563EB] font-bold text-sm mb-1">{project.metrics.performance}</div>
-                        <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Uptime</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-[#2563EB] font-bold text-sm mb-1">{project.metrics.growth}</div>
-                        <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Growth</div>
-                      </div>
-                    </div>
+      <section className="section-padding">
+        <div className="container-custom">
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={staggerContainer.viewport}
+            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          >
+            {projects.map((project) => (
+              <motion.div
+                key={project.title}
+                variants={fadeInUp}
+                className="project-card"
+              >
+                <div className="border-b border-gray-200 bg-black p-6">
+                  <div className="mb-2 inline-block rounded-full bg-dark-red px-3 py-1 text-xs font-medium text-white">
+                    {project.category}
                   </div>
-                </FadeIn>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+                </div>
+
+                <div className="p-6">
+                  <h3 className="mb-2 text-xl font-semibold text-black">
+                    {project.title}
+                  </h3>
+                  <p className="mb-4 text-sm leading-relaxed text-gray-600">
+                    {project.description}
+                  </p>
+
+                  {/* Metrics */}
+                  <div className="mb-4 grid grid-cols-3 gap-2">
+                    {project.metrics.map((metric) => (
+                      <div
+                        key={metric.label}
+                        className="rounded bg-gray-50 p-2 text-center"
+                      >
+                        <div className="text-sm font-bold text-dark-red">
+                          {metric.value}
+                        </div>
+                        <div className="text-[10px] text-gray-500">
+                          {metric.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Tags */}
+                  <div className="mb-4 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center gap-1 rounded border border-gray-300 px-2 py-1 text-xs font-medium text-gray-700"
+                      >
+                        <Tag className="h-3 w-3" />
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center text-sm font-medium text-dark-red hover:underline"
+                  >
+                    Discuss Similar Project
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6" style={{ backgroundColor: 'var(--bg-tertiary)' }}>
-        <div className="container-custom mx-auto">
-          <FadeIn>
-            <div className="glass-strong rounded-[24px] sm:rounded-[32px] p-8 sm:p-12 md:p-16 lg:p-20 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"></div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 font-[var(--font-display)]">
-                Ready to Be Our Next <span className="text-gradient">Success Story</span>?
-              </h2>
-              <p className="text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-12 px-4" style={{ color: 'var(--text-secondary)' }}>
-                Let's discuss your project and create something extraordinary together.
-              </p>
-              <Link href="/contact" className="btn-primary text-sm sm:text-base px-8 sm:px-12 py-3 sm:py-5 inline-flex items-center gap-2.5 group">
-                Start Your Project <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </div>
-          </FadeIn>
+      {/* CTA */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <motion.div
+            initial={fadeInUp.initial}
+            whileInView={fadeInUp.whileInView}
+            viewport={fadeInUp.viewport}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <h2 className="heading-lg mb-4">Have a Project in Mind?</h2>
+            <p className="text-body mb-8 text-gray-600">
+              Let&apos;s discuss how we can bring your vision to life with the same level of
+              excellence and attention to detail.
+            </p>
+            <Link href="/contact" className="btn-primary">
+              Start a Conversation
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>
   );
 }
-
-

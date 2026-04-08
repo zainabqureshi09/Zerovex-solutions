@@ -1,118 +1,50 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import type { Metadata } from "next";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { StructuredData } from "@/components/StructuredData";
-import { ThemeProvider } from "@/context/ThemeContext";
-import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
+  variable: "--font-sans",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--space-grotesk",
-  display: "swap",
+  variable: "--font-serif",
 });
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-  ],
-  colorScheme: "dark light",
-};
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://zerovexsolutions.site"),
   title: {
-    default: "Zerovex Solutions | Premium Digital Agency & Technology Partner",
+    default: "Zerovex Solutions | AI Automation & Software Development",
     template: "%s | Zerovex Solutions",
   },
-  description:
-    "Zerovex Solutions is a premium digital agency specializing in custom web development, mobile app development, AI automation, UI/UX design, and business process automation. We build powerful digital experiences that drive measurable growth for modern businesses.",
-  keywords: [
-    "web development agency",
-    "custom software development",
-    "mobile app development",
-    "AI automation services",
-    "UI/UX design agency",
-    "business process automation",
-    "digital transformation",
-    "technology consulting",
-    "Zerovex Solutions",
-    "premium digital agency",
-  ],
-  authors: [{ name: "Zerovex Solutions", url: "https://zerovexsolutions.site" }],
+  description: "Transform your business with AI automation, custom software development, and scalable SaaS solutions. Building tomorrow's technology today.",
+  keywords: ["AI automation", "software development", "SaaS development", "web development", "business automation"],
+  authors: [{ name: "Zerovex Solutions" }],
   creator: "Zerovex Solutions",
   publisher: "Zerovex Solutions",
-  alternates: {
-    canonical: "https://zerovexsolutions.site",
-  },
-  category: "Technology",
-  classification: "Digital Agency",
+  metadataBase: new URL("https://zerovexsolutions.site"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://zerovexsolutions.site",
+    title: "Zerovex Solutions | AI Automation & Software Development",
+    description: "Transform your business with AI automation, custom software development, and scalable SaaS solutions.",
     siteName: "Zerovex Solutions",
-    title: "Zerovex Solutions | Premium Digital Agency & Technology Partner",
-    description:
-      "Premium digital agency specializing in custom web development, mobile apps, AI automation, and UI/UX design. Building powerful digital experiences.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Zerovex Solutions - Premium Digital Agency",
-        type: "image/jpeg",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zerovex Solutions | Premium Digital Agency",
-    description:
-      "Premium digital agency specializing in web development, mobile apps, AI automation, and UI/UX design.",
-    creator: "@zerovexsolutions",
-    images: ["/twitter-image.jpg"],
+    title: "Zerovex Solutions | AI Automation & Software Development",
+    description: "Transform your business with AI automation, custom software development, and scalable SaaS solutions.",
   },
   robots: {
     index: true,
     follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: 'google.com, pub-9242974125438337, DIRECT, f08c47fec0942fa0',
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Zerovex Solutions",
-  },
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+    icon: "/favicon.svg",
   },
 };
 
@@ -122,22 +54,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col antialiased transition-colors duration-500" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         <ThemeProvider>
-          <StructuredData />
-          <Navbar />
-          <div className="flex-grow">{children}</div>
-          <Footer />
+          <div className="relative flex min-h-screen flex-col transition-colors duration-300">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
         </ThemeProvider>
-
-        {/* Google AdSense */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9242974125438337"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

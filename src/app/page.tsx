@@ -1,678 +1,841 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
+  ArrowRight,
   Brain,
-  Workflow,
-  Monitor,
-  ChevronRight,
+  Globe,
+  Layers,
+  Settings,
+  CheckCircle,
   Zap,
   Shield,
-  Rocket,
-  Layers,
-  Cpu,
-  Star,
-  ArrowRight,
-  ArrowUpRight,
-  CheckCircle2,
   TrendingUp,
   Users,
-  Award,
-  Globe,
-  Sparkles,
-  Target,
-  Search,
-  PenTool,
-  Terminal,
-  Cloud,
-  MessageSquare,
-  Calendar,
+  Star,
   ExternalLink,
-  Diamond,
-  Crown,
-} from 'lucide-react';
-import { FadeIn } from '@/components/animations/FadeIn';
+} from "lucide-react";
 
-// Services
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5 },
+};
+
+const staggerContainer = {
+  whileInView: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+  viewport: { once: true },
+};
+
 const services = [
   {
     icon: Brain,
-    title: 'AI Automation',
-    description: 'Intelligent systems that eliminate repetitive tasks and scale operations 24/7.',
-    href: '/services#ai-automation',
+    title: "AI Automation",
+    description:
+      "We build intelligent automation systems that reduce manual work and improve business efficiency.",
   },
   {
-    icon: Terminal,
-    title: 'Web Applications',
-    description: 'Scalable, secure applications built with modern frameworks and cloud architecture.',
-    href: '/services#web-applications',
-  },
-  {
-    icon: Cloud,
-    title: 'SaaS Development',
-    description: 'End-to-end platforms with multi-tenancy, billing, and enterprise security.',
-    href: '/services#saas-development',
-  },
-  {
-    icon: Workflow,
-    title: 'API Integration',
-    description: 'Seamless third-party integrations and custom API development.',
-    href: '/services#api-integration',
-  },
-  {
-    icon: Monitor,
-    title: 'Business Systems',
-    description: 'Custom automation that streamlines workflows and reduces manual effort.',
-    href: '/services#process-automation',
-  },
-  {
-    icon: Sparkles,
-    title: 'Web Development',
-    description: 'High-converting websites that captivate audiences and drive results.',
-    href: '/services#web-development',
-  },
-];
-
-// Clients
-const clients = [
-  { name: 'TechCorp', initials: 'TC' },
-  { name: 'DataFlow', initials: 'DF' },
-  { name: 'CloudSync', initials: 'CS' },
-  { name: 'AI Labs', initials: 'AI' },
-  { name: 'NetScale', initials: 'NS' },
-  { name: 'Quantum', initials: 'QT' },
-];
-
-// Projects
-const projects = [
-  {
-    title: 'AI Automation Dashboard',
-    category: 'AI & Automation',
-    description: 'Real-time analytics and workflow management for enterprise operations.',
-    gradient: 'from-[#d4a853] to-[#1e40af]',
-    metrics: '40% Efficiency Gain',
-  },
-  {
-    title: 'CloudSync SaaS Platform',
-    category: 'SaaS',
-    description: 'Multi-tenant cloud platform with subscription management and analytics.',
-    gradient: 'from-[#1e40af] to-[#7c3aed]',
-    metrics: '10K+ Users',
-  },
-  {
-    title: 'Trading Web Application',
-    category: 'Web App',
-    description: 'High-performance trading platform with real-time market data.',
-    gradient: 'from-[#7c3aed] to-[#d4a853]',
-    metrics: '<50ms Latency',
-  },
-  {
-    title: 'Business Portal',
-    category: 'Website',
-    description: 'Modern business website with CMS and lead generation features.',
-    gradient: 'from-[#d4a853] to-[#1e40af]',
-    metrics: '340% More Leads',
-  },
-];
-
-// Process
-const processSteps = [
-  {
-    step: '01',
-    title: 'Discovery',
-    description: 'We analyze your business needs, technical requirements, and growth objectives.',
-    icon: Search,
-  },
-  {
-    step: '02',
-    title: 'Planning',
-    description: 'Strategic roadmap with clear milestones, timelines, and deliverables.',
-    icon: PenTool,
-  },
-  {
-    step: '03',
-    title: 'Development',
-    description: 'Agile development with continuous feedback and transparent communication.',
-    icon: Cpu,
-  },
-  {
-    step: '04',
-    title: 'Deployment',
-    description: 'Seamless launch with monitoring, optimization, and ongoing support.',
-    icon: Rocket,
-  },
-];
-
-// Why Choose
-const whyChoose = [
-  {
-    icon: Zap,
-    title: 'Fast Development',
-    description: 'Rapid delivery through agile methodologies without compromising quality.',
-    stat: '2x',
-    statLabel: 'Faster Delivery',
-  },
-  {
-    icon: Cpu,
-    title: 'Modern Stack',
-    description: 'Cutting-edge technologies optimized for performance and scalability.',
-    stat: '15+',
-    statLabel: 'Technologies',
+    icon: Globe,
+    title: "Web Development",
+    description:
+      "Modern, responsive, and high-performance websites built with the latest technologies.",
   },
   {
     icon: Layers,
-    title: 'Scalable Systems',
-    description: 'Architecture designed to grow seamlessly with your business needs.',
-    stat: '100K+',
-    statLabel: 'Users Supported',
+    title: "SaaS Development",
+    description:
+      "Custom SaaS platforms designed to scale your business and manage operations efficiently.",
+  },
+  {
+    icon: Settings,
+    title: "Business Automation",
+    description:
+      "Automation tools and systems that streamline workflows and improve productivity.",
+  },
+];
+
+const reasons = [
+  {
+    icon: Zap,
+    title: "Modern Technology",
+    description: "We use the latest technologies to deliver high-quality software and automation solutions.",
   },
   {
     icon: Brain,
-    title: 'AI Integration',
-    description: 'Intelligent automation that reduces costs and maximizes efficiency.',
-    stat: '60%',
-    statLabel: 'Cost Reduction',
+    title: "AI Expertise",
+    description: "Intelligent automation systems powered by AI to optimize your business processes.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Fast Development",
+    description: "Rapid project delivery without compromising quality.",
+  },
+  {
+    icon: Users,
+    title: "Global Clients",
+    description: "Trusted by businesses across multiple industries and countries.",
   },
 ];
 
-// Testimonials
+const projects = [
+  {
+    title: "AI Business Automation System",
+    category: "AI",
+    description:
+      "Automation system designed to streamline business workflows and reduce manual tasks.",
+    tags: ["AI", "Python", "Automation"],
+    gradient: "from-gray-800 to-black",
+  },
+  {
+    title: "Modern Corporate Website",
+    category: "Web",
+    description:
+      "High-performance responsive website built for a growing business.",
+    tags: ["Next.js", "React", "Tailwind"],
+    gradient: "from-gray-700 to-gray-900",
+  },
+  {
+    title: "SaaS Management Platform",
+    category: "SaaS",
+    description:
+      "Custom SaaS platform built for managing clients, data, and operations.",
+    tags: ["SaaS", "Node.js", "PostgreSQL"],
+    gradient: "from-gray-800 to-gray-950",
+  },
+  {
+    title: "AI Data Processing Tool",
+    category: "AI",
+    description:
+      "Tool that uses AI to analyze and process large datasets efficiently.",
+    tags: ["AI", "Data", "Machine Learning"],
+    gradient: "from-gray-900 to-black",
+  },
+  {
+    title: "E-Commerce Automation Platform",
+    category: "Automation",
+    description:
+      "End-to-end e-commerce solution with automated inventory and order management.",
+    tags: ["Automation", "E-Commerce", "API"],
+    gradient: "from-gray-700 to-gray-800",
+  },
+  {
+    title: "Client Portal Dashboard",
+    category: "SaaS",
+    description:
+      "Centralized dashboard for client management, reporting, and communication.",
+    tags: ["React", "SaaS", "Dashboard"],
+    gradient: "from-gray-800 to-gray-900",
+  },
+];
+
 const testimonials = [
   {
-    name: 'Sarah Chen',
-    role: 'CEO',
-    company: 'TechVenture',
-    content: 'Zerovex transformed our entire digital infrastructure. Their AI automation saved us over 200 hours per month.',
-    rating: 5,
-    avatar: 'SC',
+    quote: "Zerovex Solutions transformed our business processes with their AI automation system. Highly recommended!",
+    author: "John Smith",
+    role: "CEO, TechCorp",
   },
   {
-    name: 'Marcus Johnson',
-    role: 'CTO',
-    company: 'DataFlow Inc',
-    content: 'The SaaS platform handles 10x our previous traffic with better performance. Exceptional technical expertise.',
-    rating: 5,
-    avatar: 'MJ',
+    quote: "The team delivered our SaaS platform on time with excellent quality. Professional and reliable.",
+    author: "Maria Lopez",
+    role: "Founder, InnovateX",
   },
   {
-    name: 'Elena Rodriguez',
-    role: 'Founder',
-    company: 'StyleHouse',
-    content: 'Our conversion rate increased by 340% within the first quarter. Outstanding attention to detail.',
-    rating: 5,
-    avatar: 'ER',
+    quote: "Working with Zerovex was a pleasure. Their expertise in modern software development is unmatched.",
+    author: "Ahmed Khan",
+    role: "CTO, GlobalBiz",
+  },
+  {
+    quote: "Outstanding work on our web application. The attention to detail and user experience was exceptional.",
+    author: "Sarah Chen",
+    role: "Director, DataFlow Inc",
+  },
+  {
+    quote: "Zerovex helped us automate our entire workflow. The efficiency gains were immediate and significant.",
+    author: "David Park",
+    role: "Operations Manager, ScaleUp",
   },
 ];
 
-// Team
-const teamMembers = [
-  { name: 'Alex Rivera', role: 'Founder & CEO', avatar: 'AR' },
-  { name: 'Sarah Kim', role: 'Lead Engineer', avatar: 'SK' },
-  { name: 'David Park', role: 'AI Specialist', avatar: 'DP' },
-  { name: 'Lisa Chen', role: 'UX Designer', avatar: 'LC' },
-];
+const categories = ["All", "AI", "Web", "SaaS", "Automation"];
 
-export default function HomePage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] });
-  const heroY = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
+type Project = {
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  gradient: string;
+};
+
+type Testimonial = {
+  quote: string;
+  author: string;
+  role: string;
+};
+
+function ProjectGrid({ projects }: { projects: Project[] }) {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <div ref={containerRef} className="relative overflow-hidden bg-[var(--bg-primary)]">
-      {/* Luxury background pattern */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(212,168,83,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(212,168,83,0.015)_1px,transparent_1px)] bg-[size:80px_80px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,168,83,0.03)_0%,transparent_70%)]" />
+    <div>
+      {/* Filter Buttons */}
+      <div className="mb-10 flex flex-wrap justify-center gap-3">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setActiveCategory(category)}
+            className={`rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-200 ${
+              activeCategory === category
+                ? "bg-dark-red text-white shadow-md"
+                : "bg-white text-gray-700 shadow-sm hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
       </div>
 
-      {/* ===================== LUXURY HERO ===================== */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Sophisticated background effects */}
-        <div className="absolute inset-0 pointer-events-none">
+      {/* Projects Grid */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeCategory}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ y: -6 }}
+              className="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:border-dark-red/30 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900"
+            >
+              {/* Project Image / Thumbnail */}
+              <div className={`relative h-48 bg-gradient-to-br ${project.gradient} p-6`}>
+                {/* Category Badge */}
+                <div className="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
+                  {project.category}
+                </div>
+
+                {/* Abstract Visual */}
+                <div className="flex h-full items-center justify-center">
+                  <div className="grid grid-cols-3 gap-2 opacity-30">
+                    {Array.from({ length: 9 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="h-8 w-8 rounded bg-white/20"
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="mb-2 text-lg font-semibold text-black dark:text-white">
+                  {project.title}
+                </h3>
+                <p className="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div className="mb-4 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded border border-gray-200 bg-gray-50 px-2.5 py-1 text-xs font-medium text-gray-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Button */}
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-dark-red transition-colors hover:text-dark-red-dark"
+                >
+                  View Project
+                  <ExternalLink className="h-4 w-4" />
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
+function TestimonialCarousel({ testimonials }: { testimonials: Testimonial[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const visibleCount = typeof window !== "undefined" && window.innerWidth >= 1024 ? 3 : 1;
+  const maxIndex = Math.max(0, testimonials.length - visibleCount);
+
+  const next = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+  };
+
+  const prev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  return (
+    <div>
+      {/* Testimonials Grid with Animation */}
+      <div className="overflow-hidden">
+        <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.15, 0.08] }}
-            transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -top-40 -left-40 w-[800px] h-[800px] bg-[#d4a853]/15 rounded-full blur-[160px]"
-          />
-          <motion.div
-            animate={{ scale: [1.2, 1, 1.2], opacity: [0.06, 0.12, 0.06] }}
-            transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut', delay: 8 }}
-            className="absolute -bottom-40 -right-40 w-[700px] h-[700px] bg-[#1e40af]/12 rounded-full blur-[160px]"
-          />
-          <motion.div
-            animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
-            transition={{ duration: 30, repeat: Infinity, ease: 'easeInOut', delay: 12 }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7c3aed]/10 rounded-full blur-[140px]"
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,transparent,var(--bg-primary))]" />
+            key={currentIndex}
+            custom={direction}
+            initial={{ opacity: 0, x: direction * 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -50 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          >
+            {testimonials.slice(currentIndex, currentIndex + visibleCount).map((testimonial, index) => (
+              <motion.div
+                key={testimonial.author + index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-dark-red/30 hover:shadow-md"
+              >
+                {/* Top Accent Line */}
+                <div className="absolute left-0 top-0 h-1 w-12 bg-dark-red" />
+
+                {/* Stars */}
+                <div className="mb-4 flex gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-dark-red text-dark-red" />
+                  ))}
+                </div>
+
+                <blockquote className="mb-6 text-base leading-relaxed text-gray-700">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </blockquote>
+
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-gray-100 to-gray-200 text-lg font-semibold text-dark-red">
+                    {testimonial.author[0]}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-black">{testimonial.author}</div>
+                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Navigation Controls */}
+      <div className="mt-8 flex items-center justify-center gap-4">
+        <button
+          onClick={prev}
+          disabled={currentIndex === 0}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-gray-700 transition-all hover:border-dark-red hover:bg-dark-red hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+          aria-label="Previous testimonials"
+        >
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        {/* Dots Indicator */}
+        <div className="flex gap-2">
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                setDirection(i > currentIndex ? 1 : -1);
+                setCurrentIndex(i);
+              }}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === currentIndex ? "w-8 bg-dark-red" : "w-2 bg-gray-300 hover:bg-gray-400"
+              }`}
+              aria-label={`Go to testimonial group ${i + 1}`}
+            />
+          ))}
         </div>
 
-        {/* Content */}
-        <motion.div
-          style={{ y: heroY }}
-          className="relative z-10 max-w-5xl mx-auto px-6 text-center py-40"
+        <button
+          onClick={next}
+          disabled={currentIndex >= maxIndex}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-gray-700 transition-all hover:border-dark-red hover:bg-dark-red hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+          aria-label="Next testimonials"
         >
-          {/* Luxury Badge */}
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <div className="bg-white transition-colors duration-300 dark:bg-black">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-black text-white">
+        {/* Subtle Background Elements */}
+        <div className="pointer-events-none absolute inset-0">
+          {/* Grid Pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)`,
+              backgroundSize: "60px 60px",
+            }}
+          />
+          {/* Gradient Orb */}
+          <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-dark-red/20 to-transparent blur-3xl" />
+          {/* Subtle Red Accent */}
+          <div className="absolute bottom-0 left-0 h-1 w-32 bg-dark-red" />
+        </div>
+
+        <div className="container-custom relative z-10 py-20 md:py-28 lg:py-32">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="mb-6 inline-flex items-center gap-2 rounded-full border border-dark-red/50 bg-dark-red/10 px-4 py-2 text-sm font-medium text-gray-300"
+              >
+                <div className="h-2 w-2 rounded-full bg-dark-red" />
+                AI & Software Innovation
+              </motion.div>
+
+              <h1 className="heading-xl mb-6 leading-tight">
+                AI Automation & Modern Software Solutions for Growing Businesses
+              </h1>
+              
+              <p className="text-body mb-10 max-w-xl text-gray-400">
+                We build intelligent automation systems, modern websites, and powerful software that help businesses grow faster.
+              </p>
+              
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Link
+                  href="/contact"
+                  className="btn-primary group"
+                >
+                  Start a Project
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="btn-secondary-white"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="relative hidden lg:block"
+            >
+              <div className="relative">
+                {/* Main Visual Container */}
+                <div className="relative rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900 to-black p-8 shadow-2xl">
+                  {/* Abstract Tech Visual */}
+                  <div className="relative aspect-square">
+                    {/* Central Circle */}
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                      className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-dark-red to-dark-red-dark shadow-lg shadow-dark-red/30"
+                    >
+                      <div className="flex h-full w-full items-center justify-center">
+                        <div className="text-center">
+                          <div className="text-3xl font-bold text-white">Z</div>
+                          <div className="mt-1 text-xs text-gray-400">Zerovex</div>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Orbiting Elements */}
+                    {[
+                      { angle: 0, icon: "AI", delay: 0.5 },
+                      { angle: 60, icon: "Web", delay: 0.6 },
+                      { angle: 120, icon: "SaaS", delay: 0.7 },
+                      { angle: 180, icon: "Auto", delay: 0.8 },
+                      { angle: 240, icon: "Cloud", delay: 0.9 },
+                      { angle: 300, icon: "Data", delay: 1.0 },
+                    ].map((item, index) => {
+                      const angle = (item.angle * Math.PI) / 180;
+                      const radius = 120;
+                      const x = Math.cos(angle) * radius;
+                      const y = Math.sin(angle) * radius;
+                      
+                      return (
+                        <motion.div
+                          key={item.angle}
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.4, delay: item.delay }}
+                          className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-gray-700 bg-gray-800/80 backdrop-blur-sm"
+                          style={{
+                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                          }}
+                        >
+                          <div className="flex h-full w-full items-center justify-center text-xs font-medium text-gray-300">
+                            {item.icon}
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+
+                    {/* Connection Lines */}
+                    <svg className="absolute inset-0 h-full w-full opacity-20">
+                      {[0, 60, 120, 180, 240, 300].map((angle) => {
+                        const rad = (angle * Math.PI) / 180;
+                        const radius = 120;
+                        const x = Math.cos(rad) * radius;
+                        const y = Math.sin(rad) * radius;
+                        
+                        return (
+                          <line
+                            key={angle}
+                            x1="50%"
+                            y1="50%"
+                            x2={`calc(50% + ${x}px)`}
+                            y2={`calc(50% + ${y}px)`}
+                            stroke="#8B0000"
+                            strokeWidth="1"
+                          />
+                        );
+                      })}
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Floating Stats Cards */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.1, duration: 0.5 }}
+                  className="absolute -bottom-6 -left-6 rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 shadow-xl"
+                >
+                  <div className="text-2xl font-bold text-white">150+</div>
+                  <div className="text-xs text-gray-400">Projects Delivered</div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.3, duration: 0.5 }}
+                  className="absolute -right-6 -top-6 rounded-lg border border-dark-red/30 bg-dark-red/10 px-4 py-3 shadow-xl backdrop-blur-sm"
+                >
+                  <div className="text-2xl font-bold text-white">98%</div>
+                  <div className="text-xs text-gray-400">Client Satisfaction</div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Stats Bar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[var(--gold-accent)]/30 bg-[var(--gold-accent)]/5 mb-10 backdrop-blur-sm"
-          >
-            <Diamond size={12} className="text-[var(--gold-accent)]" />
-            <span className="text-xs font-semibold text-[var(--gold-accent)] uppercase tracking-[0.15em]">Premium Digital Agency</span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            className="mb-8"
-          >
-            <span className="block text-[var(--text-primary)]">Automating Your Business.</span>
-            <span className="block text-gradient-premium">Empowering Your Growth.</span>
-          </motion.h1>
-
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-12 leading-relaxed"
-          >
-            We craft AI automation, SaaS platforms, and premium digital experiences that transform how businesses operate and scale globally.
-          </motion.p>
-
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-20"
-          >
-            <Link href="/contact" className="btn-primary group">
-              Get Started
-              <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-            <Link href="/contact" className="btn-secondary group">
-              <Calendar size={18} />
-              Book Consultation
-            </Link>
-          </motion.div>
-
-          {/* Trust indicators - Luxury version */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-            className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6"
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mt-16 grid grid-cols-2 gap-8 border-t border-gray-800 pt-12 md:grid-cols-4"
           >
             {[
-              { value: '150+', label: 'Projects Delivered' },
-              { value: '50+', label: 'Global Clients' },
-              { value: '99%', label: 'Client Satisfaction' },
-              { value: '5+', label: 'Years Excellence' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center group">
-                <div className="text-3xl font-bold text-gradient-gold mb-1">{stat.value}</div>
-                <div className="text-xs text-[var(--text-tertiary)] uppercase tracking-wider group-hover:text-[var(--gold-accent)] transition-colors">{stat.label}</div>
+              { value: "150+", label: "Projects Delivered" },
+              { value: "50+", label: "Global Clients" },
+              { value: "98%", label: "Client Satisfaction" },
+              { value: "24/7", label: "Support" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="mb-2 text-3xl font-bold text-white md:text-4xl">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-400">{stat.label}</div>
               </div>
             ))}
           </motion.div>
-        </motion.div>
-
-        {/* Luxury scroll indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 3, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
-        >
-          <div className="w-7 h-12 rounded-full border border-[var(--gold-accent)]/30 flex items-start justify-center p-2 backdrop-blur-sm">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="w-1.5 h-1.5 bg-[var(--gold-accent)] rounded-full"
-            />
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ===================== CLIENTS ===================== */}
-      <section className="py-20 border-t border-b border-[var(--border-color)] bg-[var(--bg-secondary)]/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs text-[var(--text-muted)] uppercase tracking-[0.2em] mb-12">
-            Trusted by Innovative Companies Worldwide
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
-            {clients.map((client, i) => (
-              <FadeIn key={i} delay={i * 0.06}>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center justify-center h-16 rounded-xl border border-[var(--border-color)] bg-[var(--surface-card)] hover:border-[var(--gold-accent)]/30 transition-all duration-300 cursor-default backdrop-blur-sm"
-                >
-                  <div className="flex items-center gap-2.5 px-4">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--gold-accent)]/20 to-[var(--primary)]/20 flex items-center justify-center">
-                      <span className="text-[11px] font-bold text-gradient">{client.initials}</span>
-                    </div>
-                    <span className="text-xs font-medium text-[var(--text-tertiary)] hidden sm:block">{client.name}</span>
-                  </div>
-                </motion.div>
-              </FadeIn>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* ===================== SERVICES ===================== */}
-      <section className="py-28">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25 mb-6">
-              <Zap size={14} />
-              Our Services
-            </span>
-            <h2 className="mb-5">
-              <span className="text-[var(--text-primary)]">What We </span>
-              <span className="text-gradient-gold">Do</span>
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
-              End-to-end solutions that transform how you operate and grow.
+      {/* Services Section */}
+      <section className="section-padding bg-white transition-colors dark:bg-black">
+        <div className="container-custom">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto mb-16 max-w-3xl text-center"
+          >
+            <h2 className="heading-lg mb-4 text-black dark:text-white">Our Services</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              We provide modern software and AI-powered solutions that help businesses automate processes and grow faster.
             </p>
-          </FadeIn>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {services.map((service, i) => (
-              <FadeIn key={i} delay={i * 0.08}>
-                <Link href={service.href} className="group card-premium block">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--gold-accent)]/15 to-[var(--primary)]/15 flex items-center justify-center mb-5 group-hover:from-[var(--gold-accent)]/25 group-hover:to-[var(--primary)]/25 transition-all duration-400">
-                    <service.icon size={24} className="text-[var(--gold-accent)]" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-3 group-hover:text-[var(--gold-accent)] transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-5">
-                    {service.description}
-                  </p>
-                  <div className="flex items-center text-[var(--gold-accent)] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    Learn more <ChevronRight size={16} className="ml-1" />
-                  </div>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Services Grid */}
+          <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-dark-red/30 hover:shadow-lg"
+              >
+                {/* Top Accent Line */}
+                <div className="absolute left-0 top-0 h-1 w-0 bg-dark-red transition-all duration-300 group-hover:w-full" />
 
-      {/* ===================== PROJECTS ===================== */}
-      <section className="py-28 bg-[var(--bg-secondary)]/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--primary)]/10 text-[var(--primary-light)] border border-[var(--primary)]/25 mb-6">
-              <TrendingUp size={14} />
-              Portfolio
-            </span>
-            <h2 className="mb-5">
-              <span className="text-[var(--text-primary)]">Featured </span>
-              <span className="text-gradient">Projects</span>
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
-              Real results for real businesses.
-            </p>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-            {projects.map((project, i) => (
-              <FadeIn key={i} delay={i * 0.12}>
-                <Link href="/projects" className="group card-premium block overflow-hidden">
-                  <div className={`h-56 bg-gradient-to-br ${project.gradient} relative overflow-hidden mb-6`}>
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:28px_28px]" />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
-                      <motion.span
-                        initial={{ opacity: 0, y: 10 }}
-                        whileHover={{ opacity: 1, y: 0 }}
-                        className="opacity-0 group-hover:opacity-100 transition-all duration-400 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white text-sm font-semibold"
-                      >
-                        View Project <ArrowUpRight size={16} />
-                      </motion.span>
+                <div className="flex gap-6">
+                  {/* Icon */}
+                  <div className="flex-shrink-0">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-red-50 text-dark-red transition-colors duration-300 group-hover:bg-dark-red group-hover:text-white">
+                      <service.icon className="h-7 w-7" />
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[var(--gold-accent)]">{project.category}</span>
-                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25">{project.metrics}</span>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="mb-3 text-xl font-semibold text-black">
+                      {service.title}
+                    </h3>
+                    <p className="leading-relaxed text-gray-600">
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--gold-accent)] transition-colors">{project.title}</h3>
-                  <p className="text-sm text-[var(--text-secondary)]">{project.description}</p>
-                </Link>
-              </FadeIn>
+                </div>
+              </motion.div>
             ))}
           </div>
 
-          <FadeIn className="text-center mt-14">
-            <Link href="/projects" className="btn-secondary group">
-              View All Projects
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-12 text-center"
+          >
+            <Link href="/services" className="btn-primary inline-flex">
+              View All Services
+              <ArrowRight className="h-5 w-5" />
             </Link>
-          </FadeIn>
+          </motion.div>
         </div>
       </section>
 
-      {/* ===================== PROCESS ===================== */}
-      <section className="py-28">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--primary)]/10 text-[var(--primary-light)] border border-[var(--primary)]/25 mb-6">
-              <Layers size={14} />
-              Our Process
-            </span>
-            <h2 className="mb-5">
-              <span className="text-[var(--text-primary)]">How We </span>
-              <span className="text-gradient-gold">Work</span>
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
-              A proven methodology refined over hundreds of projects.
-            </p>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
-            {processSteps.map((step, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="relative card-premium text-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[var(--gold-accent)] to-[var(--primary)] flex items-center justify-center mx-auto mb-5 shadow-lg">
-                    <step.icon size={24} className="text-white" />
-                  </div>
-                  <div className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[var(--gold-accent)]/20 flex items-center justify-center border border-[var(--gold-accent)]/30">
-                    <span className="text-xs font-bold text-[var(--gold-accent)]">{step.step}</span>
-                  </div>
-                  <h3 className="text-base font-semibold text-[var(--text-primary)] mb-3">{step.title}</h3>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{step.description}</p>
-                  {i < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2">
-                      <ChevronRight size={20} className="text-[var(--gold-accent)]/40" />
-                    </div>
-                  )}
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+      {/* Why Choose Zerovex */}
+      <section className="relative section-padding overflow-hidden bg-white transition-colors dark:bg-black">
+        {/* Subtle Background Pattern */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-40 top-20 h-72 w-72 rounded-full bg-red-50 opacity-60 blur-3xl" />
+          <div className="absolute -right-40 bottom-20 h-96 w-96 rounded-full bg-red-50 opacity-40 blur-3xl" />
         </div>
-      </section>
 
-      {/* ===================== WHY CHOOSE ===================== */}
-      <section className="py-28 bg-[var(--bg-secondary)]/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25 mb-6">
-              <Crown size={14} />
-              Why Zerovex
-            </span>
-            <h2 className="mb-5">
-              <span className="text-[var(--text-primary)]">Built for </span>
-              <span className="text-gradient-gold">Excellence</span>
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
-              Technical expertise and creative vision that exceed expectations.
+        <div className="container-custom relative z-10">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto mb-16 max-w-3xl text-center"
+          >
+            <h2 className="heading-lg mb-4 text-black">Why Choose Zerovex</h2>
+            <p className="text-lg text-gray-600">
+              Discover why businesses rely on Zerovex Solutions for modern software and AI automation.
             </p>
-          </FadeIn>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
-            {whyChoose.map((item, i) => (
-              <FadeIn key={i} delay={i * 0.08}>
-                <div className="group card-premium">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--gold-accent)]/15 to-[var(--primary)]/15 flex items-center justify-center mb-5 group-hover:from-[var(--gold-accent)]/25 group-hover:to-[var(--primary)]/25 transition-all duration-400">
-                    <item.icon size={24} className="text-[var(--gold-accent)]" />
-                  </div>
-                  <h3 className="text-base font-semibold text-[var(--text-primary)] mb-3">{item.title}</h3>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-5">{item.description}</p>
-                  <div className="pt-5 border-t border-[var(--border-color)]">
-                    <div className="text-2xl font-bold text-gradient-gold mb-1">{item.stat}</div>
-                    <div className="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-wider">{item.statLabel}</div>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Features Grid */}
+          <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+            {reasons.map((reason, index) => (
+              <motion.div
+                key={reason.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-dark-red/30 hover:shadow-lg"
+              >
+                {/* Left Accent Line */}
+                <div className="absolute bottom-0 left-0 top-0 w-1 bg-dark-red opacity-0 transition-all duration-300 group-hover:opacity-100" />
 
-      {/* ===================== TESTIMONIALS ===================== */}
-      <section className="py-28">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25 mb-6">
-              <Star size={14} />
-              Testimonials
-            </span>
-            <h2 className="mb-5">
-              <span className="text-[var(--text-primary)]">Client </span>
-              <span className="text-gradient-gold">Stories</span>
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
-              Hear from businesses we've helped transform.
-            </p>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {testimonials.map((t, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="card-premium flex flex-col h-full">
-                  <div className="flex gap-1.5 mb-5">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} size={16} className="text-[var(--gold-accent)] fill-[var(--gold-accent)]" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6 flex-grow italic">"{t.content}"</p>
-                  <div className="flex items-center gap-4 pt-5 border-t border-[var(--border-color)]">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--gold-accent)] to-[var(--primary)] flex items-center justify-center text-white text-sm font-bold shrink-0 shadow-lg">
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-[var(--text-primary)]">{t.name}</div>
-                      <div className="text-xs text-[var(--text-tertiary)]">{t.role}, {t.company}</div>
+                <div className="flex gap-6">
+                  {/* Icon */}
+                  <div className="flex-shrink-0">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-red-50 text-dark-red transition-all duration-300 group-hover:bg-dark-red group-hover:text-white">
+                      <reason.icon className="h-7 w-7" />
                     </div>
                   </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="mb-3 text-xl font-semibold text-black">
+                      {reason.title}
+                    </h3>
+                    <p className="leading-relaxed text-gray-600">
+                      {reason.description}
+                    </p>
+                  </div>
                 </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== TEAM ===================== */}
-      <section className="py-28 bg-[var(--bg-secondary)]/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--primary)]/10 text-[var(--primary-light)] border border-[var(--primary)]/25 mb-6">
-              <Users size={14} />
-              Our Team
-            </span>
-            <h2 className="mb-5">
-              <span className="text-[var(--text-primary)]">Meet the </span>
-              <span className="text-gradient">Experts</span>
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto">
-              Talented professionals driving innovation and delivering results.
-            </p>
-          </FadeIn>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-7">
-            {teamMembers.map((member, i) => (
-              <FadeIn key={i} delay={i * 0.08}>
-                <Link href="/team" className="group card-premium block text-center">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[var(--gold-accent)] to-[var(--primary)] flex items-center justify-center text-white font-bold text-xl mx-auto mb-5 shadow-xl group-hover:shadow-[0_0_40px_rgba(212,168,83,0.3)] transition-all duration-500">
-                    {member.avatar}
-                  </div>
-                  <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--gold-accent)] transition-colors">{member.name}</h3>
-                  <p className="text-xs text-[var(--text-tertiary)] mb-5">{member.role}</p>
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--border-color)] group-hover:border-[var(--gold-accent)]/40 group-hover:bg-[var(--gold-accent)]/10 transition-all duration-300">
-                    <ExternalLink size={16} className="text-[var(--gold-accent)] opacity-50 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                </Link>
-              </FadeIn>
+              </motion.div>
             ))}
           </div>
 
-          <FadeIn className="text-center mt-14">
-            <Link href="/team" className="btn-secondary group">
-              Meet Full Team
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ===================== CTA ===================== */}
-      <section className="py-28">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn>
-            <div className="relative card-premium overflow-hidden">
-              {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[var(--gold-accent)] to-transparent" />
-              {/* Subtle glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-40 bg-[var(--gold-accent)]/5 blur-[80px] pointer-events-none" />
-
-              <div className="relative z-10 px-10 py-20 md:px-20 md:py-24 text-center">
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--gold-accent)]/10 text-[var(--gold-accent)] border border-[var(--gold-accent)]/25 mb-8">
-                  <Rocket size={14} />
-                  Get Started
-                </span>
-
-                <h2 className="mb-6">
-                  <span className="text-[var(--text-primary)]">Ready to Automate </span>
-                  <span className="text-gradient-gold">Your Business?</span>
-                </h2>
-
-                <p className="text-lg text-[var(--text-secondary)] max-w-xl mx-auto mb-12">
-                  Let's discuss your project and explore how we can help you achieve your goals.
-                </p>
-
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-                  <Link href="/contact" className="btn-primary group">
-                    Get Started Today
-                    <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </Link>
-                  <Link href="/contact" className="btn-secondary group">
-                    <MessageSquare size={18} />
-                    Contact Sales
-                  </Link>
-                </div>
-
-                <div className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-10 border-t border-[var(--border-color)]">
-                  {[
-                    { icon: CheckCircle2, text: 'Free Consultation' },
-                    { icon: Shield, text: 'NDA Protected' },
-                    { icon: Zap, text: 'Fast Turnaround' },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2.5">
-                      <item.icon size={16} className="text-[var(--gold-accent)]" />
-                      <span className="text-sm text-[var(--text-secondary)] font-medium">{item.text}</span>
-                    </div>
-                  ))}
-                </div>
+          {/* Trust Indicators */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-12 flex flex-wrap items-center justify-center gap-8 border-t border-gray-200 pt-12"
+          >
+            {[
+              { icon: CheckCircle, text: "Senior Engineers on Every Project" },
+              { icon: CheckCircle, text: "Weekly Progress Updates" },
+              { icon: CheckCircle, text: "Post-Launch Support" },
+            ].map((item) => (
+              <div key={item.text} className="flex items-center gap-2 text-gray-700">
+                <item.icon className="h-5 w-5 text-dark-red" />
+                <span className="text-sm font-medium">{item.text}</span>
               </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Portfolio / Projects Section */}
+      <section className="section-padding bg-gray-50 transition-colors dark:bg-gray-950">
+        <div className="container-custom">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto mb-12 max-w-3xl text-center"
+          >
+            <h2 className="heading-lg mb-4 text-black">Our Projects</h2>
+            <p className="text-lg text-gray-600">
+              A selection of projects and digital solutions built by Zerovex Solutions.
+            </p>
+          </motion.div>
+
+          {/* Category Filters */}
+          <ProjectGrid projects={projects} />
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mt-12 text-center"
+          >
+            <Link href="/projects" className="btn-primary inline-flex">
+              View All Projects
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="relative section-padding overflow-hidden bg-gray-50 transition-colors dark:bg-gray-950">
+        {/* Subtle Background Pattern */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-40 top-40 h-96 w-96 rounded-full bg-red-50 opacity-40 blur-3xl" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto mb-12 max-w-3xl text-center"
+          >
+            <h2 className="heading-lg mb-4 text-black">What Our Clients Say</h2>
+            <p className="text-lg text-gray-600">
+              Hear from businesses who trusted Zerovex Solutions for AI and software solutions.
+            </p>
+          </motion.div>
+
+          {/* Testimonial Carousel */}
+          <TestimonialCarousel testimonials={testimonials} />
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="section-padding bg-black text-white">
+        <div className="container-custom">
+          <motion.div
+            initial={fadeInUp.initial}
+            whileInView={fadeInUp.whileInView}
+            viewport={fadeInUp.viewport}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <h2 className="heading-lg mb-4">
+              Let&apos;s Build Something Extraordinary
+            </h2>
+            <p className="text-body mb-8 text-gray-300">
+              Ready to transform your business with cutting-edge technology?
+              Our team is here to turn your vision into reality.
+            </p>
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Link href="/contact" className="btn-primary">
+                Schedule a Consultation
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <a
+                href="mailto:hello@zerovexsolutions.site"
+                className="btn-secondary-white"
+              >
+                hello@zerovexsolutions.site
+              </a>
             </div>
-          </FadeIn>
+          </motion.div>
         </div>
       </section>
     </div>
