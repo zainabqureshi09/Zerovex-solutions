@@ -53,18 +53,13 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  html.dark body {
-    color: #ffffff;
-    background-color: #000000;
-  }
-
   /* Focus styles for accessibility */
   *:focus-visible {
     outline: 2px solid #8B0000;
     outline-offset: 2px;
     border-radius: 4px;
   }
-  
+
   /* Premium text gradient */
   .text-gradient {
     background: linear-gradient(135deg, #8B0000 0%, #dc2626 50%, #8B0000 100%);
@@ -72,12 +67,12 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   /* Red glow effect */
   .glow-red {
     box-shadow: 0 0 30px rgba(139, 0, 0, 0.4), 0 0 60px rgba(139, 0, 0, 0.2);
   }
-  
+
   .glow-red-sm {
     box-shadow: 0 0 20px rgba(139, 0, 0, 0.3), 0 0 40px rgba(139, 0, 0, 0.15);
   }
