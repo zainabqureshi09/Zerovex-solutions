@@ -50,7 +50,7 @@ const tools = [
     name: "AI Prompt Generator",
     description: "Generate powerful prompts for ChatGPT and AI tools.",
     icon: Sparkles,
-    href: "/tools/ai-prompt-generator",
+    href: "/tools/prompt-generator",
     category: "AI Tools",
   },
   {
