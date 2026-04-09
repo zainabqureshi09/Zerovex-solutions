@@ -10,6 +10,13 @@ import {
   FileText,
   ArrowRight,
   Zap,
+  Mail,
+  User,
+  Search,
+  Tag,
+  PenTool,
+  Briefcase,
+  Code,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -23,47 +30,91 @@ const fadeInUp = {
 const staggerContainer = {
   whileInView: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     },
   },
   viewport: { once: true },
 };
+
+const categories = [
+  { name: "All", icon: null },
+  { name: "AI Tools", icon: Sparkles },
+  { name: "Developer Tools", icon: Code },
+  { name: "Business Tools", icon: Briefcase },
+  { name: "Writing Tools", icon: PenTool },
+  { name: "Generators", icon: Zap },
+];
 
 const tools = [
   {
     name: "AI Prompt Generator",
     description: "Generate powerful prompts for ChatGPT and AI tools.",
     icon: Sparkles,
-    href: "/tools/prompt-generator",
-    category: "AI",
+    href: "/tools/ai-prompt-generator",
+    category: "AI Tools",
   },
   {
     name: "Startup Name Generator",
     description: "Generate creative startup and brand names.",
     icon: Rocket,
-    href: "/tools/name-generator",
-    category: "Branding",
+    href: "/tools/startup-name-generator",
+    category: "Business Tools",
   },
   {
     name: "Website Idea Generator",
     description: "Generate unique website and SaaS ideas.",
     icon: Lightbulb,
-    href: "/tools/idea-generator",
-    category: "Ideas",
+    href: "/tools/website-idea-generator",
+    category: "Generators",
+  },
+  {
+    name: "Business Idea Generator",
+    description: "Generate innovative business concepts and strategies.",
+    icon: Briefcase,
+    href: "/tools/business-idea-generator",
+    category: "Business Tools",
   },
   {
     name: "Password Generator",
     description: "Generate strong and secure passwords.",
     icon: Lock,
     href: "/tools/password-generator",
-    category: "Security",
+    category: "Developer Tools",
   },
   {
     name: "Text Summarizer",
     description: "Summarize long text into short summaries.",
     icon: FileText,
     href: "/tools/text-summarizer",
-    category: "Text",
+    category: "Writing Tools",
+  },
+  {
+    name: "AI Bio Generator",
+    description: "Generate professional bios for social media and websites.",
+    icon: User,
+    href: "/tools/ai-bio-generator",
+    category: "Writing Tools",
+  },
+  {
+    name: "AI Email Generator",
+    description: "Generate professional emails for any situation.",
+    icon: Mail,
+    href: "/tools/ai-email-generator",
+    category: "Writing Tools",
+  },
+  {
+    name: "AI Blog Title Generator",
+    description: "Generate catchy and SEO-friendly blog titles.",
+    icon: PenTool,
+    href: "/tools/ai-blog-title-generator",
+    category: "Writing Tools",
+  },
+  {
+    name: "AI Product Description Generator",
+    description: "Generate compelling product descriptions.",
+    icon: Tag,
+    href: "/tools/ai-product-description-generator",
+    category: "AI Tools",
   },
 ];
 
@@ -87,13 +138,16 @@ const features = [
 
 export default function ToolsPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const filteredTools = tools.filter(
-    (tool) =>
+  const filteredTools = tools.filter((tool) => {
+    const matchesSearch =
       tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      tool.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+      tool.category.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = activeCategory === "All" || tool.category === activeCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="bg-white transition-colors duration-300 dark:bg-black">
@@ -117,7 +171,7 @@ export default function ToolsPage() {
         </div>
       </section>
 
-      {/* Features */}
+      {/* Features Bar */}
       <section className="border-b border-gray-200 bg-gray-50 py-8 dark:border-gray-800 dark:bg-gray-950">
         <div className="container-custom">
           <motion.div
@@ -150,40 +204,49 @@ export default function ToolsPage() {
         </div>
       </section>
 
-      {/* Tools Grid */}
+      {/* Tools Section */}
       <section className="section-padding">
         <div className="container-custom">
-          {/* Search */}
+          {/* Search Bar */}
           <motion.div
             initial={fadeInUp.initial}
             whileInView={fadeInUp.whileInView}
             viewport={fadeInUp.viewport}
-            className="mx-auto mb-12 max-w-md"
+            className="mx-auto mb-8 max-w-xl"
           >
             <div className="relative">
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search tools..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-xl border border-gray-300 bg-white px-5 py-3.5 text-black placeholder-gray-500 transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500"
+                className="w-full rounded-xl border border-gray-300 bg-white pl-12 pr-5 py-3.5 text-black placeholder-gray-500 transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500"
               />
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
-                <svg
-                  className="h-5 w-5 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </div>
             </div>
+          </motion.div>
+
+          {/* Category Filters */}
+          <motion.div
+            initial={fadeInUp.initial}
+            whileInView={fadeInUp.whileInView}
+            viewport={fadeInUp.viewport}
+            className="mb-12 flex flex-wrap items-center justify-center gap-3"
+          >
+            {categories.map((category) => (
+              <button
+                key={category.name}
+                onClick={() => setActiveCategory(category.name)}
+                className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200 ${
+                  activeCategory === category.name
+                    ? "bg-dark-red text-white shadow-md"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                }`}
+              >
+                {category.icon && <category.icon className="h-4 w-4" />}
+                {category.name}
+              </button>
+            ))}
           </motion.div>
 
           {/* Tools Grid */}
@@ -193,7 +256,7 @@ export default function ToolsPage() {
               initial="initial"
               whileInView="whileInView"
               viewport={staggerContainer.viewport}
-              className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
             >
               {filteredTools.map((tool) => (
                 <motion.div
@@ -244,25 +307,13 @@ export default function ToolsPage() {
               className="py-16 text-center"
             >
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
-                <svg
-                  className="h-8 w-8 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+                <Search className="h-8 w-8 text-gray-400" />
               </div>
               <h3 className="mb-2 text-lg font-semibold text-black dark:text-white">
                 No tools found
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Try a different search term.
+                Try a different search term or category.
               </p>
             </motion.div>
           )}
