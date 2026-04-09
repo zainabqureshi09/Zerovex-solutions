@@ -410,7 +410,7 @@ export default function PromptGeneratorPage() {
                     className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3.5 text-sm leading-relaxed text-black placeholder-gray-400 transition-all focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
                   />
                   <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-500">
-                    Press <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium dark:bg-gray-800">Ctrl</kbd> + <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium dark:bg-gray-800">Enter</kbd> to generate
+                    Press <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-xs font-medium dark:bg-gray-800">Ctrl</kbd> + <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-xs font-medium dark:bg-gray-800">Enter</kbd> to generate
                   </p>
                 </div>
 
@@ -458,7 +458,7 @@ export default function PromptGeneratorPage() {
                   <button
                     onClick={clearAll}
                     disabled={isGenerating}
-                    className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-gray-600 transition-all hover:border-gray-300 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-750"
+                    className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-gray-600 transition-all hover:border-gray-300 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-700"
                     title="Clear"
                   >
                     <Trash2 className="h-5 w-5" />

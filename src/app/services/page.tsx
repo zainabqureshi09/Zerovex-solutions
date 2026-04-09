@@ -103,7 +103,7 @@ export default function ServicesPage() {
                 initial={fadeInUp.initial}
                 whileInView={fadeInUp.whileInView}
                 viewport={fadeInUp.viewport}
-                className="grid gap-12 lg:grid-cols-2"
+                className="grid gap-6 lg:gap-12 lg:grid-cols-2"
               >
                 <div>
                   <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-dark-red text-white">

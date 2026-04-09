@@ -138,7 +138,7 @@ export default function AboutPage() {
                       {milestone.year.slice(-2)}
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-dark-red">{milestone.year}</div>
+                      <div className="text-sm font-medium text-dark-red dark:text-red-400">{milestone.year}</div>
                       <div className="text-sm text-gray-700 dark:text-gray-300">{milestone.event}</div>
                     </div>
                   </div>

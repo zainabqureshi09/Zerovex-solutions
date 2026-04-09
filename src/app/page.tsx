@@ -505,7 +505,7 @@ function TestimonialCarousel({ testimonials }: { testimonials: Testimonial[] }) 
               key={i}
               onClick={() => setCurrentIndex(i)}
               className={`h-2.5 rounded-full transition-all duration-300 ${
-                i === currentIndex ? "w-10 bg-dark-red" : "w-2.5 bg-gray-300 hover:bg-gray-400 dark:bg-gray-700"
+                i === currentIndex ? "w-10 bg-dark-red" : "w-2.5 bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600"
               }`}
               aria-label={`Go to testimonial group ${i + 1}`}
             />
@@ -613,7 +613,7 @@ export default function Home() {
                 <div className="relative h-64 bg-gradient-to-br from-dark-red/20 via-black to-dark-red/10 md:h-80 lg:h-96">
                   {/* Abstract Tech Visualization */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="grid grid-cols-6 gap-4 opacity-20">
+                    <div className="grid grid-cols-4 gap-3 sm:grid-cols-6 opacity-20">
                       {Array.from({ length: 24 }).map((_, i) => (
                         <motion.div
                           key={i}
@@ -904,7 +904,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-1 gap-3 sm:grid-cols-2"
             >
               {aiToolCategories.map((category, index) => (
                 <motion.div

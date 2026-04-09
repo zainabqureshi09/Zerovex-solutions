@@ -119,10 +119,10 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Zerovex Solutions. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="transition-colors hover:text-dark-red">
+            <Link href="#" className="text-gray-600 transition-colors hover:text-dark-red dark:text-gray-400">
               Privacy Policy
             </Link>
-            <Link href="#" className="transition-colors hover:text-dark-red">
+            <Link href="#" className="text-gray-600 transition-colors hover:text-dark-red dark:text-gray-400">
               Terms of Service
             </Link>
           </div>

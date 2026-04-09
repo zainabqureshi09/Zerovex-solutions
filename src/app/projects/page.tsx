@@ -146,7 +146,7 @@ export default function ProjectsPage() {
                   </p>
 
                   {/* Metrics */}
-                  <div className="mb-4 grid grid-cols-3 gap-2">
+                  <div className="mb-4 grid grid-cols-3 gap-1 sm:gap-2">
                     {project.metrics.map((metric) => (
                       <div
                         key={metric.label}

@@ -147,19 +147,19 @@ function NameCard({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.35, delay: index * 0.04, ease: "easeOut" }}
       whileHover={{ y: -6, scale: 1.02 }}
-      className="group relative overflow-hidden rounded-xl border border-gray-800 bg-gradient-to-br from-gray-900 to-gray-950 p-5 transition-all duration-300 hover:border-dark-red/40 hover:shadow-lg hover:shadow-dark-red/10"
+      className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-dark-red/40 hover:shadow-lg hover:shadow-dark-red/10 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950"
     >
-      {/* Glow accent */}
-      <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-dark-red/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+      {/* Glow accent - dark mode only */}
+      <div className="pointer-events-none absolute -right-8 -top-8 hidden h-24 w-24 rounded-full bg-dark-red/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100 dark:block" />
 
       {/* Name */}
-      <h3 className="mb-1 text-xl font-bold tracking-tight text-white">
+      <h3 className="mb-1 text-xl font-bold tracking-tight text-black dark:text-white">
         {item.name}
       </h3>
 
       {/* Domain */}
       <div className="mb-4 flex items-center gap-2">
-        <div className="relative flex items-center rounded-lg bg-gray-800">
+        <div className="relative flex items-center rounded-lg bg-gray-100 dark:bg-gray-800">
           {TLDS.map((tld, i) => (
             <button
               key={tld}
@@ -167,14 +167,14 @@ function NameCard({
               className={`px-2.5 py-1 text-[10px] font-semibold transition-all ${
                 i === activeTld
                   ? "rounded bg-dark-red text-white"
-                  : "text-gray-500 hover:text-gray-300"
+                  : "text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
               }`}
             >
               {tld}
             </button>
           ))}
         </div>
-        <span className="text-xs text-gray-500">
+        <span className="text-xs text-gray-500 dark:text-gray-400">
           {item.domains[activeTld]}
         </span>
         <ExternalLink className="h-3 w-3 text-gray-600" />
@@ -186,7 +186,7 @@ function NameCard({
         className={`flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-xs font-semibold transition-all duration-200 ${
           copied
             ? "bg-green-900/30 text-green-400"
-            : "bg-gray-800 text-gray-400 hover:bg-dark-red/20 hover:text-dark-red"
+            : "bg-gray-100 text-gray-600 hover:bg-dark-red/20 hover:text-dark-red dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-dark-red/20 dark:hover:text-dark-red"
         }`}
       >
         {copied ? (
@@ -209,10 +209,10 @@ function NameCard({
 
 function SkeletonCard() {
   return (
-    <div className="animate-pulse overflow-hidden rounded-xl border border-gray-800 bg-gray-900/50 p-5">
-      <div className="mb-3 h-6 w-2/3 rounded bg-gray-800" />
-      <div className="mb-4 h-4 w-1/2 rounded bg-gray-800/60" />
-      <div className="h-9 w-full rounded bg-gray-800/40" />
+    <div className="animate-pulse overflow-hidden rounded-xl border border-gray-200 bg-gray-50 p-5 dark:border-gray-800 dark:bg-gray-900/50">
+      <div className="mb-3 h-6 w-2/3 rounded bg-gray-200 dark:bg-gray-800" />
+      <div className="mb-4 h-4 w-1/2 rounded bg-gray-200/60 dark:bg-gray-800/60" />
+      <div className="h-9 w-full rounded bg-gray-200/40 dark:bg-gray-800/40" />
     </div>
   );
 }
@@ -383,7 +383,7 @@ export default function StartupNameGeneratorPage() {
                       <Palette className="mr-1.5 inline h-4 w-4 text-dark-red" />
                       Name Style
                     </label>
-                    <div className="grid grid-cols-4 gap-2">
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                       {NAME_STYLES.map((s) => (
                         <button
                           key={s.id}
@@ -427,7 +427,7 @@ export default function StartupNameGeneratorPage() {
                 </div>
 
                 <p className="text-center text-xs text-gray-500 dark:text-gray-500">
-                  Press <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium dark:bg-gray-800">Ctrl</kbd> + <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium dark:bg-gray-800">Enter</kbd> to generate
+                  Press <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-xs font-medium dark:bg-gray-800">Ctrl</kbd> + <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-xs font-medium dark:bg-gray-800">Enter</kbd> to generate
                 </p>
               </div>
             </motion.div>

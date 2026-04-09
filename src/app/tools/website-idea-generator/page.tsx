@@ -304,10 +304,10 @@ function IdeaCard({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
       whileHover={{ y: -8 }}
-      className="group relative overflow-hidden rounded-xl border border-gray-800 bg-gradient-to-br from-gray-900 to-gray-950 p-6 transition-all duration-300 hover:border-dark-red/40 hover:shadow-lg hover:shadow-dark-red/10"
+      className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-dark-red/40 hover:shadow-lg hover:shadow-dark-red/10 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950"
     >
-      {/* Glow accent */}
-      <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-dark-red/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+      {/* Glow accent - dark mode only */}
+      <div className="pointer-events-none absolute -right-12 -top-12 hidden h-32 w-32 rounded-full bg-dark-red/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100 dark:block" />
 
       {/* Type badge */}
       <div className="mb-3 flex items-center justify-between">
@@ -318,25 +318,25 @@ function IdeaCard({
       </div>
 
       {/* Title */}
-      <h3 className="mb-2 text-lg font-bold tracking-tight text-white">
+      <h3 className="mb-2 text-lg font-bold tracking-tight text-black dark:text-white">
         {idea.title}
       </h3>
 
       {/* Description */}
-      <p className="mb-4 text-sm leading-relaxed text-gray-400">
+      <p className="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
         {idea.description}
       </p>
 
       {/* Features */}
       <div className="mb-5">
-        <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
+        <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-500">
           Key Features
         </h4>
         <div className="flex flex-wrap gap-1.5">
           {idea.features.map((f) => (
             <span
               key={f}
-              className="rounded bg-gray-800 px-2.5 py-1 text-xs text-gray-400"
+              className="rounded bg-gray-100 px-2.5 py-1 text-xs text-gray-600 dark:bg-gray-800 dark:text-gray-400"
             >
               {f}
             </span>
@@ -350,8 +350,8 @@ function IdeaCard({
           onClick={onCopy}
           className={`flex flex-1 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-xs font-semibold transition-all duration-200 ${
             copied
-              ? "bg-green-900/30 text-green-400"
-              : "bg-gray-800 text-gray-400 hover:bg-dark-red/20 hover:text-dark-red"
+              ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
+              : "bg-gray-100 text-gray-600 hover:bg-dark-red/20 hover:text-dark-red dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-dark-red/20 dark:hover:text-dark-red"
           }`}
         >
           {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
@@ -362,7 +362,7 @@ function IdeaCard({
           className={`flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold transition-all duration-200 ${
             saved
               ? "bg-dark-red/20 text-dark-red"
-              : "bg-gray-800 text-gray-400 hover:bg-dark-red/20 hover:text-dark-red"
+              : "bg-gray-100 text-gray-600 hover:bg-dark-red/20 hover:text-dark-red dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-dark-red/20 dark:hover:text-dark-red"
           }`}
         >
           {saved ? (
@@ -380,16 +380,16 @@ function IdeaCard({
 
 function SkeletonCard() {
   return (
-    <div className="animate-pulse overflow-hidden rounded-xl border border-gray-800 bg-gray-900/50 p-6">
-      <div className="mb-3 h-5 w-20 rounded-full bg-gray-800" />
-      <div className="mb-2 h-6 w-3/4 rounded bg-gray-800" />
-      <div className="mb-4 h-4 w-full rounded bg-gray-800/60" />
+    <div className="animate-pulse overflow-hidden rounded-xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-800 dark:bg-gray-900/50">
+      <div className="mb-3 h-5 w-20 rounded-full bg-gray-200 dark:bg-gray-800" />
+      <div className="mb-2 h-6 w-3/4 rounded bg-gray-200 dark:bg-gray-800" />
+      <div className="mb-4 h-4 w-full rounded bg-gray-200/60 dark:bg-gray-800/60" />
       <div className="mb-5 flex gap-2">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-6 w-16 rounded bg-gray-800/40" />
+          <div key={i} className="h-6 w-16 rounded bg-gray-200/40 dark:bg-gray-800/40" />
         ))}
       </div>
-      <div className="h-9 w-full rounded bg-gray-800/30" />
+      <div className="h-9 w-full rounded bg-gray-200/30 dark:bg-gray-800/30" />
     </div>
   );
 }
@@ -588,7 +588,7 @@ export default function WebsiteIdeaGeneratorPage() {
                           title={type.label}
                         >
                           <type.icon className="h-4 w-4" />
-                          <span className="mt-1 text-[10px] font-medium leading-tight">
+                          <span className="mt-1 text-xs font-medium leading-tight">
                             {type.label}
                           </span>
                         </button>
@@ -645,7 +645,7 @@ export default function WebsiteIdeaGeneratorPage() {
                 </div>
 
                 <p className="text-center text-xs text-gray-500 dark:text-gray-500">
-                  Press <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium dark:bg-gray-800">Ctrl</kbd> + <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium dark:bg-gray-800">Enter</kbd> to generate
+                  Press <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-xs font-medium dark:bg-gray-800">Ctrl</kbd> + <kbd className="rounded bg-gray-100 px-1.5 py-0.5 text-xs font-medium dark:bg-gray-800">Enter</kbd> to generate
                 </p>
               </div>
             </motion.div>

@@ -23,21 +23,21 @@ export default function Navbar() {
 
   if (!mounted) {
     return (
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
+      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white transition-colors duration-300 dark:border-gray-800 dark:bg-black">
         <nav className="container-custom flex items-center justify-between py-2.5 md:py-3">
           <Link href="/" className="flex flex-col items-center">
             <img src="/logogency.png" alt="Zerovex Solutions" className="h-6 w-auto sm:h-7 md:h-7 lg:h-8" />
-            <span className="mt-0.5 text-[9px] font-medium tracking-[0.2em] uppercase text-black" style={{ fontFamily: "var(--font-serif)" }}>Solutions</span>
+            <span className="mt-0.5 text-[10px] font-medium tracking-[0.2em] uppercase text-black dark:text-white" style={{ fontFamily: "var(--font-serif)" }}>Solutions</span>
           </Link>
           <div className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-sm font-medium text-gray-700">
+              <Link key={link.href} href={link.href} className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {link.name}
               </Link>
             ))}
           </div>
           <div className="hidden lg:block">
-            <Link href="/contact" className="inline-flex items-center justify-center rounded bg-dark-red px-5 py-2.5 text-sm font-medium text-white">
+            <Link href="/contact" className="inline-flex items-center justify-center rounded bg-dark-red px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-dark-red-light">
               Get Started
             </Link>
           </div>

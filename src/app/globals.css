@@ -53,6 +53,11 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
+  html.dark body {
+    color: #ffffff;
+    background-color: #000000;
+  }
+
   /* Focus styles for accessibility */
   *:focus-visible {
     outline: 2px solid #8B0000;
@@ -219,11 +224,21 @@
     white-space: nowrap;
   }
 
+  html.dark .btn-secondary {
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+
   .btn-secondary:hover {
     background-color: #000000;
     color: #ffffff;
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  html.dark .btn-secondary:hover {
+    background-color: #ffffff;
+    color: #000000;
   }
 
   .btn-secondary:active {
