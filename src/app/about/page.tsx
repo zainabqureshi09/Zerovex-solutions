@@ -13,7 +13,7 @@ const fadeInUp = {
 
 export default function AboutPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-white transition-colors duration-300 dark:bg-black">
       {/* Hero */}
       <section className="bg-black text-white">
         <div className="container-custom section-padding">
@@ -39,13 +39,13 @@ export default function AboutPage() {
               initial={fadeInUp.initial}
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
-              className="rounded-lg border border-gray-200 p-6"
+              className="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-gray-800 dark:bg-gray-900"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red dark:bg-dark-red/10">
                 <Target className="h-6 w-6" />
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-black">Our Mission</h3>
-              <p className="leading-relaxed text-gray-600">
+              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">Our Mission</h3>
+              <p className="leading-relaxed text-gray-600 dark:text-gray-400">
                 To democratize access to enterprise-grade technology, enabling businesses of all
                 sizes to leverage AI, automation, and modern software for growth and innovation.
               </p>
@@ -56,13 +56,13 @@ export default function AboutPage() {
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
               transition={{ delay: 0.1 }}
-              className="rounded-lg border border-gray-200 p-6"
+              className="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-gray-800 dark:bg-gray-900"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red dark:bg-dark-red/10">
                 <Eye className="h-6 w-6" />
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-black">Our Vision</h3>
-              <p className="leading-relaxed text-gray-600">
+              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">Our Vision</h3>
+              <p className="leading-relaxed text-gray-600 dark:text-gray-400">
                 A world where technology empowers every organization to achieve its full potential,
                 streamline operations, and create exceptional value for their customers.
               </p>
@@ -73,13 +73,13 @@ export default function AboutPage() {
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
               transition={{ delay: 0.2 }}
-              className="rounded-lg border border-gray-200 p-6"
+              className="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-gray-800 dark:bg-gray-900"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red dark:bg-dark-red/10">
                 <Heart className="h-6 w-6" />
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-black">Our Values</h3>
-              <p className="leading-relaxed text-gray-600">
+              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">Our Values</h3>
+              <p className="leading-relaxed text-gray-600 dark:text-gray-400">
                 Integrity, innovation, and impact guide every decision we make. We believe in
                 transparent partnerships and delivering measurable results.
               </p>
@@ -89,7 +89,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-950">
         <div className="container-custom">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <motion.div
@@ -97,8 +97,8 @@ export default function AboutPage() {
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
             >
-              <h2 className="heading-lg mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-600">
+              <h2 className="heading-lg mb-6 text-black dark:text-white">Our Story</h2>
+              <div className="space-y-4 text-gray-600 dark:text-gray-400">
                 <p className="leading-relaxed">
                   Zerovex Solutions was founded with a clear vision: to bridge the gap between
                   cutting-edge technology and real business needs. We saw too many organizations
@@ -121,9 +121,9 @@ export default function AboutPage() {
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
               transition={{ delay: 0.1 }}
-              className="rounded-lg border border-gray-200 bg-white p-8"
+              className="rounded-lg border border-gray-200 bg-white p-8 transition-colors dark:border-gray-800 dark:bg-gray-900"
             >
-              <h3 className="mb-6 text-xl font-semibold text-black">Key Milestones</h3>
+              <h3 className="mb-6 text-xl font-semibold text-black dark:text-white">Key Milestones</h3>
               <div className="space-y-4">
                 {[
                   { year: "2020", event: "Zerovex Solutions founded" },
@@ -139,7 +139,7 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <div className="text-sm font-medium text-dark-red">{milestone.year}</div>
-                      <div className="text-sm text-gray-700">{milestone.event}</div>
+                      <div className="text-sm text-gray-700 dark:text-gray-300">{milestone.event}</div>
                     </div>
                   </div>
                 ))}

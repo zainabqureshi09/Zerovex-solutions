@@ -215,7 +215,7 @@ export default function ToolsPage() {
             className="mx-auto mb-8 max-w-xl"
           >
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
                 placeholder="Search tools..."
@@ -307,7 +307,7 @@ export default function ToolsPage() {
               className="py-16 text-center"
             >
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
-                <Search className="h-8 w-8 text-gray-400" />
+                <Search className="h-8 w-8 text-gray-400 dark:text-gray-500" />
               </div>
               <h3 className="mb-2 text-lg font-semibold text-black dark:text-white">
                 No tools found

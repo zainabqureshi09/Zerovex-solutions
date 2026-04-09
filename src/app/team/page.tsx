@@ -83,7 +83,7 @@ const team = [
 
 export default function TeamPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-white transition-colors duration-300 dark:bg-black">
       {/* Hero */}
       <section className="bg-black text-white">
         <div className="container-custom section-padding">
@@ -109,10 +109,10 @@ export default function TeamPage() {
             viewport={fadeInUp.viewport}
             className="mx-auto mb-12 max-w-3xl text-center"
           >
-            <h2 className="heading-md mb-4 text-black">Our Culture</h2>
-            <p className="text-lg leading-relaxed text-gray-600">
-              At Zerovex Solutions, we believe in collaboration, continuous learning, and innovation. 
-              Our diverse team brings together expertise from across the tech industry, united by a 
+            <h2 className="heading-md mb-4 text-black dark:text-white">Our Culture</h2>
+            <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+              At Zerovex Solutions, we believe in collaboration, continuous learning, and innovation.
+              Our diverse team brings together expertise from across the tech industry, united by a
               shared passion for building exceptional software that makes a real difference for our clients.
             </p>
           </motion.div>
@@ -139,13 +139,13 @@ export default function TeamPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm"
+                className="rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-colors dark:border-gray-800 dark:bg-gray-900"
               >
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-dark-red">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-dark-red dark:bg-dark-red/10">
                   <div className="h-3 w-3 rounded-full bg-dark-red" />
                 </div>
-                <h3 className="mb-2 text-lg font-semibold text-black">{value.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-600">{value.description}</p>
+                <h3 className="mb-2 text-lg font-semibold text-black dark:text-white">{value.title}</h3>
+                <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -153,7 +153,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-950">
         <div className="container-custom">
           <motion.div
             initial={fadeInUp.initial}
@@ -161,8 +161,8 @@ export default function TeamPage() {
             viewport={fadeInUp.viewport}
             className="mb-12"
           >
-            <h2 className="heading-md mb-2 text-black">The People Behind Zerovex</h2>
-            <p className="text-gray-600">
+            <h2 className="heading-md mb-2 text-black dark:text-white">The People Behind Zerovex</h2>
+            <p className="text-gray-600 dark:text-gray-400">
               Experienced professionals driving innovation and delivering excellence.
             </p>
           </motion.div>
@@ -179,19 +179,19 @@ export default function TeamPage() {
                 key={member.name}
                 variants={fadeInUp}
                 whileHover={{ y: -4 }}
-                className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-dark-red/30 hover:shadow-md"
+                className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-dark-red/30 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
               >
                 {/* Avatar */}
-                <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-gray-100 to-gray-200 text-2xl font-bold text-dark-red transition-all duration-300 group-hover:from-dark-red group-hover:to-dark-red group-hover:text-white">
+                <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-gray-100 to-gray-200 text-2xl font-bold text-dark-red transition-all duration-300 group-hover:from-dark-red group-hover:to-dark-red group-hover:text-white dark:from-gray-700 dark:to-gray-800">
                   {member.name
                     .split(" ")
                     .map((n) => n[0])
                     .join("")}
                 </div>
 
-                <h3 className="mb-1 text-lg font-semibold text-black">{member.name}</h3>
+                <h3 className="mb-1 text-lg font-semibold text-black dark:text-white">{member.name}</h3>
                 <div className="mb-3 text-sm font-medium text-dark-red">{member.role}</div>
-                <p className="mb-4 text-sm leading-relaxed text-gray-600">{member.bio}</p>
+                <p className="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{member.bio}</p>
 
                 {/* Social Links */}
                 <div className="flex gap-2">
@@ -199,7 +199,7 @@ export default function TeamPage() {
                     <a
                       href={member.social.linkedin}
                       aria-label={`${member.name} LinkedIn`}
-                      className="flex h-9 w-9 items-center justify-center rounded border border-gray-300 text-gray-600 transition-colors hover:border-dark-red hover:bg-dark-red hover:text-white"
+                      className="flex h-9 w-9 items-center justify-center rounded border border-gray-300 text-gray-600 transition-colors hover:border-dark-red hover:bg-dark-red hover:text-white dark:border-gray-700 dark:text-gray-400"
                     >
                       <Linkedin className="h-4 w-4" />
                     </a>
@@ -208,7 +208,7 @@ export default function TeamPage() {
                     <a
                       href={member.social.twitter}
                       aria-label={`${member.name} Twitter`}
-                      className="flex h-9 w-9 items-center justify-center rounded border border-gray-300 text-gray-600 transition-colors hover:border-dark-red hover:bg-dark-red hover:text-white"
+                      className="flex h-9 w-9 items-center justify-center rounded border border-gray-300 text-gray-600 transition-colors hover:border-dark-red hover:bg-dark-red hover:text-white dark:border-gray-700 dark:text-gray-400"
                     >
                       <Twitter className="h-4 w-4" />
                     </a>
@@ -217,7 +217,7 @@ export default function TeamPage() {
                     <a
                       href={`mailto:${member.social.email}`}
                       aria-label={`Email ${member.name}`}
-                      className="flex h-9 w-9 items-center justify-center rounded border border-gray-300 text-gray-600 transition-colors hover:border-dark-red hover:bg-dark-red hover:text-white"
+                      className="flex h-9 w-9 items-center justify-center rounded border border-gray-300 text-gray-600 transition-colors hover:border-dark-red hover:bg-dark-red hover:text-white dark:border-gray-700 dark:text-gray-400"
                     >
                       <Mail className="h-4 w-4" />
                     </a>

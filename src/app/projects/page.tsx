@@ -97,7 +97,7 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-white transition-colors duration-300 dark:bg-black">
       {/* Hero */}
       <section className="bg-black text-white">
         <div className="container-custom section-padding">
@@ -131,17 +131,17 @@ export default function ProjectsPage() {
                 variants={fadeInUp}
                 className="project-card"
               >
-                <div className="border-b border-gray-200 bg-black p-6">
+                <div className="border-b border-gray-200 bg-black p-6 dark:border-gray-700">
                   <div className="mb-2 inline-block rounded-full bg-dark-red px-3 py-1 text-xs font-medium text-white">
                     {project.category}
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="mb-2 text-xl font-semibold text-black">
+                  <h3 className="mb-2 text-xl font-semibold text-black dark:text-white">
                     {project.title}
                   </h3>
-                  <p className="mb-4 text-sm leading-relaxed text-gray-600">
+                  <p className="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                     {project.description}
                   </p>
 
@@ -150,12 +150,12 @@ export default function ProjectsPage() {
                     {project.metrics.map((metric) => (
                       <div
                         key={metric.label}
-                        className="rounded bg-gray-50 p-2 text-center"
+                        className="rounded bg-gray-50 p-2 text-center dark:bg-gray-800"
                       >
                         <div className="text-sm font-bold text-dark-red">
                           {metric.value}
                         </div>
-                        <div className="text-[10px] text-gray-500">
+                        <div className="text-[10px] text-gray-500 dark:text-gray-400">
                           {metric.label}
                         </div>
                       </div>
@@ -167,7 +167,7 @@ export default function ProjectsPage() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="inline-flex items-center gap-1 rounded border border-gray-300 px-2 py-1 text-xs font-medium text-gray-700"
+                        className="inline-flex items-center gap-1 rounded border border-gray-300 px-2 py-1 text-xs font-medium text-gray-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                       >
                         <Tag className="h-3 w-3" />
                         {tag}
@@ -190,7 +190,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-950">
         <div className="container-custom">
           <motion.div
             initial={fadeInUp.initial}
@@ -198,8 +198,8 @@ export default function ProjectsPage() {
             viewport={fadeInUp.viewport}
             className="mx-auto max-w-3xl text-center"
           >
-            <h2 className="heading-lg mb-4">Have a Project in Mind?</h2>
-            <p className="text-body mb-8 text-gray-600">
+            <h2 className="heading-lg mb-4 text-black dark:text-white">Have a Project in Mind?</h2>
+            <p className="text-body mb-8 text-gray-600 dark:text-gray-400">
               Let&apos;s discuss how we can bring your vision to life with the same level of
               excellence and attention to detail.
             </p>

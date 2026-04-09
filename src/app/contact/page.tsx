@@ -66,7 +66,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white transition-colors duration-300 dark:bg-black">
       {/* Hero */}
       <section className="bg-black text-white">
         <div className="container-custom section-padding">
@@ -95,13 +95,13 @@ export default function ContactPage() {
                 whileInView={fadeInUp.whileInView}
                 viewport={fadeInUp.viewport}
                 transition={{ delay: index * 0.1 }}
-                className="rounded-lg border border-gray-200 bg-white p-6"
+                className="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-gray-800 dark:bg-gray-900"
               >
-                <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red">
+                <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red dark:bg-dark-red/10">
                   <method.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mb-1 text-lg font-semibold text-black">{method.title}</h3>
-                <p className="mb-2 text-sm text-gray-600">{method.description}</p>
+                <h3 className="mb-1 text-lg font-semibold text-black dark:text-white">{method.title}</h3>
+                <p className="mb-2 text-sm text-gray-600 dark:text-gray-400">{method.description}</p>
                 <a
                   href={method.href}
                   className="text-base font-semibold text-dark-red"
@@ -115,7 +115,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-950">
         <div className="container-custom">
           <div className="mx-auto max-w-3xl">
             <motion.div
@@ -124,8 +124,8 @@ export default function ContactPage() {
               viewport={fadeInUp.viewport}
               className="mb-8"
             >
-              <h2 className="heading-md mb-2">Tell Us About Your Project</h2>
-              <p className="text-gray-600">
+              <h2 className="heading-md mb-2 text-black dark:text-white">Tell Us About Your Project</h2>
+              <p className="text-gray-600 dark:text-gray-400">
                 Fill out the form below and our team will get back to you within 24 hours.
               </p>
             </motion.div>
@@ -134,15 +134,15 @@ export default function ContactPage() {
               initial={fadeInUp.initial}
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
-              className="rounded-lg border border-gray-200 bg-white p-8"
+              className="rounded-lg border border-gray-200 bg-white p-8 transition-colors dark:border-gray-800 dark:bg-gray-900"
             >
               {submitted ? (
-                <div className="rounded-lg bg-green-50 p-8 text-center">
-                  <CheckCircle className="mx-auto mb-4 h-16 w-16 text-green-600" />
-                  <h3 className="mb-2 text-xl font-semibold text-green-900">
+                <div className="rounded-lg bg-green-50 p-8 text-center dark:bg-green-900/20">
+                  <CheckCircle className="mx-auto mb-4 h-16 w-16 text-green-600 dark:text-green-400" />
+                  <h3 className="mb-2 text-xl font-semibold text-green-900 dark:text-green-300">
                     Message Sent Successfully!
                   </h3>
-                  <p className="text-green-700">
+                  <p className="text-green-700 dark:text-green-400">
                     Thank you for reaching out. Our team will contact you shortly.
                   </p>
                 </div>
@@ -150,7 +150,7 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="mb-2 block text-sm font-medium text-black">
+                      <label htmlFor="name" className="mb-2 block text-sm font-medium text-black dark:text-white">
                         Full Name <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -160,13 +160,13 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20"
+                        className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black placeholder-gray-500 transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
                         placeholder="John Doe"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="mb-2 block text-sm font-medium text-black">
+                      <label htmlFor="email" className="mb-2 block text-sm font-medium text-black dark:text-white">
                         Email Address <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -176,7 +176,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20"
+                        className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black placeholder-gray-500 transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
                         placeholder="john@company.com"
                       />
                     </div>
@@ -184,7 +184,7 @@ export default function ContactPage() {
 
                   <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label htmlFor="company" className="mb-2 block text-sm font-medium text-black">
+                      <label htmlFor="company" className="mb-2 block text-sm font-medium text-black dark:text-white">
                         Company Name
                       </label>
                       <input
@@ -193,13 +193,13 @@ export default function ContactPage() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20"
+                        className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black placeholder-gray-500 transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
                         placeholder="Your Company"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="service" className="mb-2 block text-sm font-medium text-black">
+                      <label htmlFor="service" className="mb-2 block text-sm font-medium text-black dark:text-white">
                         Service Interested In
                       </label>
                       <select
@@ -207,7 +207,7 @@ export default function ContactPage() {
                         name="service"
                         value={formData.service}
                         onChange={handleChange}
-                        className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20"
+                        className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                       >
                         <option value="">Select a service</option>
                         <option value="ai-automation">AI Automation</option>
@@ -220,7 +220,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="mb-2 block text-sm font-medium text-black">
+                    <label htmlFor="message" className="mb-2 block text-sm font-medium text-black dark:text-white">
                       Project Details <span className="text-red-500">*</span>
                     </label>
                     <textarea
@@ -230,7 +230,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20"
+                      className="w-full rounded border border-gray-300 bg-white px-4 py-3 text-black placeholder-gray-500 transition-colors focus:border-dark-red focus:outline-none focus:ring-2 focus:ring-dark-red/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
                       placeholder="Tell us about your project, goals, and timeline..."
                     />
                   </div>
@@ -287,23 +287,23 @@ export default function ContactPage() {
             viewport={fadeInUp.viewport}
             className="mx-auto max-w-3xl text-center"
           >
-            <h2 className="heading-md mb-4">Global Reach, Personal Touch</h2>
-            <p className="mb-8 text-gray-600">
+            <h2 className="heading-md mb-4 text-black dark:text-white">Global Reach, Personal Touch</h2>
+            <p className="mb-8 text-gray-600 dark:text-gray-400">
               While we serve clients worldwide, we believe in building personal relationships.
               Our team is available for virtual meetings across all timezones.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <div className="rounded-lg bg-gray-50 px-4 py-3">
-                <span className="font-medium text-black">Americas:</span>{" "}
-                <span className="text-gray-600">9 AM - 6 PM EST</span>
+              <div className="rounded-lg bg-gray-50 px-4 py-3 dark:bg-gray-800">
+                <span className="font-medium text-black dark:text-white">Americas:</span>{" "}
+                <span className="text-gray-600 dark:text-gray-400">9 AM - 6 PM EST</span>
               </div>
-              <div className="rounded-lg bg-gray-50 px-4 py-3">
-                <span className="font-medium text-black">Europe:</span>{" "}
-                <span className="text-gray-600">9 AM - 6 PM CET</span>
+              <div className="rounded-lg bg-gray-50 px-4 py-3 dark:bg-gray-800">
+                <span className="font-medium text-black dark:text-white">Europe:</span>{" "}
+                <span className="text-gray-600 dark:text-gray-400">9 AM - 6 PM CET</span>
               </div>
-              <div className="rounded-lg bg-gray-50 px-4 py-3">
-                <span className="font-medium text-black">Asia-Pacific:</span>{" "}
-                <span className="text-gray-600">9 AM - 6 PM SGT</span>
+              <div className="rounded-lg bg-gray-50 px-4 py-3 dark:bg-gray-800">
+                <span className="font-medium text-black dark:text-white">Asia-Pacific:</span>{" "}
+                <span className="text-gray-600 dark:text-gray-400">9 AM - 6 PM SGT</span>
               </div>
             </div>
           </motion.div>

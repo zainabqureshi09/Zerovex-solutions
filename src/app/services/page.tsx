@@ -72,7 +72,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-white transition-colors duration-300 dark:bg-black">
       {/* Hero */}
       <section className="bg-black text-white">
         <div className="container-custom section-padding">
@@ -96,7 +96,7 @@ export default function ServicesPage() {
           <section
             key={service.id}
             id={service.id}
-            className={`section-padding ${index % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
+            className={`section-padding ${index % 2 === 0 ? "bg-white dark:bg-black" : "bg-gray-50 dark:bg-gray-950"}`}
           >
             <div className="container-custom">
               <motion.div
@@ -109,8 +109,8 @@ export default function ServicesPage() {
                   <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-dark-red text-white">
                     <service.icon className="h-6 w-6" />
                   </div>
-                  <h2 className="heading-md mb-4 text-black">{service.title}</h2>
-                  <p className="mb-6 text-base leading-relaxed text-gray-600">
+                  <h2 className="heading-md mb-4 text-black dark:text-white">{service.title}</h2>
+                  <p className="mb-6 text-base leading-relaxed text-gray-600 dark:text-gray-400">
                     {service.description}
                   </p>
                   <Link href="/contact" className="btn-primary">
@@ -119,15 +119,15 @@ export default function ServicesPage() {
                   </Link>
                 </div>
 
-                <div className="rounded-lg border border-gray-200 bg-white p-6">
-                  <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-black">
+                <div className="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-gray-800 dark:bg-gray-900">
+                  <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-black dark:text-white">
                     What&apos;s Included
                   </h3>
                   <div className="space-y-3">
                     {service.features.map((feature) => (
                       <div key={feature} className="flex items-start gap-3">
                         <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-dark-red" />
-                        <span className="text-sm text-gray-700">{feature}</span>
+                        <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
                       </div>
                     ))}
                   </div>
