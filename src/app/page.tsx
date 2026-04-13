@@ -301,7 +301,7 @@ function AnimatedCounter({ target, suffix, duration = 2 }: { target: number; suf
 
   return (
     <div ref={ref}>
-      <span className="text-5xl md:text-6xl font-bold text-white">
+      <span className="text-5xl md:text-6xl font-bold text-black dark:text-white">
         {count}{suffix}
       </span>
     </div>
@@ -530,115 +530,444 @@ export default function Home() {
   return (
     <div className="bg-white transition-colors duration-300 dark:bg-black">
       {/* ==================== HERO SECTION ==================== */}
-      <section className="relative overflow-hidden bg-black text-white">
-        {/* Background Effects */}
-        <div className="pointer-events-none absolute inset-0">
-          {/* Grid Pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage: `linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)`,
-              backgroundSize: "80px 80px",
-            }}
-          />
-          {/* Red Glow Orbs */}
-          <div className="absolute -right-40 -top-40 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-dark-red/30 to-transparent blur-3xl pulse-glow" />
-          <div className="absolute -bottom-40 -left-40 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-dark-red/20 to-transparent blur-3xl" />
-          {/* Radial Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
-        </div>
-
-        <div className="container-custom relative z-10 py-24 md:py-32 lg:py-40">
-          <div className="mx-auto max-w-4xl text-center">
-            {/* Badge */}
+      <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black">
+        {/* Animated Background Effects */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          {/* Animated Grid Lines - Light Mode */}
+          <div className="absolute inset-0 opacity-[0.03] dark:opacity-0">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mx-auto mb-8 inline-flex items-center gap-3 rounded-full border border-dark-red/50 bg-dark-red/10 px-6 py-3 text-sm font-semibold text-gray-300 backdrop-blur-sm"
-            >
-              <div className="h-2.5 w-2.5 rounded-full bg-dark-red pulse-glow" />
-              AI & Software Innovation
-            </motion.div>
-
-            {/* Main Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="heading-xl mb-8 leading-[1.05]"
-            >
-              Build Powerful{" "}
-              <span className="text-gradient">AI & Automation</span>
-              <br />
-              Solutions
-            </motion.h1>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="mx-auto mb-12 max-w-2xl text-xl leading-relaxed text-gray-400 md:text-2xl"
-            >
-              We design and develop intelligent systems that transform how businesses operate, scale, and succeed.
-            </motion.p>
-
-            {/* CTA Buttons */}
+              animate={{ backgroundPosition: ["0px 0px", "100px 100px"] }}
+              transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
+                backgroundSize: "100px 100px",
+              }}
+            />
+          </div>
+          
+          {/* Animated Grid Lines - Dark Mode */}
+          <div className="absolute inset-0 opacity-0 dark:opacity-[0.04]">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              className="flex flex-col items-center justify-center gap-4 sm:flex-row"
-            >
-              <Link href="/contact" className="btn-primary group">
-                Start a Project
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link href="/contact" className="btn-secondary-white">
-                Contact Us
-              </Link>
-            </motion.div>
+              animate={{ backgroundPosition: ["0px 0px", "100px 100px"] }}
+              transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+                backgroundSize: "100px 100px",
+              }}
+            />
           </div>
 
-          {/* Abstract Visual Element */}
+          {/* Glowing Orbs - Light Mode */}
+          <div className="dark:hidden">
+            <motion.div
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.15, 0.25, 0.15] 
+              }}
+              transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+              className="absolute -right-40 -top-40 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-red-500/30 to-red-600/20 blur-3xl"
+            />
+            <motion.div
+              animate={{ 
+                scale: [1, 1.3, 1],
+                opacity: [0.1, 0.2, 0.1] 
+              }}
+              transition={{ repeat: Infinity, duration: 10, ease: "easeInOut", delay: 2 }}
+              className="absolute -bottom-40 -left-40 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-red-600/20 to-red-500/15 blur-3xl"
+            />
+          </div>
+
+          {/* Glowing Orbs - Dark Mode */}
+          <div className="hidden dark:block">
+            <motion.div
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3] 
+              }}
+              transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+              className="absolute -right-40 -top-40 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-dark-red/40 to-red-700/30 blur-3xl"
+            />
+            <motion.div
+              animate={{ 
+                scale: [1, 1.3, 1],
+                opacity: [0.2, 0.4, 0.2] 
+              }}
+              transition={{ repeat: Infinity, duration: 10, ease: "easeInOut", delay: 2 }}
+              className="absolute -bottom-40 -left-40 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-dark-red/30 to-red-600/20 blur-3xl"
+            />
+          </div>
+
+          {/* Floating Particles - Light Mode */}
+          <div className="dark:hidden">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  y: [0, -100, 0],
+                  x: [0, Math.sin(i) * 50, 0],
+                  opacity: [0.1, 0.3, 0.1]
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 5 + Math.random() * 5,
+                  ease: "easeInOut",
+                  delay: Math.random() * 5,
+                }}
+                className="absolute w-1 h-1 bg-red-500/30 rounded-full"
+                style={{
+                  left: `${10 + Math.random() * 80}%`,
+                  top: `${10 + Math.random() * 80}%`,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Floating Particles - Dark Mode */}
+          <div className="hidden dark:block">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  y: [0, -100, 0],
+                  x: [0, Math.sin(i) * 50, 0],
+                  opacity: [0.2, 0.6, 0.2]
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 5 + Math.random() * 5,
+                  ease: "easeInOut",
+                  delay: Math.random() * 5,
+                }}
+                className="absolute w-1 h-1 bg-red-400/50 rounded-full"
+                style={{
+                  left: `${10 + Math.random() * 80}%`,
+                  top: `${10 + Math.random() * 80}%`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Holographic UI Panels - Light Mode */}
+        <div className="pointer-events-none absolute inset-0 dark:hidden">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mx-auto mt-20 max-w-5xl"
+            animate={{ y: [-10, 10, -10] }}
+            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+            className="absolute top-20 right-20 w-64 h-32 rounded-xl bg-white/40 backdrop-blur-xl border border-gray-200/50 shadow-2xl p-4 hidden lg:block"
           >
-            <div className="relative rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900/50 to-black/50 p-2 backdrop-blur-sm">
-              <div className="overflow-hidden rounded-xl">
-                <div className="relative h-64 bg-gradient-to-br from-dark-red/20 via-black to-dark-red/10 md:h-80 lg:h-96">
-                  {/* Abstract Tech Visualization */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="grid grid-cols-4 gap-3 sm:grid-cols-6 opacity-20">
-                      {Array.from({ length: 24 }).map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.8 + i * 0.05, duration: 0.4 }}
-                          className="h-12 w-12 rounded-lg bg-white/30"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                </div>
-              </div>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-xs font-semibold text-gray-700">AI Processing</span>
+            </div>
+            <div className="space-y-2">
+              <div className="h-2 bg-gradient-to-r from-red-500/30 to-transparent rounded-full w-3/4" />
+              <div className="h-2 bg-gradient-to-r from-red-500/20 to-transparent rounded-full w-1/2" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [10, -10, 10] }}
+            transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-32 right-32 w-56 h-28 rounded-xl bg-white/40 backdrop-blur-xl border border-gray-200/50 shadow-2xl p-4 hidden lg:block"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <Brain className="w-4 h-4 text-red-500" />
+              <span className="text-xs font-semibold text-gray-700">Neural Network</span>
+            </div>
+            <div className="grid grid-cols-3 gap-1">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
+                  className="h-1.5 bg-red-500/40 rounded-full"
+                />
+              ))}
             </div>
           </motion.div>
         </div>
 
+        {/* Holographic UI Panels - Dark Mode */}
+        <div className="pointer-events-none absolute inset-0 hidden dark:block">
+          <motion.div
+            animate={{ y: [-10, 10, -10] }}
+            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+            className="absolute top-20 right-20 w-64 h-32 rounded-xl bg-white/5 backdrop-blur-xl border border-red-500/20 shadow-2xl p-4 hidden lg:block"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
+              <span className="text-xs font-semibold text-gray-300">AI Processing</span>
+            </div>
+            <div className="space-y-2">
+              <div className="h-2 bg-gradient-to-r from-red-400/40 to-transparent rounded-full w-3/4" />
+              <div className="h-2 bg-gradient-to-r from-red-400/30 to-transparent rounded-full w-1/2" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [10, -10, 10] }}
+            transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-32 right-32 w-56 h-28 rounded-xl bg-white/5 backdrop-blur-xl border border-red-500/20 shadow-2xl p-4 hidden lg:block"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <Brain className="w-4 h-4 text-red-400" />
+              <span className="text-xs font-semibold text-gray-300">Neural Network</span>
+            </div>
+            <div className="grid grid-cols-3 gap-1">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ opacity: [0.4, 1, 0.4] }}
+                  transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
+                  className="h-1.5 bg-red-400/50 rounded-full"
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Main Content */}
+        <div className="container-custom relative z-10 py-16 md:py-20 lg:py-24">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Column - Text Content */}
+            <div className="text-center lg:text-left">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="mx-auto lg:mx-0 mb-6 inline-flex items-center gap-3 rounded-full border border-red-500/30 dark:border-red-400/50 bg-red-50 dark:bg-red-950/30 px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 backdrop-blur-sm"
+              >
+                <div className="h-2 w-2 rounded-full bg-red-500 dark:bg-red-400 animate-pulse" />
+                AI & Software Innovation
+              </motion.div>
+
+              {/* Main Headline with Typing Animation */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+              >
+                <h1 className="heading-xl mb-6 leading-[1.05] text-black dark:text-white">
+                  Build Powerful{" "}
+                  <motion.span
+                    className="inline-block bg-gradient-to-r from-red-600 via-red-500 to-red-600 dark:from-red-400 dark:via-red-500 dark:to-red-400 bg-clip-text text-transparent"
+                    animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                    transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                    style={{ backgroundSize: "200% 100%" }}
+                  >
+                    AI & Automation
+                  </motion.span>
+                  <br />
+                  Solutions
+                </h1>
+              </motion.div>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                className="mx-auto lg:mx-0 mb-10 max-w-xl text-lg leading-relaxed text-gray-600 dark:text-gray-400 md:text-xl"
+              >
+                We design and develop intelligent systems that transform how businesses operate, scale, and succeed.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                className="flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start"
+              >
+                <Link
+                  href="/contact"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-500 dark:from-red-500 dark:to-red-400 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 dark:hover:shadow-red-400/50 hover:scale-105"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative flex items-center gap-2">
+                    Start a Project
+                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-xl border-2 border-gray-300 dark:border-gray-700 bg-white/50 dark:bg-white/5 text-gray-900 dark:text-white font-semibold text-lg backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-red-500 dark:hover:border-red-400 hover:shadow-xl hover:scale-105"
+                >
+                  <span className="relative flex items-center gap-2">
+                    Contact Us
+                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 opacity-0 group-hover:opacity-100" />
+                  </span>
+                </Link>
+              </motion.div>
+
+              {/* Trust Indicators */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-gray-600 dark:text-gray-400"
+              >
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4 text-red-500" />
+                  <span>Enterprise Security</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-red-500" />
+                  <span>AI-Powered</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Cpu className="h-4 w-4 text-red-500" />
+                  <span>Cloud Native</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column - AI Visual */}
+            <div className="relative hidden lg:block">
+              {/* AI Robot / Holographic AI Animation */}
+              <div className="relative w-full h-[600px]">
+                {/* Central AI Orb */}
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                    rotate: [0, 5, -5, 0]
+                  }}
+                  transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  {/* Outer Glow Ring - Light Mode */}
+                  <div className="dark:hidden">
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+                      className="w-80 h-80 rounded-full border-2 border-dashed border-red-500/30"
+                    />
+                  </div>
+                  {/* Outer Glow Ring - Dark Mode */}
+                  <div className="hidden dark:block">
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+                      className="w-80 h-80 rounded-full border-2 border-dashed border-red-400/40"
+                    />
+                  </div>
+
+                  {/* Inner Orb - Light Mode */}
+                  <div className="absolute inset-8 dark:hidden">
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                      className="w-full h-full rounded-full bg-gradient-to-br from-red-500/20 to-red-600/10 backdrop-blur-xl border border-red-500/30 shadow-2xl shadow-red-500/20"
+                    />
+                  </div>
+                  {/* Inner Orb - Dark Mode */}
+                  <div className="absolute inset-8 hidden dark:block">
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                      className="w-full h-full rounded-full bg-gradient-to-br from-red-400/30 to-red-500/20 backdrop-blur-xl border border-red-400/50 shadow-2xl shadow-red-400/40"
+                    />
+                  </div>
+
+                  {/* AI Core - Light Mode */}
+                  <div className="absolute inset-16 dark:hidden">
+                    <motion.div
+                      animate={{ opacity: [0.6, 1, 0.6] }}
+                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                      className="w-full h-full rounded-full bg-gradient-to-br from-red-500 to-red-600 shadow-2xl shadow-red-500/50 flex items-center justify-center"
+                    >
+                      <Brain className="w-16 h-16 text-white" />
+                    </motion.div>
+                  </div>
+                  {/* AI Core - Dark Mode */}
+                  <div className="absolute inset-16 hidden dark:block">
+                    <motion.div
+                      animate={{ opacity: [0.7, 1, 0.7] }}
+                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                      className="w-full h-full rounded-full bg-gradient-to-br from-red-400 to-red-500 shadow-2xl shadow-red-400/60 flex items-center justify-center"
+                    >
+                      <Brain className="w-16 h-16 text-white" />
+                    </motion.div>
+                  </div>
+                </motion.div>
+
+                {/* Floating Data Nodes */}
+                {Array.from({ length: 8 }).map((_, i) => {
+                  const angle = (i * 45 * Math.PI) / 180;
+                  const radius = 180;
+                  const x = Math.cos(angle) * radius;
+                  const y = Math.sin(angle) * radius;
+                  return (
+                    <motion.div
+                      key={i}
+                      animate={{
+                        y: [y - 10, y + 10, y - 10],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 3 + i * 0.5,
+                        ease: "easeInOut",
+                        delay: i * 0.3,
+                      }}
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                      style={{ transform: `translate(${x}px, ${y}px)` }}
+                    >
+                      {/* Node - Light Mode */}
+                      <div className="dark:hidden">
+                        <div className="w-12 h-12 rounded-lg bg-white/60 backdrop-blur-xl border border-gray-200/50 shadow-xl flex items-center justify-center">
+                          <motion.div
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
+                            className="w-3 h-3 rounded-full bg-red-500"
+                          />
+                        </div>
+                      </div>
+                      {/* Node - Dark Mode */}
+                      <div className="hidden dark:block">
+                        <div className="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-xl border border-red-400/30 shadow-xl flex items-center justify-center">
+                          <motion.div
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
+                            className="w-3 h-3 rounded-full bg-red-400"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-black" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-black dark:to-transparent pointer-events-none" />
+      </section>
+
+      {/* ==================== HERO VIDEO SECTION ==================== */}
+      <section className="relative w-full overflow-hidden bg-black">
+        <div className="relative">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-auto max-h-[600px] object-cover"
+          >
+            <source src="/heroSec.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          {/* Overlay gradient for smooth transition */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-black pointer-events-none" />
+        </div>
       </section>
 
       {/* ==================== TRUST / STATS SECTION ==================== */}
-      <section className="relative -mt-16 z-20 bg-transparent dark:bg-black">
+      <section className="relative z-20 bg-transparent dark:bg-black">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 40 }}

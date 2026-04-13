@@ -100,7 +100,7 @@ export default function ProjectsPage() {
     <div className="bg-white transition-colors duration-300 dark:bg-black">
       {/* Hero */}
       <section className="bg-black text-white">
-        <div className="container-custom section-padding">
+        <div className="container-custom relative z-10 py-16 md:py-20">
           <motion.div
             initial={fadeInUp.initial}
             animate={fadeInUp.whileInView}
