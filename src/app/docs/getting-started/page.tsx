@@ -1,295 +1,387 @@
 import { DocLayout } from "@/components/docs/DocLayout";
 import { CodeBlock } from "@/components/docs/CodeBlock";
-import { CodePlayground } from "@/components/docs/CodePlayground";
 import { Breadcrumbs } from "@/components/docs/Breadcrumbs";
 import { TableOfContents } from "@/components/docs/TableOfContents";
 import { ArticleRating } from "@/components/docs/ArticleRating";
 import { RelatedArticles } from "@/components/docs/RelatedArticles";
 import { EditOnGitHub } from "@/components/docs/EditOnGitHub";
-import { AISummarizer } from "@/components/docs/AISummarizer";
 import { ShortcutsGuide } from "@/components/docs/ShortcutsGuide";
 import { VersionSelector } from "@/components/docs/VersionSelector";
 import Link from "next/link";
-import { ArrowRight, Zap, BookOpen, Code, Terminal } from "lucide-react";
+import { 
+  ArrowRight, 
+  Zap, 
+  Layers, 
+  Terminal, 
+  Settings, 
+  Shield, 
+  Cpu, 
+  Globe, 
+  Box, 
+  Database, 
+  ChevronRight,
+  Sparkles,
+  Rocket
+} from "lucide-react";
 
 export const metadata = {
   title: "Getting Started",
-  description: "Quick start guide to Zerovex Documentation - Learn how to use the platform",
+  description: "Professional quick start guide to Zerovex - The premium documentation platform.",
 };
 
 const tocItems = [
   { id: "introduction", text: "Introduction", level: 2 },
+  { id: "learn", text: "What You Will Learn", level: 2 },
   { id: "prerequisites", text: "Prerequisites", level: 2 },
   { id: "installation", text: "Installation", level: 2 },
-  { id: "first-steps", text: "First Steps", level: 2 },
-  { id: "project-structure", text: "Project Structure", level: 2 },
-  { id: "development", text: "Development", level: 2 },
-  { id: "try-it-out", text: "Try It Out", level: 2 },
+  { id: "structure", text: "Project Structure", level: 2 },
+  { id: "architecture", text: "Platform Architecture", level: 2 },
+  { id: "first-project", text: "Creating Your First Project", level: 2 },
+  { id: "api-integrations", text: "API Integrations", level: 2 },
+  { id: "deployment", text: "Deployment", level: 2 },
   { id: "next-steps", text: "Next Steps", level: 2 },
 ];
 
 const relatedArticles = [
   {
-    title: "Python Introduction",
-    href: "/docs/python/introduction",
-    category: "Tutorial",
+    title: "Platform Architecture",
+    href: "/docs/api-reference",
+    category: "Technical",
   },
   {
-    title: "JavaScript Basics",
-    href: "/docs/javascript/introduction",
-    category: "Tutorial",
+    title: "Security Features",
+    href: "/docs/getting-started",
+    category: "Security",
   },
   {
-    title: "Best Practices",
-    href: "/docs/best-practices",
-    category: "Guide",
+    title: "Deployment Guide",
+    href: "/docs/changelog",
+    category: "Operations",
   },
 ];
 
 export default function GettingStartedPage() {
   return (
     <DocLayout title="Getting Started">
-      <div className="animate-in fade-in duration-500">
+      <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
         {/* Breadcrumbs */}
         <Breadcrumbs />
 
-        {/* Header with Version Selector */}
-        <div className="flex items-start justify-between mb-6">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Zap className="h-8 w-8 text-dark-red" />
-              <h1 className="text-4xl font-bold text-docs-foreground dark:text-docs-foreground-dark">
-                Getting Started
+        {/* Hero Section */}
+        <div className="relative mt-8 mb-12 overflow-hidden rounded-3xl border border-gray-200 dark:border-white/10 bg-gradient-to-br from-white via-gray-50 to-white dark:from-black dark:via-gray-900 dark:to-black p-8 md:p-12">
+          {/* Decorative background orb */}
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-dark-red/5 blur-3xl pointer-events-none"></div>
+          
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50 w-fit">
+                <Sparkles className="h-3.5 w-3.5 text-dark-red" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-dark-red">Developer Hub</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4 tracking-tight" style={{ fontFamily: "var(--font-serif)" }}>
+                Start Building with <span className="text-gradient">Zerovex</span>
               </h1>
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Welcome to the official Zerovex documentation. This guide will help you set up your developer environment and build high-performance applications with our AI-driven platform.
+              </p>
             </div>
-            <p className="text-lg text-docs-muted-foreground dark:text-docs-muted-foreground-dark">
-              Quick start guide to using Zerovex Documentation platform
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <VersionSelector />
-            <ShortcutsGuide />
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <VersionSelector />
+              <ShortcutsGuide />
+            </div>
           </div>
         </div>
 
-        {/* AI Summarizer */}
-        <AISummarizer className="mb-8" />
-
-        <div className="grid lg:grid-cols-[1fr_250px] gap-8">
+        <div className="grid lg:grid-cols-[1fr_250px] gap-12">
           {/* Main Content */}
-          <div className="space-y-8">
+          <div className="space-y-16">
+            
+            {/* 1. Introduction */}
             <section id="introduction">
-              <h2 className="doc-heading">Introduction</h2>
-              <p className="doc-paragraph">
-                Welcome to Zerovex Documentation! This comprehensive platform provides interactive guides
-                for multiple programming languages. Whether you&apos;re a beginner or experienced developer,
-                you&apos;ll find everything you need to learn and grow.
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-dark-red text-white">
+                  <Globe className="h-5 w-5" />
+                </div>
+                <h2 className="text-3xl font-bold text-black dark:text-white">Introduction</h2>
+              </div>
+              <p className="doc-paragraph text-lg leading-relaxed">
+                Zerovex is a high-performance documentation and application platform designed for modern engineering teams. 
+                Our infrastructure provides the building blocks for creating immersive, developer-friendly documentation 
+                while offering powerful AI integrations that bridge the gap between static content and interactive learning.
               </p>
+            </section>
 
-              <div className="grid md:grid-cols-3 gap-4 my-6">
-                <div className="doc-card">
-                  <BookOpen className="h-6 w-6 text-dark-red mb-2" />
-                  <h3 className="font-semibold text-docs-foreground dark:text-docs-foreground-dark mb-1">
-                    Comprehensive
-                  </h3>
-                  <p className="text-sm text-docs-muted-foreground dark:text-docs-muted-foreground-dark">
-                    In-depth guides for 6+ programming languages
-                  </p>
+            {/* 2. What You Will Learn */}
+            <section id="learn">
+              <h2 className="text-2xl font-bold text-black dark:text-white mb-8">What You Will Learn</h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  { title: "Environment Setup", desc: "Configuring your workspace for Zerovex development." },
+                  { title: "Core Architecture", desc: "Understanding the modular design of the platform." },
+                  { title: "Project Creation", desc: "Initiating and managing your first Zerovex project." },
+                  { title: "Deployment Flow", desc: "Automating your release pipeline for production." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 p-5 rounded-2xl border border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 transition-hover hover:border-dark-red/20">
+                    <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-dark-red/10 text-dark-red">
+                      <ChevronRight className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-black dark:text-white text-sm mb-1">{item.title}</h4>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* 3. Prerequisites */}
+            <section id="prerequisites">
+              <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Prerequisites</h2>
+              <p className="doc-paragraph">
+                Before initiating your first project, ensure your local environment meets the following specifications:
+              </p>
+              <div className="grid sm:grid-cols-2 gap-6 mt-8">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600">
+                    <Layers className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-black dark:text-white text-sm mb-1">Node.js Runtime</h4>
+                    <p className="text-xs text-gray-500">v18.0 or higher required for full compatibility.</p>
+                  </div>
                 </div>
-                <div className="doc-card">
-                  <Code className="h-6 w-6 text-dark-red mb-2" />
-                  <h3 className="font-semibold text-docs-foreground dark:text-docs-foreground-dark mb-1">
-                    Interactive
-                  </h3>
-                  <p className="text-sm text-docs-muted-foreground dark:text-docs-muted-foreground-dark">
-                    Run code directly in your browser
-                  </p>
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-50 dark:bg-green-900/20 text-green-600">
+                    <Shield className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-black dark:text-white text-sm mb-1">Package Manager</h4>
+                    <p className="text-xs text-gray-500">npm, yarn, or pnpm (pnpm recommended).</p>
+                  </div>
                 </div>
-                <div className="doc-card">
-                  <Terminal className="h-6 w-6 text-dark-red mb-2" />
-                  <h3 className="font-semibold text-docs-foreground dark:text-docs-foreground-dark mb-1">
-                    AI-Powered
-                  </h3>
-                  <p className="text-sm text-docs-muted-foreground dark:text-docs-muted-foreground-dark">
-                    Get instant help from our AI assistant
-                  </p>
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-purple-50 dark:bg-purple-900/20 text-purple-600">
+                    <Terminal className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-black dark:text-white text-sm mb-1">Modern Browser</h4>
+                    <p className="text-xs text-gray-500">Chromium-based or Firefox for advanced CSS.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600">
+                    <Box className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-black dark:text-white text-sm mb-1">Code Editor</h4>
+                    <p className="text-xs text-gray-500">VS Code with TypeScript support.</p>
+                  </div>
                 </div>
               </div>
             </section>
 
-            <section id="prerequisites">
-              <h2 className="doc-heading">Prerequisites</h2>
-              <p className="doc-paragraph">
-                Before you begin, make sure you have the following:
-              </p>
-              <ul className="doc-list">
-                <li>Basic understanding of programming concepts</li>
-                <li>A modern web browser (Chrome, Firefox, Safari, or Edge)</li>
-                <li>Node.js 18+ installed (for running examples)</li>
-                <li>A code editor (VS Code recommended)</li>
-              </ul>
-            </section>
-
+            {/* 4. Installation */}
             <section id="installation">
-              <h2 className="doc-heading">Installation</h2>
+              <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Installation</h2>
               <p className="doc-paragraph">
-                No installation required! All examples run directly in your browser through our
-                interactive playground. However, if you want to run the code locally:
+                The easiest way to get started is by using the Zerovex CLI to bootstrap your project. Run the following command in your terminal:
               </p>
 
               <CodeBlock
                 language="bash"
                 title="terminal"
-                code={`# Clone the repository
-git clone https://github.com/zerovex/zerovex.git
+                code={`# Initialize a new Zerovex project
+npx zerovex-cli@latest init my-project
 
-# Navigate to project
-cd zerovex
+# Navigate to project directory
+cd my-project
 
 # Install dependencies
-npm install
+pnpm install
 
-# Start development server
-npm run dev`}
+# Start the development server
+pnpm dev`}
+              />
+              
+              <div className="mt-6 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30 bg-blue-50/30 dark:bg-blue-950/10">
+                <p className="text-xs text-blue-700 dark:text-blue-400 leading-relaxed">
+                  <strong>Pro Tip:</strong> Using <code className="inline-code text-blue-800 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/30">pnpm</code> is recommended for faster installations and better disk space management in large-scale documentation projects.
+                </p>
+              </div>
+            </section>
+
+            {/* 5. Project Structure */}
+            <section id="structure">
+              <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Project Structure</h2>
+              <p className="doc-paragraph">
+                Zerovex follows a clean, modular file structure optimized for Next.js 15+ and TypeScript.
+              </p>
+
+              <CodeBlock
+                language="text"
+                title="Project Structure"
+                code={`my-project/
+├── src/
+│   ├── app/            # App Router (Pages & API)
+│   ├── components/     # UI & Documentation Components
+│   ├── lib/            # Utility functions & Shared logic
+│   └── styles/         # Global & Component styles
+├── public/             # Static assets (Images, Fonts)
+├── next.config.ts      # Platform configuration
+├── tailwind.config.ts  # Design system configuration
+└── package.json        # Dependencies & Scripts`}
               />
             </section>
 
-            <section id="first-steps">
-              <h2 className="doc-heading">First Steps</h2>
+            {/* 6. Platform Architecture */}
+            <section id="architecture">
+              <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Platform Architecture</h2>
               <p className="doc-paragraph">
-                Let&apos;s write your first program! Use the interactive playground below to experiment
-                with code right here in the documentation:
+                Zerovex is built on a hybrid architecture that combines Static Site Generation (SSG) with 
+                dynamic AI capabilities. This ensures ultra-fast page loads while maintaining high interactivity.
               </p>
-
-              <CodePlayground
-                initialCode={`// Welcome to Zerovex Documentation!
-// Try editing this code and click "Run"
-
-const greeting = "Hello, Zerovex!";
-console.log(greeting);
-
-// Variables and types
-const name = "Developer";
-const year = 2026;
-console.log(\`Welcome, \${name}! (Year: \${year})\`);
-
-// Arrays and loops
-const languages = ["Python", "JavaScript", "C++", "Java"];
-console.log("\\nAvailable languages:");
-languages.forEach((lang, i) => {
-  console.log(\`\${i + 1}. \${lang}\`);
-});`}
-                language="javascript"
-              />
-            </section>
-
-            <section id="project-structure">
-              <h2 className="doc-heading">Platform Features</h2>
-              <p className="doc-paragraph">
-                Zerovex Documentation includes several powerful features:
-              </p>
-
-              <div className="space-y-4 my-6">
-                <div className="p-4 rounded-lg border border-docs-border dark:border-docs-border-dark">
-                  <h3 className="font-semibold text-docs-foreground dark:text-docs-foreground-dark mb-2">
-                    🔍 Smart Search
-                  </h3>
-                  <p className="text-sm text-docs-muted-foreground dark:text-docs-muted-foreground-dark">
-                    Press <code className="inline-code">Cmd+K</code> to search across all documentation instantly
-                  </p>
+              <div className="grid gap-6 mt-8">
+                <div className="flex gap-6 p-6 rounded-2xl border border-gray-100 dark:border-white/5 bg-white dark:bg-white/5 transition-all hover:shadow-lg">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-900 text-white dark:bg-white dark:text-black">
+                    <Cpu className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-black dark:text-white mb-2">Core Engine</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      Powered by Next.js and React 19, the core engine handles routing, state management, and component rendering with optimized server components.
+                    </p>
+                  </div>
                 </div>
-                <div className="p-4 rounded-lg border border-docs-border dark:border-docs-border-dark">
-                  <h3 className="font-semibold text-docs-foreground dark:text-docs-foreground-dark mb-2">
-                    🤖 AI Assistant
-                  </h3>
-                  <p className="text-sm text-docs-muted-foreground dark:text-docs-muted-foreground-dark">
-                    Click the chat button in the bottom-right corner for instant help
-                  </p>
-                </div>
-                <div className="p-4 rounded-lg border border-docs-border dark:border-docs-border-dark">
-                  <h3 className="font-semibold text-docs-foreground dark:text-docs-foreground-dark mb-2">
-                    🎯 Interactive Playgrounds
-                  </h3>
-                  <p className="text-sm text-docs-muted-foreground dark:text-docs-muted-foreground-dark">
-                    Write and run code without leaving the documentation
-                  </p>
-                </div>
-                <div className="p-4 rounded-lg border border-docs-border dark:border-docs-border-dark">
-                  <h3 className="font-semibold text-docs-foreground dark:text-docs-foreground-dark mb-2">
-                    🌙 Dark Mode
-                  </h3>
-                  <p className="text-sm text-docs-muted-foreground dark:text-docs-muted-foreground-dark">
-                    Toggle between light and dark themes for comfortable reading
-                  </p>
+                <div className="flex gap-6 p-6 rounded-2xl border border-gray-100 dark:border-white/5 bg-white dark:bg-white/5 transition-all hover:shadow-lg">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-dark-red text-white">
+                    <Settings className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-black dark:text-white mb-2">Integration Layer</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      Connects your documentation to external APIs, databases, and AI models through a secure, server-side integration layer.
+                    </p>
+                  </div>
                 </div>
               </div>
             </section>
 
-            <section id="development">
-              <h2 className="doc-heading">Navigation Tips</h2>
-              <p className="doc-paragraph">
-                Make the most of your learning experience:
+            {/* 7. Creating Your First Project */}
+            <section id="first-project">
+              <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Creating Your First Project</h2>
+              <p className="doc-paragraph mb-8">
+                Follow these three simple steps to launch your first Zerovex project:
               </p>
-              <ul className="doc-list">
-                <li>Use the sidebar to browse topics by language</li>
-                <li>Follow the &quot;Next&quot; buttons for sequential learning</li>
-                <li>Bookmark important pages for quick access</li>
-                <li>Rate articles to help improve content quality</li>
-                <li>Use keyboard shortcuts for faster navigation</li>
-              </ul>
+              
+              <div className="space-y-4">
+                {[
+                  { step: "01", title: "Initialize Workspace", desc: "Run the initialization command to generate the core platform files and project structure." },
+                  { step: "02", title: "Configure Design", desc: "Open tailwind.config.ts to customize the primary brand colors and typography to match your vision." },
+                  { step: "03", title: "Launch Preview", desc: "Execute npm run dev to start the local development server and view your project in real-time." }
+                ].map((item, i) => (
+                  <div key={i} className="group flex items-center gap-6 p-6 rounded-2xl border border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 transition-all hover:border-dark-red/20">
+                    <div className="text-4xl font-bold text-dark-red/10 group-hover:text-dark-red/20 transition-colors" style={{ fontFamily: "var(--font-serif)" }}>
+                      {item.step}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-black dark:text-white mb-1">{item.title}</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </section>
 
-            <section id="try-it-out">
-              <h2 className="doc-heading">Try It Yourself</h2>
+            {/* 8. API Integrations */}
+            <section id="api-integrations">
+              <h2 className="text-2xl font-bold text-black dark:text-white mb-6">API Integrations</h2>
               <p className="doc-paragraph">
-                Experiment with different programming languages using our playground:
+                Extend your documentation with live data from external sources. Zerovex supports native integration with REST and GraphQL APIs.
               </p>
-
-              <CodePlayground
-                initialCode={`# Python Example
-def greet(name):
-    return f"Hello, {name}!"
-
-# Call the function
-message = greet("Zerovex User")
-print(message)
-
-# List comprehension
-squares = [x**2 for x in range(10)]
-print(f"Squares: {squares}")`}
-                language="python"
+              
+              <CodeBlock
+                language="typescript"
+                title="lib/api.ts"
+                code={`// Example: Fetching live data for your docs
+export async function getProjectStats() {
+  const response = await fetch('https://api.zerovex.com/v1/stats', {
+    headers: {
+      'Authorization': \`Bearer \${process.env.API_KEY}\`
+    }
+  });
+  return response.json();
+}`}
               />
             </section>
 
-            <section id="next-steps">
-              <h2 className="doc-heading">Next Steps</h2>
+            {/* 9. Deployment */}
+            <section id="deployment">
+              <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Deployment</h2>
               <p className="doc-paragraph">
-                Now that you&apos;re familiar with the platform, choose a programming language to start learning:
+                Zerovex is optimized for serverless and edge environments. We recommend deploying on platforms like Vercel or Netlify for the best performance.
               </p>
-
-              <div className="mt-8 p-6 rounded-lg bg-gradient-to-r from-red-50 to-red-100 dark:from-red-950/20 dark:to-red-900/10 border border-red-200 dark:border-red-800">
-                <h3 className="font-semibold text-docs-foreground dark:text-docs-foreground-dark mb-3">
-                  Recommended Learning Path
-                </h3>
-                <div className="space-y-2 mb-4">
-                  <p className="text-sm text-docs-muted-foreground dark:text-docs-muted-foreground-dark">
-                    1. Python Introduction → 2. JavaScript Basics → 3. Web Development (HTML/CSS)
-                  </p>
+              <div className="mt-8 grid sm:grid-cols-2 gap-4">
+                <div className="p-6 rounded-2xl border border-gray-100 dark:border-white/5 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-black">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-black text-white dark:bg-white dark:text-black mb-4">
+                    <Rocket className="h-5 w-5" />
+                  </div>
+                  <h4 className="font-bold text-black dark:text-white mb-2">Vercel Deployment</h4>
+                  <p className="text-xs text-gray-500 mb-4">Optimized for Next.js. Deploy with one click from GitHub.</p>
+                  <Link href="#" className="text-xs font-bold text-dark-red flex items-center gap-1">
+                    Read Deployment Guide <ArrowRight className="h-3 w-3" />
+                  </Link>
                 </div>
-                <div className="flex gap-3">
-                  <Link
-                    href="/docs/python/introduction"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-dark-red text-white hover:bg-dark-red-light transition-colors"
-                  >
-                    Start Python
-                    <ArrowRight className="h-4 w-4" />
+                <div className="p-6 rounded-2xl border border-gray-100 dark:border-white/5 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-black">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white mb-4">
+                    <Database className="h-5 w-5" />
+                  </div>
+                  <h4 className="font-bold text-black dark:text-white mb-2">Docker Support</h4>
+                  <p className="text-xs text-gray-500 mb-4">Containerize your Zerovex docs for any cloud environment.</p>
+                  <Link href="#" className="text-xs font-bold text-dark-red flex items-center gap-1">
+                    View Dockerfile <ArrowRight className="h-3 w-3" />
                   </Link>
-                  <Link
-                    href="/docs/javascript/introduction"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-dark-red text-dark-red hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
-                  >
-                    Start JavaScript
-                  </Link>
+                </div>
+              </div>
+            </section>
+
+            {/* 10. Next Steps */}
+            <section id="next-steps">
+              <div className="p-10 rounded-3xl bg-black text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-dark-red/20 blur-3xl rounded-full"></div>
+                
+                <div className="relative z-10">
+                  <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-serif)" }}>Next Steps</h2>
+                  <p className="text-gray-400 mb-8 leading-relaxed max-w-xl">
+                    Congratulations! You've successfully initialized your Zerovex workspace. 
+                    Now explore our advanced features to build truly exceptional documentation.
+                  </p>
+                  
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <Link 
+                      href="/docs/api-reference" 
+                      className="group flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-dark-red/20 text-dark-red">
+                          <Code className="h-5 w-5" />
+                        </div>
+                        <span className="font-bold text-sm">API Reference</span>
+                      </div>
+                      <ChevronRight className="h-5 w-5 text-gray-600 group-hover:text-white transition-colors" />
+                    </Link>
+                    <Link 
+                      href="/docs/changelog" 
+                      className="group flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500/20 text-green-500">
+                          <Rocket className="h-5 w-5" />
+                        </div>
+                        <span className="font-bold text-sm">Changelog</span>
+                      </div>
+                      <ChevronRight className="h-5 w-5 text-gray-600 group-hover:text-white transition-colors" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </section>
