@@ -28,7 +28,7 @@ const staggerContainer = {
 
 const team = [
   {
-    name: "Bilal",
+    name: "Muhammad Bilal",
     role: "CTO",
     image: "/bilal.png",
     bio: "Driving the technical vision and innovation at Zerovex Solutions. Expert in AI, distributed systems, and enterprise architecture.",
