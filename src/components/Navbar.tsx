@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -27,7 +28,7 @@ export default function Navbar() {
       <header className="sticky top-0 z-50 border-b border-gray-200 bg-white transition-colors duration-300 dark:border-gray-800 dark:bg-black">
         <nav className="container-custom flex items-center justify-between py-2.5 md:py-3">
           <Link href="/" className="flex flex-col items-center">
-            <img src="/logogency.png" alt="Zerovex Solutions" className="h-6 w-auto sm:h-7 md:h-7 lg:h-8" />
+            <Image src="/logogency.png" alt="Zerovex Solutions" width={120} height={32} className="h-6 w-auto sm:h-7 md:h-7 lg:h-8" priority />
             <span className="mt-0.5 text-[10px] font-medium tracking-[0.2em] uppercase text-black dark:text-white" style={{ fontFamily: "var(--font-serif)" }}>Solutions</span>
           </Link>
           <div className="hidden items-center gap-8 lg:flex">
@@ -52,7 +53,7 @@ export default function Navbar() {
       <nav className="container-custom flex items-center justify-between py-2.5 md:py-3">
         {/* Logo */}
         <Link href="/" className="flex flex-col items-center">
-          <img src="/logogency.png" alt="Zerovex Solutions" className="h-6 w-auto sm:h-7 md:h-7 lg:h-8" />
+          <Image src="/logogency.png" alt="Zerovex Solutions" width={120} height={32} className="h-6 w-auto sm:h-7 md:h-7 lg:h-8" priority />
           <span className="mt-0.5 text-[9px] font-medium tracking-[0.2em] uppercase text-black dark:text-white" style={{ fontFamily: "var(--font-serif)" }}>Solutions</span>
         </Link>
 

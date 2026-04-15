@@ -28,6 +28,17 @@ const staggerContainer = {
 
 const team = [
   {
+    name: "Bilal",
+    role: "CTO",
+    image: "/bilal.png",
+    bio: "Driving the technical vision and innovation at Zerovex Solutions. Expert in AI, distributed systems, and enterprise architecture.",
+    social: {
+      linkedin: "#",
+      github: "#",
+      email: "bilal@zerovexsolutions.site",
+    },
+  },
+  {
     name: "Ahmed Hassan",
     role: "Lead Web Developer",
     bio: "Builds modern, responsive websites using Next.js and Tailwind CSS. Passionate about clean code and beautiful design.",
@@ -333,14 +344,28 @@ export default function TeamPage() {
                 key={member.name}
                 variants={fadeInUp}
                 whileHover={{ y: -8 }}
-                className="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm hover:shadow-xl hover:border-dark-red/30 dark:hover:border-dark-red/50 transition-all duration-300"
+                className="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm hover:shadow-xl hover:border-dark-red/30 dark:hover:border-dark-red/50 transition-all duration-300 flex flex-col"
               >
-                {/* Avatar */}
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900 dark:to-red-950 text-2xl font-bold text-dark-red transition-all duration-300 group-hover:from-dark-red group-hover:to-dark-red group-hover:text-white shadow-md">
-                  {member.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
+                {/* Avatar / Image */}
+                <div className="mb-6 relative h-24 w-24 flex-shrink-0">
+                  {member.image ? (
+                    <div className="h-full w-full rounded-full overflow-hidden border-2 border-dark-red shadow-md">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={96}
+                        height={96}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900 dark:to-red-950 text-2xl font-bold text-dark-red transition-all duration-300 group-hover:from-dark-red group-hover:to-dark-red group-hover:text-white shadow-md">
+                      {member.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </div>
+                  )}
                 </div>
 
                 <h3 className="mb-1 text-xl font-semibold text-black dark:text-white">{member.name}</h3>

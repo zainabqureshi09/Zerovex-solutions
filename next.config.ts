@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for better code quality
   reactStrictMode: true,
 
+  // Fix workspace root warning
+  outputFileTracingRoot: __dirname,
+
   // Enable image optimization
   images: {
     formats: ['image/avif', 'image/webp'],

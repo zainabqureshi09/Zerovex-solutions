@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, Twitter, Linkedin, Github } from "lucide-react";
 
@@ -30,7 +31,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="mb-4 flex flex-col items-center">
-              <img src="/logogency.png" alt="Zerovex Solutions" className="h-7 w-auto sm:h-8 md:h-9" />
+              <Image src="/logogency.png" alt="Zerovex Solutions" width={120} height={32} className="h-7 w-auto sm:h-8 md:h-9" />
               <span className="mt-1 text-[10px] font-medium tracking-[0.2em] uppercase text-black dark:text-white" style={{ fontFamily: "var(--font-serif)" }}>Solutions</span>
             </Link>
             <p className="mb-6 text-sm leading-relaxed text-gray-600 dark:text-gray-400">

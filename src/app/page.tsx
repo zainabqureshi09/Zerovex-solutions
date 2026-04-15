@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -322,11 +323,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Image Container */}
       <div className="relative h-64 overflow-hidden">
         <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
-        <img
+        <Image
           src={project.image}
           alt={project.title}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-          loading="lazy"
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -529,8 +531,8 @@ function TestimonialCarousel({ testimonials }: { testimonials: Testimonial[] }) 
 export default function Home() {
   return (
     <div className="bg-white transition-colors duration-300 dark:bg-black">
-      {/* ==================== HERO SECTION ==================== */}
-      <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black">
+      {/* ==================== PREMIUM HERO SECTION ==================== */}
+      <section className="relative min-h-screen bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black">
         {/* Animated Background Effects */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           {/* Animated Grid Lines - Light Mode */}
@@ -598,134 +600,6 @@ export default function Home() {
               className="absolute -bottom-40 -left-40 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-dark-red/30 to-red-600/20 blur-3xl"
             />
           </div>
-
-          {/* Floating Particles - Light Mode */}
-          <div className="dark:hidden">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  y: [0, -100, 0],
-                  x: [0, Math.sin(i) * 50, 0],
-                  opacity: [0.1, 0.3, 0.1]
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 5 + Math.random() * 5,
-                  ease: "easeInOut",
-                  delay: Math.random() * 5,
-                }}
-                className="absolute w-1 h-1 bg-red-500/30 rounded-full"
-                style={{
-                  left: `${10 + Math.random() * 80}%`,
-                  top: `${10 + Math.random() * 80}%`,
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Floating Particles - Dark Mode */}
-          <div className="hidden dark:block">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  y: [0, -100, 0],
-                  x: [0, Math.sin(i) * 50, 0],
-                  opacity: [0.2, 0.6, 0.2]
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 5 + Math.random() * 5,
-                  ease: "easeInOut",
-                  delay: Math.random() * 5,
-                }}
-                className="absolute w-1 h-1 bg-red-400/50 rounded-full"
-                style={{
-                  left: `${10 + Math.random() * 80}%`,
-                  top: `${10 + Math.random() * 80}%`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Holographic UI Panels - Light Mode */}
-        <div className="pointer-events-none absolute inset-0 dark:hidden">
-          <motion.div
-            animate={{ y: [-10, 10, -10] }}
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            className="absolute top-20 right-20 w-64 h-32 rounded-xl bg-white/40 backdrop-blur-xl border border-gray-200/50 shadow-2xl p-4 hidden lg:block"
-          >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-xs font-semibold text-gray-700">AI Processing</span>
-            </div>
-            <div className="space-y-2">
-              <div className="h-2 bg-gradient-to-r from-red-500/30 to-transparent rounded-full w-3/4" />
-              <div className="h-2 bg-gradient-to-r from-red-500/20 to-transparent rounded-full w-1/2" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [10, -10, 10] }}
-            transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-32 right-32 w-56 h-28 rounded-xl bg-white/40 backdrop-blur-xl border border-gray-200/50 shadow-2xl p-4 hidden lg:block"
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <Brain className="w-4 h-4 text-red-500" />
-              <span className="text-xs font-semibold text-gray-700">Neural Network</span>
-            </div>
-            <div className="grid grid-cols-3 gap-1">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{ opacity: [0.3, 1, 0.3] }}
-                  transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
-                  className="h-1.5 bg-red-500/40 rounded-full"
-                />
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Holographic UI Panels - Dark Mode */}
-        <div className="pointer-events-none absolute inset-0 hidden dark:block">
-          <motion.div
-            animate={{ y: [-10, 10, -10] }}
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            className="absolute top-20 right-20 w-64 h-32 rounded-xl bg-white/5 backdrop-blur-xl border border-red-500/20 shadow-2xl p-4 hidden lg:block"
-          >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-              <span className="text-xs font-semibold text-gray-300">AI Processing</span>
-            </div>
-            <div className="space-y-2">
-              <div className="h-2 bg-gradient-to-r from-red-400/40 to-transparent rounded-full w-3/4" />
-              <div className="h-2 bg-gradient-to-r from-red-400/30 to-transparent rounded-full w-1/2" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [10, -10, 10] }}
-            transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-32 right-32 w-56 h-28 rounded-xl bg-white/5 backdrop-blur-xl border border-red-500/20 shadow-2xl p-4 hidden lg:block"
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <Brain className="w-4 h-4 text-red-400" />
-              <span className="text-xs font-semibold text-gray-300">Neural Network</span>
-            </div>
-            <div className="grid grid-cols-3 gap-1">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{ opacity: [0.4, 1, 0.4] }}
-                  transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
-                  className="h-1.5 bg-red-400/50 rounded-full"
-                />
-              ))}
-            </div>
-          </motion.div>
         </div>
 
         {/* Main Content */}
@@ -825,120 +699,15 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right Column - AI Visual */}
+            {/* Right Column - Hero Image */}
             <div className="relative hidden lg:block">
-              {/* AI Robot / Holographic AI Animation */}
-              <div className="relative w-full h-[600px]">
-                {/* Central AI Orb */}
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.05, 1],
-                    rotate: [0, 5, -5, 0]
-                  }}
-                  transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                >
-                  {/* Outer Glow Ring - Light Mode */}
-                  <div className="dark:hidden">
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-                      className="w-80 h-80 rounded-full border-2 border-dashed border-red-500/30"
-                    />
+              <div className="relative w-full h-[600px] rounded-2xl overflow-hidden bg-gradient-to-br from-red-500/10 to-red-600/5 dark:from-red-500/20 dark:to-red-600/10 border border-red-500/20 dark:border-red-400/30">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <Brain className="h-24 w-24 mx-auto text-red-500 dark:text-red-400 mb-4" />
+                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">AI & Automation</p>
                   </div>
-                  {/* Outer Glow Ring - Dark Mode */}
-                  <div className="hidden dark:block">
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-                      className="w-80 h-80 rounded-full border-2 border-dashed border-red-400/40"
-                    />
-                  </div>
-
-                  {/* Inner Orb - Light Mode */}
-                  <div className="absolute inset-8 dark:hidden">
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                      className="w-full h-full rounded-full bg-gradient-to-br from-red-500/20 to-red-600/10 backdrop-blur-xl border border-red-500/30 shadow-2xl shadow-red-500/20"
-                    />
-                  </div>
-                  {/* Inner Orb - Dark Mode */}
-                  <div className="absolute inset-8 hidden dark:block">
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                      className="w-full h-full rounded-full bg-gradient-to-br from-red-400/30 to-red-500/20 backdrop-blur-xl border border-red-400/50 shadow-2xl shadow-red-400/40"
-                    />
-                  </div>
-
-                  {/* AI Core - Light Mode */}
-                  <div className="absolute inset-16 dark:hidden">
-                    <motion.div
-                      animate={{ opacity: [0.6, 1, 0.6] }}
-                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                      className="w-full h-full rounded-full bg-gradient-to-br from-red-500 to-red-600 shadow-2xl shadow-red-500/50 flex items-center justify-center"
-                    >
-                      <Brain className="w-16 h-16 text-white" />
-                    </motion.div>
-                  </div>
-                  {/* AI Core - Dark Mode */}
-                  <div className="absolute inset-16 hidden dark:block">
-                    <motion.div
-                      animate={{ opacity: [0.7, 1, 0.7] }}
-                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                      className="w-full h-full rounded-full bg-gradient-to-br from-red-400 to-red-500 shadow-2xl shadow-red-400/60 flex items-center justify-center"
-                    >
-                      <Brain className="w-16 h-16 text-white" />
-                    </motion.div>
-                  </div>
-                </motion.div>
-
-                {/* Floating Data Nodes */}
-                {Array.from({ length: 8 }).map((_, i) => {
-                  const angle = (i * 45 * Math.PI) / 180;
-                  const radius = 180;
-                  const x = Math.cos(angle) * radius;
-                  const y = Math.sin(angle) * radius;
-                  return (
-                    <motion.div
-                      key={i}
-                      animate={{
-                        y: [y - 10, y + 10, y - 10],
-                        opacity: [0.5, 1, 0.5],
-                      }}
-                      transition={{
-                        repeat: Infinity,
-                        duration: 3 + i * 0.5,
-                        ease: "easeInOut",
-                        delay: i * 0.3,
-                      }}
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                      style={{ transform: `translate(${x}px, ${y}px)` }}
-                    >
-                      {/* Node - Light Mode */}
-                      <div className="dark:hidden">
-                        <div className="w-12 h-12 rounded-lg bg-white/60 backdrop-blur-xl border border-gray-200/50 shadow-xl flex items-center justify-center">
-                          <motion.div
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
-                            className="w-3 h-3 rounded-full bg-red-500"
-                          />
-                        </div>
-                      </div>
-                      {/* Node - Dark Mode */}
-                      <div className="hidden dark:block">
-                        <div className="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-xl border border-red-400/30 shadow-xl flex items-center justify-center">
-                          <motion.div
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
-                            className="w-3 h-3 rounded-full bg-red-400"
-                          />
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+                </div>
               </div>
             </div>
           </div>
@@ -1295,7 +1064,7 @@ export default function Home() {
               backgroundSize: "80px 80px",
             }}
           />
-          <div className="absolute -right-40 -top-40 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-dark-red/30 to-transparent blur-3xl pulse-glow" />
+          <div className="absolute -right-40 -top-40 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-dark-red/30 to-transparent blur-3xl" />
           <div className="absolute -bottom-40 -left-40 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-dark-red/20 to-transparent blur-3xl" />
         </div>
 
