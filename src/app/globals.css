@@ -21,38 +21,6 @@
   --color-dark-red-light: #a30000;
   --color-dark-red-dark: #6b0000;
 
-  /* Documentation theme tokens */
-  --color-docs-background: #ffffff;
-  --color-docs-foreground: #000000;
-  --color-docs-card: #ffffff;
-  --color-docs-card-foreground: #000000;
-  --color-docs-muted: #f5f5f5;
-  --color-docs-muted-foreground: #6b7280;
-  --color-docs-border: #e5e5e5;
-  --color-docs-sidebar: #fafafa;
-  --color-docs-sidebar-border: #e5e5e5;
-  --color-docs-sidebar-hover: #fef2f2;
-  --color-docs-sidebar-active: #fee2e2;
-  --color-docs-code-bg: #f9fafb;
-  --color-docs-code-border: #e5e7eb;
-  --color-docs-accent: #8B0000;
-
-  /* Dark mode documentation tokens */
-  --color-docs-background-dark: #000000;
-  --color-docs-foreground-dark: #ffffff;
-  --color-docs-card-dark: #111111;
-  --color-docs-card-foreground-dark: #ffffff;
-  --color-docs-muted-dark: #1a1a1a;
-  --color-docs-muted-foreground-dark: #9ca3af;
-  --color-docs-border-dark: #2a2a2a;
-  --color-docs-sidebar-dark: #0a0a0a;
-  --color-docs-sidebar-border-dark: #2a2a2a;
-  --color-docs-sidebar-hover-dark: #1a0000;
-  --color-docs-sidebar-active-dark: #2a0000;
-  --color-docs-code-bg-dark: #111111;
-  --color-docs-code-border-dark: #2a2a2a;
-  --color-docs-accent-dark: #a30000;
-
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Animation durations */
@@ -64,6 +32,11 @@
   --shadow-glow-red: 0 0 40px rgba(139, 0, 0, 0.3);
   --shadow-glow-red-sm: 0 0 20px rgba(139, 0, 0, 0.2);
   --shadow-premium: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+  /* Premium Mesh Gradients */
+  --mesh-gradient-dark: radial-gradient(at 0% 0%, rgba(139, 0, 0, 0.15) 0, transparent 50%),
+                        radial-gradient(at 50% 0%, rgba(139, 0, 0, 0.1) 0, transparent 50%),
+                        radial-gradient(at 100% 0%, rgba(139, 0, 0, 0.15) 0, transparent 50%);
 }
 
 @layer base {
@@ -73,8 +46,32 @@
     box-sizing: border-box;
   }
 
+  /* Custom Selection */
+  ::selection {
+    background-color: rgba(139, 0, 0, 0.3);
+    color: #ffffff;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8B0000;
+  }
+
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto !important; /* Managed by Lenis */
   }
 
   body {
@@ -84,11 +81,13 @@
     color: #000000;
     background-color: #ffffff;
     transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
   }
 
   html.dark body {
     color: #ffffff;
     background-color: #000000;
+    background-image: var(--mesh-gradient-dark);
   }
 
   /* Focus styles for accessibility */
@@ -546,128 +545,5 @@
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  /* Documentation Styles */
-  .doc-container {
-    @apply max-w-4xl mx-auto px-6 py-8;
-  }
-
-  .doc-heading {
-    @apply text-3xl font-bold mb-6 tracking-tight;
-    color: var(--color-docs-foreground);
-  }
-
-  html.dark .doc-heading {
-    color: var(--color-docs-foreground-dark);
-  }
-
-  .doc-subheading {
-    @apply text-2xl font-semibold mt-8 mb-4;
-    color: var(--color-docs-foreground);
-  }
-
-  html.dark .doc-subheading {
-    color: var(--color-docs-foreground-dark);
-  }
-
-  .doc-paragraph {
-    @apply text-base leading-relaxed mb-4;
-    color: var(--color-docs-muted-foreground);
-  }
-
-  html.dark .doc-paragraph {
-    color: var(--color-docs-muted-foreground-dark);
-  }
-
-  .doc-list {
-    @apply list-disc list-inside space-y-2 mb-4 ml-4;
-    color: var(--color-docs-muted-foreground);
-  }
-
-  html.dark .doc-list {
-    color: var(--color-docs-muted-foreground-dark);
-  }
-
-  .code-block {
-    @apply rounded-lg p-4 overflow-x-auto mb-6;
-    background-color: var(--color-docs-code-bg);
-    border: 1px solid var(--color-docs-code-border);
-  }
-
-  html.dark .code-block {
-    background-color: var(--color-docs-code-bg-dark);
-    border-color: var(--color-docs-code-border-dark);
-  }
-
-  .inline-code {
-    @apply px-1.5 py-0.5 rounded text-sm font-mono;
-    background-color: var(--color-docs-muted);
-    color: var(--color-docs-foreground);
-  }
-
-  html.dark .inline-code {
-    background-color: var(--color-docs-muted-dark);
-    color: var(--color-docs-foreground-dark);
-  }
-
-  .sidebar-link {
-    @apply block px-4 py-2 text-sm rounded-md transition-all duration-200;
-    color: var(--color-docs-muted-foreground);
-  }
-
-  .sidebar-link:hover {
-    background-color: var(--color-docs-sidebar-hover);
-    color: var(--color-docs-foreground);
-  }
-
-  html.dark .sidebar-link {
-    color: var(--color-docs-muted-foreground-dark);
-  }
-
-  html.dark .sidebar-link:hover {
-    background-color: var(--color-docs-sidebar-hover-dark);
-    color: var(--color-docs-foreground-dark);
-  }
-
-  .sidebar-link-active {
-    font-weight: 500;
-    border-left: 2px solid var(--color-docs-accent);
-    background-color: var(--color-docs-sidebar-active);
-    color: var(--color-docs-accent);
-  }
-
-  html.dark .sidebar-link-active {
-    background-color: var(--color-docs-sidebar-active-dark);
-    color: var(--color-docs-accent-dark);
-    border-left-color: var(--color-docs-accent-dark);
-  }
-
-  .language-badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
-  }
-
-  .doc-card {
-    @apply p-6 rounded-xl border transition-all duration-300;
-    background-color: var(--color-docs-card);
-    border-color: var(--color-docs-border);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-
-  .doc-card:hover {
-    border-color: var(--color-docs-accent);
-    box-shadow: 0 8px 24px rgba(139, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
-    transform: translateY(-4px);
-  }
-
-  html.dark .doc-card {
-    background-color: var(--color-docs-card-dark);
-    border-color: var(--color-docs-border-dark);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  html.dark .doc-card:hover {
-    border-color: var(--color-docs-accent-dark);
-    box-shadow: 0 8px 24px rgba(163, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 }

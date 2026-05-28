@@ -4,6 +4,9 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
+import MouseGlow from "@/components/ui/MouseGlow";
+import NeuralBackground from "@/components/ui/NeuralBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,13 +58,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-black`}>
         <ThemeProvider>
-          <div className="relative flex min-h-screen flex-col transition-colors duration-300">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
+          <SmoothScroll>
+            <div className="relative flex min-h-screen flex-col transition-colors duration-300">
+              <NeuralBackground />
+              <MouseGlow />
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>

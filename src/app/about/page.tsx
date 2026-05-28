@@ -1,31 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Target, Eye, Heart, ArrowRight } from "lucide-react";
+import { Target, Eye, Heart, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
+import GlassCard from "@/components/ui/GlassCard";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.5 },
+  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
 };
 
 export default function AboutPage() {
   return (
-    <div className="bg-white transition-colors duration-300 dark:bg-black">
+    <div className="bg-transparent text-white">
       {/* Hero */}
-      <section className="bg-black text-white">
-        <div className="container-custom relative z-10 py-16 md:py-20">
+      <section className="relative pt-32 pb-20">
+        <div className="container-custom relative z-10 text-center">
           <motion.div
             initial={fadeInUp.initial}
             animate={fadeInUp.whileInView}
-            className="mx-auto max-w-3xl"
+            className="mx-auto max-w-4xl"
           >
-            <h1 className="heading-lg mb-6">Building Tomorrow's Technology Today</h1>
-            <p className="text-body text-gray-300">
-              We&apos;re a team of engineers, designers, and strategists passionate about creating
-              software that transforms businesses and delights users worldwide.
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <Sparkles className="h-5 w-5 text-red-500" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50">Our Vision</span>
+            </div>
+            <h1 className="heading-xl mb-6">Engineering Tomorrow&apos;s <span className="text-gradient">Cognition</span></h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              We bridge the gap between cutting-edge AI architecture and enterprise reality.
             </p>
           </motion.div>
         </div>
@@ -34,21 +39,22 @@ export default function AboutPage() {
       {/* Mission, Vision, Values */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3">
             <motion.div
               initial={fadeInUp.initial}
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
-              className="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-gray-800 dark:bg-gray-900"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red dark:bg-dark-red/10">
-                <Target className="h-6 w-6" />
-              </div>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">Our Mission</h3>
-              <p className="leading-relaxed text-gray-600 dark:text-gray-400">
-                To democratize access to enterprise-grade technology, enabling businesses of all
-                sizes to leverage AI, automation, and modern software for growth and innovation.
-              </p>
+              <GlassCard className="h-full">
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-500">
+                  <Target className="h-6 w-6" />
+                </div>
+                <h3 className="mb-4 text-2xl font-bold">Our Mission</h3>
+                <p className="leading-relaxed text-gray-400">
+                  To democratize access to enterprise-grade technology, enabling businesses of all
+                  sizes to leverage AI, automation, and modern software for exponential growth.
+                </p>
+              </GlassCard>
             </motion.div>
 
             <motion.div
@@ -56,16 +62,17 @@ export default function AboutPage() {
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
               transition={{ delay: 0.1 }}
-              className="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-gray-800 dark:bg-gray-900"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red dark:bg-dark-red/10">
-                <Eye className="h-6 w-6" />
-              </div>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">Our Vision</h3>
-              <p className="leading-relaxed text-gray-600 dark:text-gray-400">
-                A world where technology empowers every organization to achieve its full potential,
-                streamline operations, and create exceptional value for their customers.
-              </p>
+              <GlassCard className="h-full">
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-500">
+                  <Eye className="h-6 w-6" />
+                </div>
+                <h3 className="mb-4 text-2xl font-bold">Our Vision</h3>
+                <p className="leading-relaxed text-gray-400">
+                  A world where technology empowers every organization to achieve its full potential,
+                  streamline operations, and create machine intelligence that feels human.
+                </p>
+              </GlassCard>
             </motion.div>
 
             <motion.div
@@ -73,45 +80,44 @@ export default function AboutPage() {
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
               transition={{ delay: 0.2 }}
-              className="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-gray-800 dark:bg-gray-900"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-red-50 text-dark-red dark:bg-dark-red/10">
-                <Heart className="h-6 w-6" />
-              </div>
-              <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">Our Values</h3>
-              <p className="leading-relaxed text-gray-600 dark:text-gray-400">
-                Integrity, innovation, and impact guide every decision we make. We believe in
-                transparent partnerships and delivering measurable results.
-              </p>
+              <GlassCard className="h-full">
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-500">
+                  <Heart className="h-6 w-6" />
+                </div>
+                <h3 className="mb-4 text-2xl font-bold">Our Values</h3>
+                <p className="leading-relaxed text-gray-400">
+                  Systems over syntax. Logic over noise. We believe in building robust, future-proof
+                  architectures that deliver measurable, high-impact results.
+                </p>
+              </GlassCard>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Story */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-950">
+      <section className="section-padding">
         <div className="container-custom">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="grid items-center gap-20 lg:grid-cols-2">
             <motion.div
               initial={fadeInUp.initial}
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
             >
-              <h2 className="heading-lg mb-6 text-black dark:text-white">Our Story</h2>
-              <div className="space-y-4 text-gray-600 dark:text-gray-400">
-                <p className="leading-relaxed">
-                  Zerovex Solutions was founded with a clear vision: to bridge the gap between
-                  cutting-edge technology and real business needs. We saw too many organizations
-                  struggling with outdated systems and manual processes that held them back.
+              <h2 className="heading-lg mb-8">The <span className="text-gradient">Zerovex</span> Story</h2>
+              <div className="space-y-6 text-lg text-gray-400 leading-relaxed">
+                <p>
+                  Zerovex Solutions was founded with a singular focus: to solve the most complex business 
+                  challenges through intelligent system design.
                 </p>
-                <p className="leading-relaxed">
-                  Today, we&apos;re proud to serve clients across the globe, delivering AI-powered
-                  automation, scalable SaaS platforms, and custom software solutions that drive
-                  measurable results.
+                <p>
+                  We saw a digital landscape cluttered with noise and technical debt. Our approach 
+                  is different. We prioritize deep logic and architectural integrity, ensuring 
+                  that every solution we build is ready for the AI-driven future.
                 </p>
-                <p className="leading-relaxed">
-                  Our team of senior engineers, designers, and strategists brings decades of
-                  combined experience from leading tech companies.
+                <p>
+                  Led by technical visionaries, we transform how organizations think, operate, and scale.
                 </p>
               </div>
             </motion.div>
@@ -121,58 +127,52 @@ export default function AboutPage() {
               whileInView={fadeInUp.whileInView}
               viewport={fadeInUp.viewport}
               transition={{ delay: 0.1 }}
-              className="rounded-lg border border-gray-200 bg-white p-8 transition-colors dark:border-gray-800 dark:bg-gray-900"
             >
-              <h3 className="mb-6 text-xl font-semibold text-black dark:text-white">Key Milestones</h3>
-              <div className="space-y-4">
-                {[
-                  { year: "2020", event: "Zerovex Solutions founded" },
-                  { year: "2021", event: "Expanded AI & Automation services" },
-                  { year: "2022", event: "Reached 50+ global clients" },
-                  { year: "2023", event: "Launched SaaS development division" },
-                  { year: "2024", event: "150+ projects delivered" },
-                  { year: "2025", event: "Opened international operations" },
-                ].map((milestone) => (
-                  <div key={milestone.year} className="flex items-start gap-4">
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded bg-dark-red text-sm font-bold text-white">
-                      {milestone.year.slice(-2)}
+              <GlassCard className="p-10">
+                <h3 className="mb-8 text-xs font-bold uppercase tracking-[0.3em] text-white/50">Chronicles</h3>
+                <div className="space-y-6">
+                  {[
+                    { year: "2020", event: "Zerovex Solutions Genesis" },
+                    { year: "2021", event: "AI & Automation Paradigm Shift" },
+                    { year: "2022", event: "50+ Global Ecosystems Built" },
+                    { year: "2023", event: "SaaS Architecture Division Launch" },
+                    { year: "2024", event: "150+ Technical Triumphs" },
+                    { year: "2025", event: "Intelligent Systems Evolution" },
+                  ].map((milestone) => (
+                    <div key={milestone.year} className="flex items-center gap-6">
+                      <div className="text-sm font-bold text-red-500 w-12">{milestone.year}</div>
+                      <div className="h-px flex-1 bg-white/10"></div>
+                      <div className="text-sm text-gray-300 font-medium">{milestone.event}</div>
                     </div>
-                    <div>
-                      <div className="text-sm font-medium text-dark-red dark:text-red-400">{milestone.year}</div>
-                      <div className="text-sm text-gray-700 dark:text-gray-300">{milestone.event}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </GlassCard>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-black text-white">
-        <div className="container-custom">
-          <motion.div
-            initial={fadeInUp.initial}
-            whileInView={fadeInUp.whileInView}
-            viewport={fadeInUp.viewport}
-            className="mx-auto max-w-3xl text-center"
-          >
-            <h2 className="heading-lg mb-4">Want to Join Our Journey?</h2>
-            <p className="text-body mb-8 text-gray-300">
-              Whether you&apos;re looking for a technology partner or want to explore how we can
-              transform your business, we&apos;d love to hear from you.
+      <section className="section-padding">
+        <div className="container-custom text-center">
+          <GlassCard className="py-20 border-red-500/20">
+            <h2 className="heading-lg mb-8">Ready to Build the <span className="text-gradient">Extraordinary</span>?</h2>
+            <p className="text-xl mb-12 text-gray-400 max-w-2xl mx-auto">
+              Join the ranks of global innovators leveraging our architectural expertise.
             </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <Link href="/contact" className="btn-primary">
-                Get in Touch
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-              <Link href="/team" className="btn-secondary-white">
-                Meet Our Team
-              </Link>
+            <div className="flex flex-col justify-center gap-6 sm:flex-row">
+              <MagneticButton>
+                <Link href="/contact" className="btn-primary">
+                  Launch Your Vision
+                </Link>
+              </MagneticButton>
+              <MagneticButton>
+                <Link href="/team" className="btn-secondary-white">
+                  Technical Leadership
+                </Link>
+              </MagneticButton>
             </div>
-          </motion.div>
+          </GlassCard>
         </div>
       </section>
     </div>

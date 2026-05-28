@@ -4,11 +4,14 @@ import { motion } from "framer-motion";
 import { Brain, Globe, Layers, Settings, CheckCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import GlassCard from "@/components/ui/GlassCard";
+import MagneticButton from "@/components/ui/MagneticButton";
+
 const fadeInUp = {
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.5 },
+  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
 };
 
 const services = [
@@ -16,148 +19,88 @@ const services = [
     id: "ai-automation",
     icon: Brain,
     title: "AI Automation",
-    description:
-      "Harness the power of artificial intelligence to automate complex workflows, reduce manual effort, and unlock actionable insights from your data.",
-    features: [
-      "Intelligent process automation",
-      "Natural language processing solutions",
-      "Predictive analytics & forecasting",
-      "Computer vision applications",
-      "Custom AI model development",
-    ],
+    description: "Harness the power of artificial intelligence to automate complex workflows, reduce manual effort, and unlock actionable insights from your data.",
+    features: ["Intelligent process automation", "Natural language processing", "Predictive analytics", "Computer vision", "Custom AI models"],
   },
   {
     id: "web-development",
     icon: Globe,
     title: "Web Development",
-    description:
-      "Build modern, scalable web applications with cutting-edge frameworks, optimized performance, and exceptional user experiences.",
-    features: [
-      "Custom web application development",
-      "Progressive web apps (PWA)",
-      "E-commerce platforms",
-      "API development & integration",
-      "Performance optimization",
-    ],
+    description: "Build modern, scalable web applications with cutting-edge frameworks, optimized performance, and exceptional user experiences.",
+    features: ["Custom web apps", "PWA development", "E-commerce platforms", "API integration", "Performance optimization"],
   },
   {
     id: "saas-development",
     icon: Layers,
     title: "SaaS Development",
-    description:
-      "Design, build, and scale Software-as-a-Service products with robust architecture, seamless integrations, and subscription management.",
-    features: [
-      "Multi-tenant architecture",
-      "Subscription & billing systems",
-      "User authentication & authorization",
-      "Analytics & reporting dashboards",
-      "Scalable cloud infrastructure",
-    ],
+    description: "Design, build, and scale Software-as-a-Service products with robust architecture and seamless integrations.",
+    features: ["Multi-tenant architecture", "Subscription systems", "Auth & Identity", "Analytics dashboards", "Cloud infrastructure"],
   },
   {
     id: "business-systems",
     icon: Settings,
-    title: "Business Automation Solutions",
-    description:
-      "Streamline operations with custom enterprise systems that optimize workflows, reduce costs, and improve team productivity.",
-    features: [
-      "Workflow automation",
-      "ERP system development",
-      "Custom CRM solutions",
-      "Business intelligence dashboards",
-      "Legacy system modernization",
-    ],
+    title: "Business Systems",
+    description: "Streamline operations with custom enterprise systems that optimize workflows and improve team productivity.",
+    features: ["Workflow automation", "ERP development", "Custom CRM", "BI dashboards", "Legacy modernization"],
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="bg-white transition-colors duration-300 dark:bg-black">
+    <div className="bg-transparent text-white">
       {/* Hero */}
-      <section className="bg-black text-white">
-        <div className="container-custom relative z-10 py-16 md:py-20">
-          <motion.div
-            initial={fadeInUp.initial}
-            animate={fadeInUp.whileInView}
-            className="mx-auto max-w-3xl"
-          >
-            <h1 className="heading-lg mb-6">Solutions That Scale With You</h1>
-            <p className="text-body text-gray-300">
-              From AI-powered automation to enterprise SaaS platforms, we deliver technology
-              that transforms how you operate, compete, and grow.
+      <section className="relative pt-32 pb-20">
+        <div className="container-custom relative z-10">
+          <motion.div initial={fadeInUp.initial} animate={fadeInUp.whileInView} className="max-w-3xl">
+            <h1 className="heading-xl mb-6">Expertise That <span className="text-gradient">Scales</span></h1>
+            <p className="text-xl text-gray-400 leading-relaxed">
+              From high-performance AI automation to enterprise SaaS platforms, we engineer technology
+              that transforms global businesses.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Services Detail */}
-      <div>
+      <div className="space-y-32 pb-32">
         {services.map((service, index) => (
-          <section
-            key={service.id}
-            id={service.id}
-            className={`section-padding ${index % 2 === 0 ? "bg-white dark:bg-black" : "bg-gray-50 dark:bg-gray-950"}`}
-          >
-            <div className="container-custom">
-              <motion.div
-                initial={fadeInUp.initial}
-                whileInView={fadeInUp.whileInView}
-                viewport={fadeInUp.viewport}
-                className="grid gap-6 lg:gap-12 lg:grid-cols-2"
-              >
-                <div>
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-dark-red text-white">
-                    <service.icon className="h-6 w-6" />
-                  </div>
-                  <h2 className="heading-md mb-4 text-black dark:text-white">{service.title}</h2>
-                  <p className="mb-6 text-base leading-relaxed text-gray-600 dark:text-gray-400">
-                    {service.description}
-                  </p>
-                  <Link href="/contact" className="btn-primary">
-                    Get Started
-                    <ArrowRight className="h-5 w-5" />
-                  </Link>
+          <section key={service.id} id={service.id} className="container-custom">
+            <motion.div
+              initial={fadeInUp.initial}
+              whileInView={fadeInUp.whileInView}
+              viewport={fadeInUp.viewport}
+              className="grid gap-12 lg:grid-cols-2 items-center"
+            >
+              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-red-500/10 text-red-500">
+                  <service.icon className="h-8 w-8" />
                 </div>
+                <h2 className="heading-lg mb-6">{service.title}</h2>
+                <p className="mb-8 text-lg leading-relaxed text-gray-400">
+                  {service.description}
+                </p>
+                <MagneticButton>
+                  <Link href="/contact" className="btn-primary">Get Started</Link>
+                </MagneticButton>
+              </div>
 
-                <div className="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-gray-800 dark:bg-gray-900">
-                  <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-black dark:text-white">
-                    What&apos;s Included
-                  </h3>
-                  <div className="space-y-3">
+              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                <GlassCard className="p-10 border-white/5">
+                  <h3 className="mb-8 text-xs font-bold uppercase tracking-[0.3em] text-white/50">Capabilities</h3>
+                  <div className="grid gap-6 sm:grid-cols-2">
                     {service.features.map((feature) => (
-                      <div key={feature} className="flex items-start gap-3">
-                        <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-dark-red" />
-                        <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                      <div key={feature} className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 flex-shrink-0 text-red-500" />
+                        <span className="text-sm font-medium text-gray-300">{feature}</span>
                       </div>
                     ))}
                   </div>
-                </div>
-              </motion.div>
-            </div>
+                </GlassCard>
+              </div>
+            </motion.div>
           </section>
         ))}
       </div>
-
-      {/* CTA */}
-      <section className="section-padding bg-black text-white">
-        <div className="container-custom">
-          <motion.div
-            initial={fadeInUp.initial}
-            whileInView={fadeInUp.whileInView}
-            viewport={fadeInUp.viewport}
-            className="mx-auto max-w-3xl text-center"
-          >
-            <h2 className="heading-lg mb-4">Ready to Get Started?</h2>
-            <p className="text-body mb-8 text-gray-300">
-              Let&apos;s discuss your project and explore how our services can accelerate your growth.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Contact Our Team
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }
