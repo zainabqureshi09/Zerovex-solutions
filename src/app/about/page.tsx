@@ -119,6 +119,9 @@ export default function AboutPage() {
                 <p>
                   Led by technical visionaries, we transform how organizations think, operate, and scale.
                 </p>
+                <p>
+                  Zero Vex Solutions is an independent startup operating in collaboration with IDN Global and Web Connect.
+                </p>
               </div>
             </motion.div>
 
@@ -148,6 +151,65 @@ export default function AboutPage() {
                 </div>
               </GlassCard>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ecosystem & Labs */}
+      <section className="section-padding bg-black/30">
+        <div className="container-custom">
+          <div className="mb-16 text-center">
+            <h2 className="heading-lg mb-4">Our <span className="text-gradient">Ecosystem Labs</span></h2>
+            <p className="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
+              Through our global collaboration with IDN Global and Web Connect, we leverage state-of-the-art server infrastructure and collaborative engineering hubs.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              {
+                title: "IDN Global Systems",
+                role: "Infrastructure Partner",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&auto=format&fit=crop&q=80",
+                desc: "High-performance enterprise cloud servers and high-availability global data nodes."
+              },
+              {
+                title: "Web Connect Hubs",
+                role: "Connectivity Partner",
+                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80",
+                desc: "Smart network integrations, dynamic APIs, and high-frequency communication fabrics."
+              },
+              {
+                title: "Zerovex Innovation Labs",
+                role: "AI & Automation Center",
+                image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&auto=format&fit=crop&q=80",
+                desc: "Bespoke AI automation systems, SaaS platform design, and advanced software engineering."
+              }
+            ].map((lab, idx) => (
+              <motion.div
+                key={lab.title}
+                initial={fadeInUp.initial}
+                whileInView={fadeInUp.whileInView}
+                viewport={fadeInUp.viewport}
+                transition={{ delay: idx * 0.1 }}
+                className="group relative h-[380px] overflow-hidden rounded-3xl border border-white/10 hover:border-red-500/30 transition-all duration-300"
+              >
+                <img
+                  src={lab.image}
+                  alt={lab.title}
+                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6 w-full text-left">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-red-500 bg-red-500/10 border border-red-500/20 px-2.5 py-1 rounded-full">
+                    {lab.role}
+                  </span>
+                  <h3 className="mt-4 text-xl font-bold text-white">{lab.title}</h3>
+                  <p className="mt-2 text-xs text-gray-400 leading-relaxed">{lab.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

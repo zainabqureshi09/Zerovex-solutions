@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Clock, MapPin, Send, CheckCircle } from "lucide-react";
+import { Mail, Clock, MapPin, Send, CheckCircle, Phone } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -46,22 +46,35 @@ export default function ContactPage() {
       icon: Mail,
       title: "Email Us",
       description: "Get in touch via email for detailed inquiries",
-      value: "hello@zerovexsolutions.site",
-      href: "mailto:hello@zerovexsolutions.site",
+      links: [
+        { label: "hello@zerovexsolutions.site", href: "mailto:hello@zerovexsolutions.site" },
+        { label: "zerovexsolutions@gmail.com", href: "mailto:zerovexsolutions@gmail.com" },
+      ],
+    },
+    {
+      icon: Phone,
+      title: "Call Us",
+      description: "Speak directly with our technical desk",
+      links: [
+        { label: "+92 341 2270393", href: "tel:+923412270393" },
+        { label: "+92 346 3742498", href: "tel:+923463742498" },
+      ],
     },
     {
       icon: Clock,
       title: "Response Time",
       description: "We typically respond within",
-      value: "24 hours",
-      href: "#",
+      links: [
+        { label: "24 hours", href: "#" },
+      ],
     },
     {
       icon: MapPin,
       title: "Global Operations",
       description: "Serving clients",
-      value: "Worldwide",
-      href: "#",
+      links: [
+        { label: "Worldwide", href: "#" },
+      ],
     },
   ];
 
@@ -87,7 +100,7 @@ export default function ContactPage() {
       {/* Contact Methods */}
       <section className="section-padding -mt-10">
         <div className="container-custom">
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {contactMethods.map((method, index) => (
               <motion.div
                 key={method.title}
@@ -102,12 +115,17 @@ export default function ContactPage() {
                 </div>
                 <h3 className="mb-1 text-lg font-semibold text-black dark:text-white">{method.title}</h3>
                 <p className="mb-2 text-sm text-gray-600 dark:text-gray-400">{method.description}</p>
-                <a
-                  href={method.href}
-                  className="text-base font-semibold text-dark-red"
-                >
-                  {method.value}
-                </a>
+                <div className="flex flex-col gap-1">
+                  {method.links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      className="text-sm font-semibold text-dark-red hover:underline"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>

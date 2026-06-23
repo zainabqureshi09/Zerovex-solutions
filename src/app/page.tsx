@@ -186,49 +186,73 @@ export default function Home() {
   return (
     <div className="bg-transparent text-white">
       {/* ==================== CINEMATIC HERO SECTION ==================== */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="container-custom relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm font-semibold backdrop-blur-md"
-          >
-            <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse" />
-            Empowering the AI Revolution
-          </motion.div>
-
-          <div className="overflow-hidden">
-            <h1 className="hero-line heading-xl mb-6 leading-[1.05]">
-              Engineering the <br />
-              <span className="text-gradient">Future of AI</span>
-            </h1>
-          </div>
-
-          <div className="overflow-hidden mb-12">
-            <p className="hero-line mx-auto max-w-2xl text-lg text-gray-400 md:text-xl leading-relaxed">
-              We build high-performance AI automation and custom software solutions for the world&apos;s most ambitious companies.
-            </p>
-          </div>
-
-          <div className="hero-line flex flex-col items-center justify-center gap-6 sm:flex-row">
-            <MagneticButton>
-              <Link
-                href="/contact"
-                className="group relative inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-bold text-black transition-transform hover:scale-105"
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-0">
+        <div className="container-custom relative z-10 w-full">
+          <div className="grid gap-12 lg:grid-cols-12 items-center">
+            {/* Left Column - Content */}
+            <div className="lg:col-span-7 text-left">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-2 text-xs font-semibold backdrop-blur-md"
               >
-                Launch Your Project
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </MagneticButton>
-            <MagneticButton>
-              <Link
-                href="/services"
-                className="group inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-lg font-bold backdrop-blur-md transition-all hover:bg-white/10"
-              >
-                View Services
-              </Link>
-            </MagneticButton>
+                <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                Empowering the AI Revolution
+              </motion.div>
+
+              <div className="overflow-hidden mb-6">
+                <h1 className="hero-line heading-xl leading-[1.05]">
+                  Engineering the <br />
+                  <span className="text-gradient">Future of AI</span>
+                </h1>
+              </div>
+
+              <div className="overflow-hidden mb-8">
+                <p className="hero-line text-base text-gray-400 md:text-lg leading-relaxed max-w-xl">
+                  We build high-performance AI automation and custom software solutions for the world&apos;s most ambitious companies.
+                </p>
+              </div>
+
+              <div className="hero-line flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                <MagneticButton>
+                  <Link
+                    href="/contact"
+                    className="group relative inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-black transition-transform hover:scale-105"
+                  >
+                    Launch Your Project
+                    <ArrowRight className="h-4.5 w-4.5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </MagneticButton>
+                <MagneticButton>
+                  <Link
+                    href="/services"
+                    className="group inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-bold backdrop-blur-md transition-all hover:bg-white/10"
+                  >
+                    View Services
+                  </Link>
+                </MagneticButton>
+              </div>
+            </div>
+
+            {/* Right Column - Mockup Showcase */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+              className="lg:col-span-5 relative w-full h-[320px] md:h-[450px] rounded-3xl overflow-hidden border border-white/10 glow-red shadow-premium bg-black/40 backdrop-blur-sm group cursor-pointer"
+            >
+              <div className="absolute -top-6 -right-6 h-28 w-28 rounded-full bg-red-500/10 blur-[30px] group-hover:bg-red-500/25 transition-colors duration-500" />
+              
+              <Image
+                src="/home-hero-dashboard.png"
+                alt="Zerovex AI Enterprise Solution Dashboard"
+                fill
+                priority
+                className="object-cover transition-transform duration-1000 group-hover:scale-105 group-hover:rotate-1"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
+            </motion.div>
           </div>
         </div>
 

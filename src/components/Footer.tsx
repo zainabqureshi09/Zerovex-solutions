@@ -69,9 +69,14 @@ export default function Footer() {
         </div>
 
         <div className="mt-20 flex flex-col items-center justify-between gap-8 border-t border-white/5 pt-10 md:flex-row">
-          <p className="text-xs font-medium text-gray-600">
-            &copy; {new Date().getFullYear()} Zerovex Solutions. Engineered for Excellence.
-          </p>
+          <div className="flex flex-col gap-2 text-center md:text-left">
+            <p className="text-xs font-medium text-gray-600">
+              &copy; {new Date().getFullYear()} Zerovex Solutions. Engineered for Excellence.
+            </p>
+            <p className="text-xs text-gray-600/80">
+              Powered by IDN Global &amp; Web Connect
+            </p>
+          </div>
           <div className="flex gap-8">
             {socialLinks.map((social) => (
               <a
