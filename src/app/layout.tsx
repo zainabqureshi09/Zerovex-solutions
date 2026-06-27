@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 import SmoothScroll from "@/components/SmoothScroll";
 import MouseGlow from "@/components/ui/MouseGlow";
 import NeuralBackground from "@/components/ui/NeuralBackground";
@@ -67,6 +68,8 @@ export default function RootLayout({
               <Navbar />
               <main className="flex-1">{children}</main>
               <Footer />
+              {/* Toast notifications */}
+              <Toaster position="top-right" />
             </div>
           </SmoothScroll>
         </ThemeProvider>

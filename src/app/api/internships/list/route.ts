@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const clientPasskey = searchParams.get("adminPasskey") || request.headers.get("x-admin-passkey");
-    const serverPasskey = process.env.ADMIN_PASSKEY || "admin123";
+    const serverPasskey = process.env.ADMIN_PASSKEY;
 
     if (!clientPasskey || clientPasskey !== serverPasskey) {
       return NextResponse.json(
