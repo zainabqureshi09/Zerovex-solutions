@@ -47,7 +47,6 @@ export default function ContactPage() {
       title: "Email Us",
       description: "Get in touch via email for detailed inquiries",
       links: [
-        { label: "hello@zerovexsolutions.site", href: "mailto:hello@zerovexsolutions.site" },
         { label: "zerovexsolutions@gmail.com", href: "mailto:zerovexsolutions@gmail.com" },
       ],
     },
