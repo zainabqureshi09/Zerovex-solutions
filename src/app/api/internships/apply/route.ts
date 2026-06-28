@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
 
     // Optional Google Sheets webhook
     const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
-    if (webhookUrl) {
+    if (webhookUrl && !webhookUrl.includes("YOUR_")) {
       try {
         await fetch(webhookUrl, {
           method: "POST",

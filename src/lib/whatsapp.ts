@@ -12,8 +12,14 @@ const adminNumber = process.env.WHATSAPP_ADMIN_NUMBER; // optional admin recipie
  * Returns true if the request succeeded, false otherwise.
  */
 export async function sendWhatsAppMessage(to: string, body: string): Promise<boolean> {
-  if (!accountSid || !authToken || !fromNumber) {
-    console.warn("Twilio credentials are not set. Skipping WhatsApp notification.");
+  if (
+    !accountSid || 
+    !authToken || 
+    !fromNumber || 
+    accountSid.includes("YOUR_") || 
+    authToken.includes("YOUR_")
+  ) {
+    console.warn("Twilio credentials are not set or using placeholders. Skipping WhatsApp notification.");
     return false;
   }
   try {
