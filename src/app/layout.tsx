@@ -59,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-black`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-black`} suppressHydrationWarning>
         <ThemeProvider>
           <SmoothScroll>
             <div className="relative flex min-h-screen flex-col transition-colors duration-300">

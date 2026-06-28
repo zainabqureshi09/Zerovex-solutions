@@ -1,12 +1,17 @@
 // src/lib/db.ts
 // Central data access layer with Supabase primary storage and local JSON fallback.
-// Exports utility functions and re‑exports the Application type for shared use.
+// Exports utility functions and re-exports the Application type for shared use.
 
-import { insertApplication, fetchApplications, updateStatus as updateSupabaseApplicationStatus, Application } from "./supabaseClient";
+import {
+  insertApplication,
+  fetchApplications,
+  updateStatus as updateSupabaseApplicationStatus,
+  Application,
+} from "./supabaseClient";
 import fs from "fs";
 import path from "path";
 
-// Re‑export the Application interface for other modules (e.g., admin page).
+// Re-export the Application interface for other modules (e.g., admin page).
 export type { Application };
 
 // Path for local JSON fallback storage
@@ -32,7 +37,7 @@ export async function saveApplication(appData: Application): Promise<void> {
     const raw = fs.readFileSync(LOCAL_DB_PATH, "utf-8");
     const applications: Application[] = JSON.parse(raw);
     if (!appData.created_at) {
-      (appData as any).created_at = new Date().toISOString();
+      appData.created_at = new Date().toISOString();
     }
     applications.push(appData);
     fs.writeFileSync(LOCAL_DB_PATH, JSON.stringify(applications, null, 2));
@@ -44,11 +49,7 @@ export async function getApplications(): Promise<Application[]> {
   try {
     const supabaseList = await fetchApplications();
     if (supabaseList && supabaseList.length > 0) {
-      // Provide createdAt alias for UI components expecting camelCase
-      return supabaseList.map(app => ({
-        ...app,
-        createdAt: app.created_at,
-      } as any));
+      return supabaseList;
     }
   } catch (e) {
     console.warn("Supabase fetch failed, falling back to local storage:", e);
@@ -58,16 +59,17 @@ export async function getApplications(): Promise<Application[]> {
   ensureLocalDbExists();
   const raw = fs.readFileSync(LOCAL_DB_PATH, "utf-8");
   const list: Application[] = JSON.parse(raw);
-  return list
-    .map(app => ({
-      ...app,
-      createdAt: app.created_at,
-    } as any))
-    .sort((a, b) => new Date(b.created_at!).getTime() - new Date(a.created_at!).getTime());
+  return list.sort(
+    (a, b) =>
+      new Date(b.created_at ?? 0).getTime() - new Date(a.created_at ?? 0).getTime()
+  );
 }
 
 /** Update an application's status – Supabase first, fallback to local JSON */
-export async function updateApplicationStatus(id: string, status: Application["status"]): Promise<boolean> {
+export async function updateApplicationStatus(
+  id: string,
+  status: Application["status"]
+): Promise<boolean> {
   try {
     const updated = await updateSupabaseApplicationStatus(id, status);
     if (updated) return true;
@@ -79,7 +81,7 @@ export async function updateApplicationStatus(id: string, status: Application["s
   ensureLocalDbExists();
   const raw = fs.readFileSync(LOCAL_DB_PATH, "utf-8");
   const applications: Application[] = JSON.parse(raw);
-  const idx = applications.findIndex(app => app.id === id);
+  const idx = applications.findIndex((app) => app.id === id);
   if (idx !== -1) {
     applications[idx].status = status;
     fs.writeFileSync(LOCAL_DB_PATH, JSON.stringify(applications, null, 2));

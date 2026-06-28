@@ -33,8 +33,9 @@ export default function Footer() {
         <div className="grid gap-16 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Link href="/" className="mb-8 flex flex-col items-start">
-              <Image src="/logogency.png" alt="Zerovex Solutions" width={120} height={32} className="h-7 w-auto" />
-              <span className="mt-1 text-[10px] font-bold tracking-[0.4em] uppercase text-white/40">Solutions</span>
+              <Image src="/logogency.png" alt="Zerovex Solutions" width={120} height={32} className="h-6 sm:h-8 w-auto" style={{ width: "auto" }} />
+              <span className="mt-1 text-[10px] sm:text-[12px] font-bold tracking-[0.4em] uppercase text-white/40">Solutions</span>
+              <a href="https://www.idnglobalassociates.com" target="_blank" rel="noopener noreferrer" className="mt-0.5 text-[8px] sm:text-[10px] font-medium uppercase text-white/40">A venture of idn global associates</a>
             </Link>
             <p className="max-w-md text-lg leading-relaxed text-gray-400">
               Building the next generation of AI-driven technology. We transform global enterprises through intelligent automation and futuristic engineering.
@@ -74,7 +75,7 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} Zerovex Solutions. Engineered for Excellence.
             </p>
             <p className="text-xs text-gray-600/80">
-              Powered by IDN Global &amp; Web Connect
+                Powered by Web Connect
             </p>
           </div>
           <div className="flex gap-8">

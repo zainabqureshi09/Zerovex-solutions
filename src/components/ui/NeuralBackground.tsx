@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, Suspense } from "react";
+import { useRef, useMemo, Suspense, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { AdaptiveDpr, AdaptiveEvents } from "@react-three/drei";
 import * as THREE from "three";
@@ -48,6 +48,16 @@ function Particles({ count = 1000 }) {
 }
 
 export default function NeuralBackground() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="fixed inset-0 -z-10 bg-black" />;
+  }
+
   return (
     <div className="fixed inset-0 -z-10 bg-black">
       <Suspense fallback={null}>

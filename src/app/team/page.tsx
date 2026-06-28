@@ -15,7 +15,7 @@ const team = [
   {
     name: "Zainab Ayaz",
     role: "CTO & AI Architect",
-    image: "/zainab.jpg",
+    image: "/zainab.png",
     bio: "Full-Stack Developer, AI Architect, and Intelligent Systems Builder. Driven by the philosophy 'Systems > Syntax', she specializes in building Agentic AI systems, LLMs that reason autonomously, and high-performance products from pixel to protocol. Expert in turning code into cognition.",
     social: {
       linkedin: "https://linkedin.com/in/zainab.tsx",

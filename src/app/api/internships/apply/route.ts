@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error("[Internship Apply] Unexpected error:", error);
-    console.error("Stack:", (error as any)?.stack);
+    if (error instanceof Error) console.error("Stack:", error.stack);
     return NextResponse.json({ error: "Failed to submit application. Please try again." }, { status: 500 });
   }
 }

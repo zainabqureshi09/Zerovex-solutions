@@ -32,13 +32,14 @@ export async function sendWhatsAppMessage(to: string, body: string): Promise<boo
 
 /** Send notification for a new internship application */
 export async function notifyNewApplication(app: Application): Promise<void> {
-  const message = `✅ Your application (ID: ${app.id}) for the ${app.selectedField} internship has been received. We will review it soon.`;
+  // Use snake_case field names matching the Application interface
+  const message = `✅ Your application (ID: ${app.application_id}) for the ${app.selected_field} internship has been received. We will review it soon.`;
   // Notify applicant
   await sendWhatsAppMessage(app.whatsapp, message);
 
   // Optional admin notification
   if (adminNumber) {
-    const adminMsg = `📨 New internship application received. ID: ${app.id}, Candidate: ${app.fullName}, Field: ${app.selectedField}`;
+    const adminMsg = `📨 New internship application received. ID: ${app.application_id}, Candidate: ${app.full_name}, Field: ${app.selected_field}`;
     await sendWhatsAppMessage(adminNumber, adminMsg);
   }
 }

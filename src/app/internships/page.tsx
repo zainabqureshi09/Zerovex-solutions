@@ -235,6 +235,7 @@ export default function InternshipsPage() {
                 src="/internship-hero.png"
                 alt="Zero Vex Remote Internship Program"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 priority
                 className="object-cover transition-transform duration-700 hover:scale-105"
               />

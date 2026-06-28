@@ -100,6 +100,20 @@ export default function ServicesPage() {
             </motion.div>
           </section>
         ))}
+        {/* Additional Links */}
+        <div className="mt-20 text-center">
+          <h2 className="heading-lg mb-6">Explore More</h2>
+          <div className="flex flex-col md:flex-row justify-center gap-6">
+            <Link href="/internships" className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-medium text-white hover:bg-white/20">
+              <span>Internships</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/tools" className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-5 py-3 text-sm font-medium text-white hover:bg-white/20">
+              <span>Tools</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
