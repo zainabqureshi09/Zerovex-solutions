@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { saveApplication, Application } from "@/lib/db";
 import { notifyNewApplication } from "@/lib/whatsapp";
 
+export const dynamic = "force-dynamic";
+
 function generateApplicationId(): string {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let result = "";
